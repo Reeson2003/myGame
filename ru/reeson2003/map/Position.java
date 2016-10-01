@@ -21,6 +21,10 @@ public class Position {
         this.coordinate = new Coordinate(X, Y);
         if (info != null)
             this.info = info;
+        north = null;
+        south = null;
+        east = null;
+        west = null;
         extraLinks = new LinkedList<>();
         items = new LinkedList<>();
     }
@@ -109,6 +113,14 @@ public class Position {
                                                 + " and " + extraLinks.size());
         else
             return extraLinks.get(number-1);
+    }
+
+    public void moveItem(Interactable item, Position position) {
+        //if (!(items.contains(item)))
+        //    throw new IllegalArgumentException("Position does not contains this item");
+        //else
+            items.remove(item);
+        position.addItem(item);
     }
 
     @Override
