@@ -1,6 +1,5 @@
 package ru.reeson2003.map;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 

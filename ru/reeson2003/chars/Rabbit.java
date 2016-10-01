@@ -7,6 +7,7 @@ import ru.reeson2003.map.Position;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Тоня on 01.10.2016.
@@ -34,21 +35,34 @@ public class Rabbit extends Creature {
             result.add(this);
             return result;
         } else {
-            if (position.move(Direction.South) != position) {
-                position.moveItem(this, position.move(Direction.South));
-                position = position.move(Direction.South);
+            Random random = new Random();
+            int dir = random.nextInt(4);
+            Direction direction = Direction.Here;
+            if (dir == 0)
+                direction = Direction.South;
+            else if (dir == 1)
+                direction = Direction.East;
+            else if (dir == 2)
+                direction = Direction.North;
+            else if (dir == 3)
+                direction = Direction.West;
+
+
+            if (position.move(direction) != position) {
+                position.moveItem(this, position.move(direction));
+                position = position.move(direction);
             }
-            else if (position.move(Direction.East) != position) {
-                position.moveItem(this, position.move(Direction.East));
-                position = position.move(Direction.East);
+            else if (position.move(direction) != position) {
+                position.moveItem(this, position.move(direction));
+                position = position.move(direction);
             }
-            else if (position.move(Direction.North) != position) {
-                position.moveItem(this, position.move(Direction.North));
-                position = position.move(Direction.North);
+            else if (position.move(direction) != position) {
+                position.moveItem(this, position.move(direction));
+                position = position.move(direction);
             }
-            else if (position.move(Direction.West) != position) {
-                position.moveItem(this, position.move(Direction.West));
-                position = position.move(Direction.West);
+            else if (position.move(direction) != position) {
+                position.moveItem(this, position.move(direction));
+                position = position.move(direction);
             }
             return null;
         }

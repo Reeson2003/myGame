@@ -104,9 +104,9 @@ public class MainProgramm {
             }
         });
 
-        //cherdak.getPosition(1,1).addItem(new Rabbit("Заенька", cherdak.getPosition(1,1)));
+        cherdak.getPosition(1,1).addItem(new Rabbit("Заенька", cherdak.getPosition(1,1)));
 
-        izbushka.getPosition(0,0).addItem(new Rabbit("Зайка", izbushka.getPosition(0,0)));
+        //izbushka.getPosition(0,0).addItem(new Rabbit("Зайка", izbushka.getPosition(0,0)));
 
         Position current = izbushka.getPosition(0,0);
         Player p1 = new Player("xXxTurboGladNagibator3000xXx", "Нагибаю на скилле", current);
