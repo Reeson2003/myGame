@@ -34,9 +34,12 @@ public class Gold extends Item {
     }
 
     @Override
-    public List<Interactable> interact(Player player) {
+    public List<Interactable> interact(Interactable player) {
         System.out.println(getInfo());
-        player.getGold().addGold(this);
+        Player p = null;
+        if (player instanceof Player)
+            p = (Player) player;
+        p.getGold().addGold(this);
         return null;
     }
 }

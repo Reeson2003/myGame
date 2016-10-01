@@ -24,8 +24,11 @@ public class Rabbit extends Creature {
     }
 
     @Override
-    public List<Interactable> interact(Player player) {
-        player.getGold().addGold(new Gold(1));
+    public List<Interactable> interact(Interactable player) {
+        Player p = null;
+        if (player instanceof Player)
+            p = (Player) player;
+        p.getGold().addGold(new Gold(1));
 
         if (position.move(Direction.South) == position &&
                 position.move(Direction.East) == position &&

@@ -2,10 +2,12 @@ package ru.reeson2003.items;
 
 import ru.reeson2003.map.Interactable;
 
+import java.io.Serializable;
+
 /**
  * Created by Тоня on 01.10.2016.
  */
-public abstract class Item implements Interactable{
+public abstract class Item implements Interactable, Serializable{
     protected String name = "";
     protected String info = "";
     protected int price = 0;

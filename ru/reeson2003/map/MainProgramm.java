@@ -3,7 +3,8 @@ package ru.reeson2003.map;
 import ru.reeson2003.chars.Player;
 import ru.reeson2003.chars.Rabbit;
 
-import java.util.Collection;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,9 +13,9 @@ import java.util.Scanner;
  * Created by Тоня on 28.09.2016.
  */
 public class MainProgramm {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException{
 
-        Location izbushka = new Location(new LocGen0_1("Избушка", 4,5));
+        Location izbushka = new Location(new LocGen0_1("Избушка", 4, 5));
 
         Location cherdak = new Location(new LocGen0_1("Чердак", 3, 4));
 
@@ -28,7 +29,7 @@ public class MainProgramm {
             }
 
             @Override
-            public List<Interactable> interact(Player player) {
+            public List<Interactable> interact(Interactable player) {
                 useCounter++;
                 System.out.println("MOOOOOO");
                 List<Interactable> result = new LinkedList<Interactable>();
@@ -39,7 +40,7 @@ public class MainProgramm {
                     }
 
                     @Override
-                    public List<Interactable> interact(Player player) {
+                    public List<Interactable> interact(Interactable player) {
                         System.out.println("FOOOOOOOOOO");
                         return null;
                     }
@@ -54,7 +55,7 @@ public class MainProgramm {
                         }
 
                         @Override
-                        public List<Interactable> interact(Player player) {
+                        public List<Interactable> interact(Interactable player) {
                             System.out.println("I'm dead cow");
                             List<Interactable> result = new LinkedList<Interactable>();
                             result.add(this);
@@ -71,7 +72,7 @@ public class MainProgramm {
             }
 
             @Override
-            public List<Interactable> interact(Player player) {
+            public List<Interactable> interact(Interactable player) {
                 System.out.println("WOOF-WOOF  BUEEEEEEEEEEE (x_x)");
                 List<Interactable> result = new LinkedList<Interactable>();
                 result.add(new Interactable() {
@@ -81,7 +82,7 @@ public class MainProgramm {
                     }
 
                     @Override
-                    public List<Interactable> interact(Player player) {
+                    public List<Interactable> interact(Interactable player) {
                         System.out.println("This is Corpse");
                         List<Interactable> result = new LinkedList<Interactable>();
                         result.add(this);
@@ -98,7 +99,7 @@ public class MainProgramm {
             }
 
             @Override
-            public List<Interactable> interact(Player player) {
+            public List<Interactable> interact(Interactable player) {
                 System.exit(0);
                 return null;
             }

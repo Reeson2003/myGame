@@ -36,7 +36,7 @@ public class Player extends Creature {
     }
 
     @Override
-    public List<Interactable> interact(Player player) {
+    public List<Interactable> interact(Interactable player) {
         System.out.println(info);
         List<Interactable> result = new LinkedList<>();
         result.add(this);

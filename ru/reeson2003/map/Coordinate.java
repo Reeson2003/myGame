@@ -1,9 +1,11 @@
 package ru.reeson2003.map;
 
+import java.io.Serializable;
+
 /**
  * Created by Тоня on 28.09.2016.
  */
-public class Coordinate {
+public class Coordinate implements Serializable{
     private int X;
     private int Y;
 

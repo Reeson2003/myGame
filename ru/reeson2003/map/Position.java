@@ -1,12 +1,13 @@
 package ru.reeson2003.map;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Тоня on 28.09.2016.
  */
-public class Position {
+public class Position implements Serializable{
     private String info = "";
     private Coordinate coordinate;
     private Position north;
