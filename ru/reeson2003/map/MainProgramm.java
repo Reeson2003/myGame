@@ -2,6 +2,9 @@ package ru.reeson2003.map;
 
 import ru.reeson2003.chars.Player;
 import ru.reeson2003.chars.Rabbit;
+import ru.reeson2003.items.Gold;
+import ru.reeson2003.items.Holder;
+import ru.reeson2003.items.Item;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -107,7 +110,25 @@ public class MainProgramm {
 
         cherdak.getPosition(1,1).addItem(new Rabbit("Заенька", cherdak.getPosition(1,1)));
 
-        //izbushka.getPosition(0,0).addItem(new Rabbit("Зайка", izbushka.getPosition(0,0)));
+        izbushka.getPosition(0,0).addItem(new Holder("BackPack", "Рюкзак", 10));
+
+        izbushka.getPosition(0,1).addItem(new Gold(11));
+        cherdak.getPosition(0,0).addItem(new Gold(7));
+
+        Holder box = new Holder("Box", "Ящик", 7);
+        box.add(new Gold(10));
+        Holder sack = new Holder("Sack", "Мешок", 35);
+        sack.add(new Item("Surprize", "Сюрприз",0) {
+            @Override
+            public List<Interactable> interact(Interactable something) {
+                List<Interactable> result = new LinkedList<Interactable>();
+                result.add(new Rabbit("Кроллоло", cherdak.getPosition(0,0)));
+                return result;
+            }
+        });
+        sack.add(new Item("Item","Item",1));
+        box.add(sack);
+        izbushka.getPosition(0,0).addItem(box);
 
         Position current = izbushka.getPosition(0,0);
         Player p1 = new Player("xXxTurboGladNagibator3000xXx", "Нагибаю на скилле", current);
@@ -116,6 +137,10 @@ public class MainProgramm {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            String itms = "";
+            if (p1.getItem() != null)
+                itms = p1.getItem().getInfo();
+            System.out.println(p1.getInfo() + ", " + p1.getGold().getInfo() + ", " + itms);
             System.out.println(p1.getPosition());
             StringBuilder sb = new StringBuilder();
             sb.append("You can interact: |");

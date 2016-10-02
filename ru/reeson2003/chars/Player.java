@@ -1,6 +1,7 @@
 package ru.reeson2003.chars;
 
 import ru.reeson2003.items.Gold;
+import ru.reeson2003.items.Item;
 import ru.reeson2003.map.Interactable;
 import ru.reeson2003.map.Position;
 
@@ -13,9 +14,12 @@ import java.util.List;
 public class Player extends Creature {
     private Gold gold;
 
+    private Item item;
+
     public Player(String name, String info, Position position) {
         super(name,info,position);
         gold = new Gold(0);
+        item = null;
     }
 
     public Position getPosition() {
@@ -28,6 +32,14 @@ public class Player extends Creature {
 
     public Gold getGold() {
         return gold;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Item getItem() {
+        return item;
     }
 
     @Override
