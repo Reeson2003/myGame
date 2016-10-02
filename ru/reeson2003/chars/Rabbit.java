@@ -24,50 +24,49 @@ public class Rabbit extends Creature {
     }
 
     @Override
-    public List<Interactable> interact(Interactable player) {
-        Player p = null;
-        if (player instanceof Player)
-            p = (Player) player;
-        p.getGold().addGold(new Gold(1));
+    public List<Interactable> interact(Interactable something) {
+        if (something instanceof Player) {
+            Player player = (Player) something;
 
-        if (position.move(Direction.South) == position &&
-                position.move(Direction.East) == position &&
-                position.move(Direction.North) == position &&
-                position.move(Direction.West) == position) {
-            List<Interactable> result = new LinkedList<>();
-            result.add(this);
-            return result;
-        } else {
-            Random random = new Random();
-            int dir = random.nextInt(4);
-            Direction direction = Direction.Here;
-            if (dir == 0)
-                direction = Direction.South;
-            else if (dir == 1)
-                direction = Direction.East;
-            else if (dir == 2)
-                direction = Direction.North;
-            else if (dir == 3)
-                direction = Direction.West;
+            if (position.move(Direction.South) == position &&
+                    position.move(Direction.East) == position &&
+                    position.move(Direction.North) == position &&
+                    position.move(Direction.West) == position) {
+                List<Interactable> result = new LinkedList<>();
+                result.add(this);
+                return result;
+            } else {
+                Random random = new Random();
+                int dir = random.nextInt(4);
+                Direction direction = Direction.Here;
+                if (dir == 0)
+                    direction = Direction.South;
+                else if (dir == 1)
+                    direction = Direction.East;
+                else if (dir == 2)
+                    direction = Direction.North;
+                else if (dir == 3)
+                    direction = Direction.West;
 
 
-            if (position.move(direction) != position) {
-                position.moveItem(this, position.move(direction));
-                position = position.move(direction);
+                if (position.move(direction) != position) {
+                    position.moveItem(this, position.move(direction));
+                    position = position.move(direction);
+                } else if (position.move(direction) != position) {
+                    position.moveItem(this, position.move(direction));
+                    position = position.move(direction);
+                } else if (position.move(direction) != position) {
+                    position.moveItem(this, position.move(direction));
+                    position = position.move(direction);
+                } else if (position.move(direction) != position) {
+                    position.moveItem(this, position.move(direction));
+                    position = position.move(direction);
+                }
+                List<Interactable> result = new LinkedList<>();
+                result.add(new Gold(random.nextInt(5) + 1));
+                return result;
             }
-            else if (position.move(direction) != position) {
-                position.moveItem(this, position.move(direction));
-                position = position.move(direction);
-            }
-            else if (position.move(direction) != position) {
-                position.moveItem(this, position.move(direction));
-                position = position.move(direction);
-            }
-            else if (position.move(direction) != position) {
-                position.moveItem(this, position.move(direction));
-                position = position.move(direction);
-            }
-            return null;
-        }
+        } else
+            throw new IllegalArgumentException("No method for this item: " + something);
     }
 }

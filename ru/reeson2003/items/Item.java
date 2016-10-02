@@ -15,7 +15,7 @@ public abstract class Item implements Interactable, Serializable{
         if(name != null)
             this.name = name;
         if (info != null)
-            this.name = name;
+            this.info = info;
         if (price >=0)
             this.price = price;
     }
