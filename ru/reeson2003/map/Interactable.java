@@ -3,5 +3,6 @@ import java.util.List;
 
 public interface Interactable {
     String getInfo();
+    String getName();
     List<Interactable> interact(Interactable something);
 }

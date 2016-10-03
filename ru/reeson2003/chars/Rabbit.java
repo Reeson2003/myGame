@@ -18,6 +18,11 @@ public class Rabbit extends Creature {
     }
 
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
     public String getInfo() {
         String result = new String(info + " по имени " + name);
         return result;
@@ -28,10 +33,10 @@ public class Rabbit extends Creature {
         if (something instanceof Player) {
             Player player = (Player) something;
 
-            if (position.move(Direction.South) == position &&
-                    position.move(Direction.East) == position &&
-                    position.move(Direction.North) == position &&
-                    position.move(Direction.West) == position) {
+            if (position.getByDirection(Direction.South) == position &&
+                    position.getByDirection(Direction.East) == position &&
+                    position.getByDirection(Direction.North) == position &&
+                    position.getByDirection(Direction.West) == position) {
                 List<Interactable> result = new LinkedList<>();
                 result.add(this);
                 return result;
@@ -49,21 +54,20 @@ public class Rabbit extends Creature {
                     direction = Direction.West;
 
                 Position p = position;
-                if (position.move(direction) != position) {
-                    position.moveItem(this, position.move(direction));
-                    position = position.move(direction);
-                } else if (position.move(direction) != position) {
-                    position.moveItem(this, position.move(direction));
-                    position = position.move(direction);
-                } else if (position.move(direction) != position) {
-                    position.moveItem(this, position.move(direction));
-                    position = position.move(direction);
-                } else if (position.move(direction) != position) {
-                    position.moveItem(this, position.move(direction));
-                    position = position.move(direction);
+                if (position.getByDirection(direction) != position) {
+                    position.moveObject(this, position.getByDirection(direction));
+                    position = position.getByDirection(direction);
+                } else if (position.getByDirection(direction) != position) {
+                    position.moveObject(this, position.getByDirection(direction));
+                    position = position.getByDirection(direction);
+                } else if (position.getByDirection(direction) != position) {
+                    position.moveObject(this, position.getByDirection(direction));
+                    position = position.getByDirection(direction);
+                } else if (position.getByDirection(direction) != position) {
+                    position.moveObject(this, position.getByDirection(direction));
+                    position = position.getByDirection(direction);
                 }
                 List<Interactable> result = new LinkedList<>();
-                result.add(new Gold((random.nextInt(5) + 1),p));
                 return result;
             }
         } else

@@ -1,7 +1,6 @@
 package ru.reeson2003.chars;
 
 import ru.reeson2003.items.Gold;
-import ru.reeson2003.items.Holder;
 import ru.reeson2003.items.Item;
 import ru.reeson2003.map.Interactable;
 import ru.reeson2003.map.Position;
@@ -43,23 +42,6 @@ public class Player extends Creature {
         return item;
     }
 
-    public Item pickUp(Item item) {
-        if (item == null) {
-            item.setPosition(null);
-            item.setHolder(null);
-            this.item = item;
-            return null;
-        }
-        else if (this.item instanceof Holder) {
-            Holder holder = (Holder) this.item;
-            holder.add(item);
-            item.setHolder(holder);
-            return null;
-        }else {
-            return dropOrNo(item);
-        }
-    }
-
     private Item dropOrNo(Item item) {
         System.out.println("remove: " + item + "? Y/N");
         Scanner scanner = new Scanner(System.in);
@@ -79,6 +61,11 @@ public class Player extends Creature {
     @Override
     public String getInfo() {
         return name;
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 
     @Override

@@ -1,14 +1,9 @@
 package ru.reeson2003.map;
 
 import ru.reeson2003.chars.Player;
-import ru.reeson2003.chars.Rabbit;
-import ru.reeson2003.items.Gold;
-import ru.reeson2003.items.Holder;
 import ru.reeson2003.items.Item;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,118 +13,17 @@ import java.util.Scanner;
 public class MainProgramm {
     public static void main(String[] args) throws IOException, ClassNotFoundException{
 
-        Location izbushka = new Location(new LocGen0_1("Избушка", 4, 5));
+        Location cherdak = new Location(new LocGen0_1("Чердак", 3, 3));
+        Player p1 = new Player("xXxTurboGladNagibator3000xXx", "Нагибаю на скилле", cherdak.getPosition(0,0));
 
-        Location cherdak = new Location(new LocGen0_1("Чердак", 3, 4));
-
-        izbushka.getPosition(0,2).setExtraLinkTwoSide(cherdak.getPosition(0,0));
-
-        izbushka.getPosition(3,3).addItem(new Interactable() {
-            int useCounter = 0;
-            @Override
-            public String getInfo() {
-                return "Cow";
-            }
-
-            @Override
-            public List<Interactable> interact(Interactable player) {
-                useCounter++;
-                System.out.println("MOOOOOO");
-                List<Interactable> result = new LinkedList<Interactable>();
-                result.add(new Interactable() {
-                    @Override
-                    public String getInfo() {
-                        return "***SHIT***";
-                    }
-
-                    @Override
-                    public List<Interactable> interact(Interactable player) {
-                        System.out.println("FOOOOOOOOOO");
-                        return null;
-                    }
-                });
-                if(useCounter <=5)
-                    result.add(this);
-                else
-                    result.add(new Interactable() {
-                        @Override
-                        public String getInfo() {
-                            return "Dead Cow";
-                        }
-
-                        @Override
-                        public List<Interactable> interact(Interactable player) {
-                            System.out.println("I'm dead cow");
-                            List<Interactable> result = new LinkedList<Interactable>();
-                            result.add(this);
-                            return result;
-                        }
-                    });
-                return result;
-            }
-        });
-        izbushka.getPosition(2,1).addItem(new Interactable() {
-            @Override
-            public String getInfo() {
-                return "Dog";
-            }
-
-            @Override
-            public List<Interactable> interact(Interactable player) {
-                System.out.println("WOOF-WOOF  BUEEEEEEEEEEE (x_x)");
-                List<Interactable> result = new LinkedList<Interactable>();
-                result.add(new Interactable() {
-                    @Override
-                    public String getInfo() {
-                        return "(x_x)";
-                    }
-
-                    @Override
-                    public List<Interactable> interact(Interactable player) {
-                        System.out.println("This is Corpse");
-                        List<Interactable> result = new LinkedList<Interactable>();
-                        result.add(this);
-                        return result;
-                    }
-                });
-                return result;
-            }
-        });
-        izbushka.getPosition(3,4).addItem(new Interactable() {
-            @Override
-            public String getInfo() {
-                return "EXIT";
-            }
-
-            @Override
-            public List<Interactable> interact(Interactable player) {
-                System.exit(0);
-                return null;
-            }
-        });
-
-        cherdak.getPosition(1,1).addItem(new Rabbit("Заенька", cherdak.getPosition(1,1)));
-
-        Holder backpack = new Holder("BackPack", "Рюкзак", 10,izbushka.getPosition(0,0));
-
-        Gold gold11 = new Gold(11,izbushka.getPosition(0,1));
-        Gold gold7 = new Gold(7,cherdak.getPosition(0,0));
-
-        Holder box = new Holder("Box", "Ящик", 7,izbushka.getPosition(0,0));
-        Gold gold10 = new Gold(10,box);
-        Holder sack = new Holder("Sack", "Мешок", 35,box);
-        Item surprize = new Item("Surprize", "Сюрприз",0,sack) {
+        Item test = new Item("Item", "item", 10,7) {
             @Override
             public List<Interactable> interact(Interactable something) {
-                List<Interactable> result = new LinkedList<Interactable>();
-                result.add(new Rabbit("Кроллоло", cherdak.getPosition(0,0)));
-                return result;
+                return null;
             }
         };
-        Item itm =new Item("Item","Item",1,sack);
 
-        Position current = izbushka.getPosition(0,0);
-        Player p1 = new Player("xXxTurboGladNagibator3000xXx", "Нагибаю на скилле", current);
+        cherdak.getPosition(0,0).addObject(test);
 
 
         Scanner scanner = new Scanner(System.in);
@@ -142,13 +36,13 @@ public class MainProgramm {
             System.out.println(p1.getPosition());
             StringBuilder sb = new StringBuilder();
             sb.append("You can interact: |");
-            List<Interactable> items = p1.getPosition().getItems();
+            List<Interactable> items = p1.getPosition().getObjects();
             for (Interactable i: items) {
                 sb.append(i.getInfo());
                 sb.append("|");
             }
             System.out.println(sb.toString());
-        System.out.println("Enter 1 to move, 2 to extra move, 3 to interact with item");
+        System.out.println("Enter 1 to Move, 2 to extra Move, 3 to interact with item");
         int choose = scanner.nextInt();
         if(choose == 1) {
             System.out.println("Enter number: 1-North, 2-South, 3-East, 4-West");
@@ -156,7 +50,7 @@ public class MainProgramm {
         }
         else if(choose == 2) {
             System.out.print("Enter number: ");
-            p1.setPosition(p1.getPosition().moveExtra(scanner.nextInt()));
+            p1.setPosition(p1.getPosition().getExtraLink(scanner.nextInt()));
         }
         else if(choose == 3) {
             System.out.print("Enter number: ");
@@ -170,13 +64,13 @@ public class MainProgramm {
 
     public static Position move(int d, Player p) {
         if (d == 1)
-            return p.getPosition().move(Direction.North);
+            return p.getPosition().getByDirection(Direction.North);
         else if (d == 2)
-            return p.getPosition().move(Direction.South);
+            return p.getPosition().getByDirection(Direction.South);
         else if (d == 3)
-            return p.getPosition().move(Direction.East);
+            return p.getPosition().getByDirection(Direction.East);
         else if (d == 4)
-            return p.getPosition().move(Direction.West);
+            return p.getPosition().getByDirection(Direction.West);
         else
             return p.getPosition();
     }

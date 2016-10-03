@@ -16,6 +16,11 @@ public class Monster extends Creature {
     }
 
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
     public String getInfo() {
         return name;
     }

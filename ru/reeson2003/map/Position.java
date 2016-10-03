@@ -1,6 +1,7 @@
 package ru.reeson2003.map;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,90 +9,162 @@ import java.util.List;
  * Created by Тоня on 28.09.2016.
  */
 public class Position implements Serializable{
-    private String info = "";
+    private String info;
     private Coordinate coordinate;
     private Position north;
     private Position south;
     private Position east;
     private Position west;
     private List<Position> extraLinks;
-    private List<Interactable> items;
+    private List<Interactable> objects;
 
     public Position(int X, int Y, String info) {
         this.coordinate = new Coordinate(X, Y);
         if (info != null)
             this.info = info;
+        else
+            this.info = "@NoInfo";
         north = null;
         south = null;
         east = null;
         west = null;
         extraLinks = new LinkedList<>();
-        items = new LinkedList<>();
+        objects = new LinkedList<>();
     }
 
     public void setNorth(Position north) {
         this.north = north;
     }
-
     public void setSouth(Position south) {
         this.south = south;
     }
-
     public void setEast(Position east) {
         this.east = east;
     }
-
     public void setWest(Position west) {
         this.west = west;
+    }
+    public void deleteDirectionFromThis(Direction direction) {
+        switch (direction) {
+            case South: this.south = null;
+                break;
+            case North: this.north = null;
+                break;
+            case East: this.east = null;
+                break;
+            case West: this.west = null;
+        }
+    }
+    public void deleteDirectionFromAnother(Direction direction) {
+        switch (direction) {
+            case South: this.south.north = null;
+                break;
+            case North: this.north.south = null;
+                break;
+            case East: this.east.west = null;
+                break;
+            case West: this.west.east = null;
+        }
+    }
+    public void deleteDirectionTwoSide(Direction direction) {
+        switch (direction) {
+            case South: {this.south = null; this.south.north = null;}
+                break;
+            case North: {this.north = null; this.north.south = null;}
+                break;
+            case East: {this.east = null; this.east.west = null;}
+                break;
+            case West: {this.west = null; this.west.east = null;}
+        }
+    }
+    public List<Direction> getAvailableDirections() {
+        List<Direction> directions = new ArrayList<>(8);
+        if(south != null)
+            directions.add(Direction.South);
+        if(north != null)
+            directions.add(Direction.North);
+        if(east != null)
+            directions.add(Direction.East);
+        if(west != null)
+            directions.add(Direction.West);
+        return directions;
     }
 
     public void setExtraLinkToThis(Position another) {
         this.extraLinks.add(another);
     }
-
     public void setExtraLinkToAnother(Position another) {
         another.extraLinks.add(this);
     }
-
     public void setExtraLinkTwoSide(Position another) {
         this.extraLinks.add(another);
         another.extraLinks.add(this);
     }
-
     public void deleteExtraLinkFromThis(Position another) {
         this.extraLinks.remove(another);
     }
-
     public void deleteExtraLinkFromAnother(Position another) {
         another.extraLinks.remove(this);
     }
-
     public void deleteExtraLinkTwoSide(Position another) {
         another.extraLinks.remove(this);
         this.extraLinks.remove(another);
+    }
+    public String[] getExtraLinksInfos() {
+        String[] result = new String[extraLinks.size()];
+        for (int i = 0; i< extraLinks.size(); i++) {
+            result[i] = extraLinks.get(i).getInfo();
+        }
+        return result;
     }
 
     public void setInfo(String info) {
         this.info = info;
     }
-
     public String getInfo() {
         return info;
     }
 
-    public void addItem(Interactable item) {
-        this.items.add(item);
+    public void addObject(Interactable object) {
+        this.objects.add(object);
+    }
+    public Interactable getObject(int n) {
+        if (n < 0 || (n+1) > objects.size()) {
+            throw new IllegalArgumentException("No item with this index");
+        }
+        else {
+            Interactable result = objects.get(n);
+            objects.remove(n);
+            return result;
+        }
+    }
+    public void deleteObject(int n) {
+        if (n < 0 || (n+1) > objects.size()) {
+            throw new IllegalArgumentException("No item with this index");
+        }
+        else {
+            objects.remove(n);
+        }
+    }
+    public void deleteObject(Interactable object) {
+        this.objects.remove(object);
+    }
+    public String[] getObjectsNames() {
+        String[] result =new String[objects.size()];
+        for (int i = 0; i < objects.size(); i++) {
+            result[i] = objects.get(i).getName();
+        }
+        return result;
+    }
+    public String[] getObjectsInfos() {
+        String[] result =new String[objects.size()];
+        for (int i = 0; i < objects.size(); i++) {
+            result[i] = objects.get(i).getInfo();
+        }
+        return result;
     }
 
-    public void deleteItem(Interactable item) {
-        this.items.remove(item);
-    }
-
-    public List<Interactable> getItems() {
-        return items;
-    }
-
-    public Position move(Direction dir) {
+    public Position getByDirection(Direction dir) {
         if(dir == Direction.South && south != null)
             return south;
         else if(dir == Direction.North && north != null)
@@ -105,22 +178,14 @@ public class Position implements Serializable{
 
     }
 
-    public Position moveExtra(int number) {
+    public Position getExtraLink(int number) {
         if(extraLinks.size()==0)
             throw new IllegalArgumentException("There is no extra links");
-        else if (number <=0 || number> extraLinks.size())
+        else if (number <0 || number >= extraLinks.size())
             throw new IllegalArgumentException("Number of extra link must be between: " + 1
                                                 + " and " + extraLinks.size());
         else
-            return extraLinks.get(number-1);
-    }
-
-    public void moveItem(Interactable item, Position position) {
-        //if (!(items.contains(item)))
-        //    throw new IllegalArgumentException("Position does not contains this item");
-        //else
-            items.remove(item);
-        position.addItem(item);
+            return extraLinks.get(number);
     }
 
     @Override
@@ -129,7 +194,7 @@ public class Position implements Serializable{
         sb.append("You are at: ");
         sb.append(info);
         sb.append("\n- - - - - - - - - - - - - - - - - - - - - - - - -\n");
-        sb.append("You can move to: |");
+        sb.append("You can getByDirection to: |");
         if(south != null)
             sb.append("South|");
         if(north != null)
@@ -146,5 +211,16 @@ public class Position implements Serializable{
             sb.append("|");
         }
         return sb.toString();
+    }
+
+    @Deprecated
+    public void moveObject(Interactable object, Position position) {
+            objects.remove(object);
+        position.addObject(object);
+    }
+
+    @Deprecated
+    public List<Interactable> getObjects() {
+        return objects;
     }
 }
