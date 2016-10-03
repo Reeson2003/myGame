@@ -1,9 +1,11 @@
 package ru.reeson2003.map;
 
+import java.io.Serializable;
+
 /**
  * Created by Тоня on 30.09.2016.
  */
-public class Location {
+public class Location implements Serializable{
     private String name = "";
     private String info = "";
     private Position[][] positions;
@@ -27,6 +29,10 @@ public class Location {
             throw new IndexOutOfBoundsException("Max X is: " + (width-1) + ", Max Y is: " + (length-1));
         else
             return positions[y][x];
+    }
+
+    public Position[][] getPositions() {
+        return positions;
     }
 
     public void setInfo(String info) {

@@ -1,0 +1,91 @@
+package ru.reeson2003.chars;
+
+import ru.reeson2003.items.Gold;
+import ru.reeson2003.items.Holder;
+import ru.reeson2003.items.Item;
+import ru.reeson2003.map.Interactable;
+import ru.reeson2003.map.Position;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * Created by Тоня on 01.10.2016.
+ */
+public class Player extends Creature {
+    private Gold gold;
+
+    private Item item;
+
+    public Player(String name, String info, Position position) {
+        super(name,info,position);
+        item = null;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Gold getGold() {
+        return gold;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public Item pickUp(Item item) {
+        if (item == null) {
+            item.setPosition(null);
+            item.setHolder(null);
+            this.item = item;
+            return null;
+        }
+        else if (this.item instanceof Holder) {
+            Holder holder = (Holder) this.item;
+            holder.add(item);
+            item.setHolder(holder);
+            return null;
+        }else {
+            return dropOrNo(item);
+        }
+    }
+
+    private Item dropOrNo(Item item) {
+        System.out.println("remove: " + item + "? Y/N");
+        Scanner scanner = new Scanner(System.in);
+        String choise = scanner.nextLine();
+        if (choise.equals("Y") || choise.equals("y")) {
+            Item result = this.item;
+            this.item = item;
+            return result;
+        } else if (choise.equals("N") || choise.equals("n")) {
+            return item;
+        } else {
+            System.out.println("Wrong answer");
+            return item;
+        }
+    }
+
+    @Override
+    public String getInfo() {
+        return name;
+    }
+
+    @Override
+    public List<Interactable> interact(Interactable player) {
+        System.out.println(info);
+        List<Interactable> result = new LinkedList<>();
+        result.add(this);
+        return result;
+    }
+}
