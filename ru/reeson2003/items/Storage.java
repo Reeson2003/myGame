@@ -10,10 +10,10 @@ import java.util.List;
  * Created by Тоня on 02.10.2016.
  */
 public class Storage extends Item{
-    int size;
-    int totalWeight;
-    int totalPrice;
-    List<Item> items;
+    protected  int size;
+    protected int totalWeight;
+    protected int totalPrice;
+    protected List<Item> items;
 
     public Storage(String name, String info, int price, int weight, int size) {
         super(name,info,price,weight);
@@ -43,6 +43,8 @@ public class Storage extends Item{
             throw new IllegalArgumentException("No item with this index");
         } else {
             Item result = items.get(n);
+            totalWeight -= items.get(n).weight;
+            totalPrice -= items.get(n).price;
             items.remove(n);
             return result;
         }
@@ -51,11 +53,46 @@ public class Storage extends Item{
         if (n < 0 || n >= items.size()) {
             throw new IllegalArgumentException("No item with this index");
         } else {
+            totalWeight -= items.get(n).weight;
+            totalPrice -= items.get(n).price;
             items.remove(n);
         }
     }
 
-    String[] getItemsNames()
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+    public int getTotalWeight() {
+        return totalWeight;
+    }
+    String[] getItemsNames() {
+        String[] result = new String[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            result[i] = items.get(i).getName();
+        }
+        return result;
+    }
+    String[] getItemsInfos() {
+        String[] result = new String[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            result[i] = items.get(i).getInfo();
+        }
+        return result;
+    }
+    int[] getItemsPrices() {
+        int[] result = new int[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            result[i] = items.get(i).getPrice();
+        }
+        return result;
+    }
+    int[] getItemsWeights() {
+        int[] result = new int[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            result[i] = items.get(i).getWeight();
+        }
+        return result;
+    }
 
     @Override
     public List<Interactable> interact(Interactable something) {
