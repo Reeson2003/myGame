@@ -1,6 +1,6 @@
 package ru.reeson2003.map;
 
-import ru.reeson2003.chars.Player;
+import ru.reeson2003.player.Player;
 import ru.reeson2003.items.Item;
 
 import java.io.IOException;

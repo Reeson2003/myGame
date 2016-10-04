@@ -1,5 +1,6 @@
-package ru.reeson2003.chars;
+package ru.reeson2003.player;
 
+import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.items.Gold;
 import ru.reeson2003.items.Item;
 import ru.reeson2003.map.Interactable;

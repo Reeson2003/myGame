@@ -1,9 +1,9 @@
-package ru.reeson2003.chars;
+package ru.reeson2003.npcs;
 
-import ru.reeson2003.items.Gold;
 import ru.reeson2003.map.Direction;
 import ru.reeson2003.map.Interactable;
 import ru.reeson2003.map.Position;
+import ru.reeson2003.player.Player;
 
 import java.util.LinkedList;
 import java.util.List;

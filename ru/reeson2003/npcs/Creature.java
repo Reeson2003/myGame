@@ -1,4 +1,4 @@
-package ru.reeson2003.chars;
+package ru.reeson2003.npcs;
 
 import ru.reeson2003.map.Interactable;
 import ru.reeson2003.map.Position;
