@@ -1,6 +1,6 @@
 package ru.reeson2003.npcs;
 
-import ru.reeson2003.map.Interactable;
+import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.map.Position;
 
 /**
@@ -16,5 +16,24 @@ public abstract class Creature implements Interactable{
         if (info != null)
             this.info = info;
         this.position = position;
+        this.position.addObject(this);
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+    @Override
+    public void setPosition(Position position) {
+        this.position.removeObject(this);
+        this.position = position;
+        this.position.addObject(this);
+    }
+    @Override
+    public String getInfo() {
+        return this.info;
+    }
+    @Override
+    public String getName() {
+        return this.getName();
     }
 }

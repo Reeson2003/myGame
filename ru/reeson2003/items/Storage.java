@@ -1,7 +1,7 @@
 package ru.reeson2003.items;
 
 
-import ru.reeson2003.map.Interactable;
+import ru.reeson2003.Game.Interactable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +58,9 @@ public class Storage extends Item{
             items.remove(n);
         }
     }
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
 
     public int getTotalPrice() {
         return totalPrice;
@@ -95,7 +98,7 @@ public class Storage extends Item{
     }
 
     @Override
-    public List<Interactable> interact(Interactable something) {
-        return null;
+    public void interact(Interactable something) {
+
     }
 }

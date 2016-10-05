@@ -1,6 +1,9 @@
 package ru.reeson2003.items;
 
 
+import ru.reeson2003.Game.Interactable;
+
+import java.util.List;
 
 /**
  * Created by Тоня on 01.10.2016.

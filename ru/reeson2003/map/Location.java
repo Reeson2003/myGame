@@ -12,7 +12,7 @@ public class Location implements Serializable{
     int width;
     int length;
 
-    public Location(LocationGenerator locGen) {
+    public Location(iLocationGenerator locGen) {
         this.positions = locGen.getPositions();
         setSize();
     }

@@ -1,6 +1,7 @@
 package ru.reeson2003.Game;
 
 import ru.reeson2003.map.Location;
+import ru.reeson2003.map.Position;
 import ru.reeson2003.player.Equip;
 import ru.reeson2003.player.Parameters;
 import ru.reeson2003.player.Player;
@@ -14,19 +15,25 @@ import java.util.Scanner;
  */
 public class Presenter {
     private static Presenter instance = null;
+    private Game game;
     private iView view;
+    Scanner scanner;
     private String action;
     private Presenter(iView view){
         this.view = view;
         instance = this;
         this.action = null;
         view.addListener(this);
+        scanner = new Scanner(System.in);
     }
     public static Presenter getInstance(iView view) {
         if(instance == null)
             return new Presenter(view);
         else
             return instance;
+    }
+    public void addGame(Game game) {
+        this.game = game;
     }
 
     public void setAction(String action) {
@@ -40,6 +47,13 @@ public class Presenter {
         */
         String result = action;
         action = null;
+        return result;
+    }
+    public String getString(int length) {
+        String result;
+        do {
+            result = scanner.nextLine();
+        } while (result.length() > length);
         return result;
     }
 
@@ -62,6 +76,9 @@ public class Presenter {
 
     }
     public void show(Map map) {
+
+    }
+    public void show(Position position) {
 
     }
 

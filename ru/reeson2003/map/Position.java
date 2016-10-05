@@ -1,5 +1,7 @@
 package ru.reeson2003.map;
 
+import ru.reeson2003.Game.Interactable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -124,6 +126,9 @@ public class Position implements Serializable{
     public String getInfo() {
         return info;
     }
+    public Coordinate getCoordinate() {
+        return this.coordinate;
+    }
 
     public void addObject(Interactable object) {
         this.objects.add(object);
@@ -138,7 +143,7 @@ public class Position implements Serializable{
             return result;
         }
     }
-    public void deleteObject(int n) {
+    public void removeObject(int n) {
         if (n < 0 || (n+1) > objects.size()) {
             throw new IllegalArgumentException("No item with this index");
         }
@@ -146,7 +151,7 @@ public class Position implements Serializable{
             objects.remove(n);
         }
     }
-    public void deleteObject(Interactable object) {
+    public void removeObject(Interactable object) {
         this.objects.remove(object);
     }
     public String[] getObjectsNames() {

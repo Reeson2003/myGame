@@ -1,7 +1,7 @@
 package ru.reeson2003.npcs;
 
 import ru.reeson2003.map.Direction;
-import ru.reeson2003.map.Interactable;
+import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.player.Player;
 
