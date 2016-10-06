@@ -17,14 +17,12 @@ public class Presenter {
     private static Presenter instance = null;
     private Game game;
     private iView view;
-    Scanner scanner;
     private String action;
     private Presenter(iView view){
         this.view = view;
         instance = this;
         this.action = null;
         view.addListener(this);
-        scanner = new Scanner(System.in);
     }
     public static Presenter getInstance(iView view) {
         if(instance == null)
@@ -39,8 +37,8 @@ public class Presenter {
     public void setAction(String action) {
         this.action = action;
     }
-    public String getAction(String[] actions) {
-        view.showDialog(actions);
+    public String getChoise(String[] actions) {
+        view.showDialog("Enter number:",actions);
         /*
         if(action == null)
             wait();
@@ -50,10 +48,23 @@ public class Presenter {
         return result;
     }
     public String getString(int length) {
-        String result;
-        do {
-            result = scanner.nextLine();
-        } while (result.length() > length);
+        view.showLineDialog("Maximum " + length + " symbols", length);
+        /*
+        if(action == null)
+            wait();
+        */
+        String result = action;
+        action = null;
+        return result;
+    }
+    public String getAction() {
+        view.waitAction();
+        /*
+        if(action == null)
+            wait();
+        */
+        String result = action;
+        action = null;
         return result;
     }
 
@@ -61,7 +72,8 @@ public class Presenter {
         view.show(msg);
     }
     public void show(Player player) {
-
+        String result = player.getInfo();
+        view.show(result + ": HP: 100%, MP: 100%");
     }
     public void show(Item item) {
 
@@ -79,7 +91,8 @@ public class Presenter {
 
     }
     public void show(Position position) {
-
+        String result = position.getInfo();
+        view.show(result);
     }
 
 

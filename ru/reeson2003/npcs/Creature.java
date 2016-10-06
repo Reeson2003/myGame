@@ -34,6 +34,6 @@ public abstract class Creature implements Interactable{
     }
     @Override
     public String getName() {
-        return this.getName();
+        return this.name;
     }
 }

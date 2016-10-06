@@ -1,10 +1,7 @@
 package ru.reeson2003.Game;
 
-import ru.reeson2003.map.Direction;
-import ru.reeson2003.map.Position;
-import ru.reeson2003.map.iMapGenerator;
+import ru.reeson2003.map.*;
 import ru.reeson2003.player.Player;
-import ru.reeson2003.map.Map;
 
 import java.util.List;
 
@@ -53,11 +50,11 @@ public class Game {
         return result;
     }
     public String getChoise(String[] variants) {
-        return presenter.getAction(variants);
+        return presenter.getChoise(variants);
     }
 
     public void PLAY() {
-        iMapGenerator mapGenerator;
+        iMapGenerator mapGenerator = new Map_gen_0_1();
         Map map = Map.getInstance(mapGenerator);
         presenter.show("Enter player name");
         String name = presenter.getString(15);
@@ -65,6 +62,8 @@ public class Game {
         //while (true) {
         presenter.show(player);
         presenter.show(player.getPosition());
+        presenter.show(invitation(player));
+        presenter.getAction();
         //}
     }
     private String invitation(Player player) {
@@ -75,18 +74,18 @@ public class Game {
         for (Direction d: dirs) {
             if (d == Direction.South)
                 sb.append("S-South");
-            else if (d == Direction.North)
-                sb.append("N-North");
-            else if (d == Direction.East)
-                sb.append("E-East");
-            else if (d == Direction.West)
-                sb.append("W_West");
+            if (d == Direction.North)
+                sb.append("W-North");
+            if (d == Direction.East)
+                sb.append("D-East");
+            if (d == Direction.West)
+                sb.append("A_West");
             sb.append(", ");
         }
         sb.deleteCharAt(sb.length()-2);
-        sb.append("\n");
         String[] extras = p.getExtraLinksInfos();
         if(extras.length !=0) {
+            sb.append("\n");
             for (int i = 0; i < extras.length; i++) {
                 sb.append(i + 1);
                 sb.append("-");
@@ -95,10 +94,19 @@ public class Game {
             }
             sb.deleteCharAt(sb.length()-2);
         }
-        //добавить объекты сюда
+        String[] objects = p.getObjectsNames();
+        if (objects.length !=0) {
+            sb.append("\n");
+            sb.append("Use: ");
+            for (String s:objects) {
+                sb.append(s);
+                sb.append(", ");
+            }
+            sb.deleteCharAt(sb.length()-2);
+        }
         sb.append("\n");
         sb.append("I-Inventory, E-Equipment, P-Parameters, M-Map, U-Use object");
+        return sb.toString();
     }
-
 
 }

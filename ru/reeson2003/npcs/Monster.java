@@ -16,20 +16,7 @@ public class Monster extends Creature {
     }
 
     @Override
-    public String getName() {
-        return null;
-    }
+    public void interact(Interactable player) {
 
-    @Override
-    public String getInfo() {
-        return name;
-    }
-
-    @Override
-    public List<Interactable> interact(Interactable player) {
-        System.out.println(info);
-        List<Interactable> result = new LinkedList<>();
-        result.add(this);
-        return result;
     }
 }

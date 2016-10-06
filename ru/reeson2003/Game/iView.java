@@ -6,5 +6,7 @@ package ru.reeson2003.Game;
 public interface iView{
     void addListener(Presenter presenter);
     void show(String s);
-    void showDialog(String[] strings);
+    void showDialog(String invitation, String[] strings);
+    void showLineDialog(String invitation, int length);
+    void waitAction();
 }
