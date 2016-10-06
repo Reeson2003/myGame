@@ -43,19 +43,19 @@ public class ConsoleView implements iView {
     }
     @Override
     public void waitAction() {
-        //String result;
+        String result;
         do {
             result = scanner.nextLine();
             result = result.toUpperCase();
-        } while (result != "I" ||
-                result != "E" ||
-                result != "P" ||
-                result != "M" ||
-                result != "U" ||
-                result != "W" ||
-                result != "S" ||
-                result != "D" ||
-                result == "A");
+        } while (!result.equals("I")&&
+                !result.equals("E") &&
+                !result.equals("P") &&
+                !result.equals("M") &&
+                !result.equals("U") &&
+                !result.equals("W") &&
+                !result.equals("S") &&
+                !result.equals("D") &&
+                !result.equals("A"));
         presenter.setAction(result);
     }
 }
