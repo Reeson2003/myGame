@@ -38,7 +38,7 @@ public class Presenter {
         this.action = action;
     }
     public String getChoise(String[] actions) {
-        view.showDialog("Enter number:",actions);
+        view.showDialog("Enter number:\n",actions);
         /*
         if(action == null)
             wait();

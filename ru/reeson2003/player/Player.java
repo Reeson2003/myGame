@@ -1,5 +1,6 @@
 package ru.reeson2003.player;
 
+import ru.reeson2003.Game.Game;
 import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.items.Gold;
 import ru.reeson2003.items.Item;
@@ -22,8 +23,14 @@ public class Player extends Creature {
     }
 
     @Override
-    public void interact(Interactable something) {
-
+    public void interact(Player player, Game game) {
+        if (player == this) {
+            game.show(this.info);
+        } else {
+            game.show(player.getInfo());
+        }
+        position.addObject(this);
+        game.mainLoop();
     }
 
 

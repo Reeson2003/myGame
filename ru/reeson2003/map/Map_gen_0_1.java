@@ -1,7 +1,10 @@
 package ru.reeson2003.map;
 
+import ru.reeson2003.npcs.Rabbit;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Тоня on 06.10.2016.
@@ -23,6 +26,8 @@ public class Map_gen_0_1 implements iMapGenerator{
         forest.getPosition(0, 3).setExtraLinkTwoSide(field.getPosition(4,3));
         field.getPosition(4, 0).setExtraLinkToAnother(forest.getPosition(0, 0));
         forest.getPosition(3, 0).setExtraLinkTwoSide(dungeon.getPosition(2, 1));
+
+        Rabbit roger = new Rabbit("Роджер", field.getPosition(2,1));
     }
 
     @Override

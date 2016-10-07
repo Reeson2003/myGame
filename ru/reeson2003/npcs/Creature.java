@@ -1,6 +1,7 @@
 package ru.reeson2003.npcs;
 
 import ru.reeson2003.Game.Interactable;
+import ru.reeson2003.map.Direction;
 import ru.reeson2003.map.Position;
 
 /**
@@ -21,6 +22,9 @@ public abstract class Creature implements Interactable{
 
     public Position getPosition() {
         return position;
+    }
+    public void move(Direction direction) {
+        setPosition(position.getByDirection(direction));
     }
     @Override
     public void setPosition(Position position) {

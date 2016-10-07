@@ -1,12 +1,11 @@
 package ru.reeson2003.npcs;
 
+import ru.reeson2003.Game.Game;
 import ru.reeson2003.map.Direction;
 import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.player.Player;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -17,19 +16,22 @@ public class Rabbit extends Creature {
         super(name, "Кролик", position);
     }
 
-    @Override
-    public String getName() {
-        return null;
-    }
 
     @Override
-    public String getInfo() {
-        String result = new String(info + " по имени " + name);
-        return result;
-    }
-
-    @Override
-    public void interact(Interactable something) {
-
+    public void interact(Player player, Game game) {
+        game.show("Hello, im " + name);
+        Random random = new Random();
+        int rnd = random.nextInt(4);
+        switch (rnd) {
+            case 0: this.move(Direction.South);
+                break;
+            case 1: this.move(Direction.North);
+                break;
+            case 2: this.move(Direction.East);
+                break;
+            case 3: this.move(Direction.West);
+                break;
+        }
+        game.mainLoop();
     }
 }

@@ -1,5 +1,6 @@
 package ru.reeson2003.Game;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -24,13 +25,23 @@ public class ConsoleView implements iView {
     @Override
     public void showDialog(String invitation, String[] strings) {
         System.out.print(invitation);
+        System.out.println("0.Cancel");
         for (int i = 0; i < strings.length; i++) {
-            System.out.println((i+1) + "." + strings[i]);
+            System.out.println((i + 1) + "." + strings[i]);
         }
-        int result = scanner.nextInt();
-        while (result <= 0 || result>strings.length)
-            result = scanner.nextInt();
-         presenter.setAction(strings[result-1]);
+        int result = -1;
+        while (result < 0 || result > strings.length) {
+            if(scanner.hasNextInt())
+                result = scanner.nextInt();
+            else {
+                scanner.next();
+                continue;
+            }
+        }
+        if (result == 0) {
+            presenter.setAction("Cancel");
+        } else
+            presenter.setAction(strings[result - 1]);
     }
     @Override
     public void showLineDialog(String invitation, int length) {
@@ -47,7 +58,7 @@ public class ConsoleView implements iView {
         do {
             result = scanner.nextLine();
             result = result.toUpperCase();
-        } while (!result.equals("I")&&
+        } while (!result.equals("I") &&
                 !result.equals("E") &&
                 !result.equals("P") &&
                 !result.equals("M") &&
@@ -55,7 +66,8 @@ public class ConsoleView implements iView {
                 !result.equals("W") &&
                 !result.equals("S") &&
                 !result.equals("D") &&
-                !result.equals("A"));
+                !result.equals("A") &&
+                !result.equals("T"));
         presenter.setAction(result);
     }
 }

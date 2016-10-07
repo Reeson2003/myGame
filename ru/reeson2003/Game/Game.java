@@ -19,6 +19,9 @@ public class Game {
         else
             return instance;
     }
+    public static Game getInstance() {
+        return instance;
+    }
 
     private Presenter presenter;
     private Player player;
@@ -58,12 +61,9 @@ public class Game {
         Map map = Map.getInstance(mapGenerator);
         presenter.show("Enter player name");
         String name = presenter.getString(15);
-        Player player = new Player(name, "@Player", map.getStart());
+        this.player = new Player(name, "@Player", map.getStart());
         //while (true) {
-        presenter.show(player);
-        presenter.show(player.getPosition());
-        presenter.show(invitation(player));
-        presenter.getAction();
+        mainLoop();
         //}
     }
     private String invitation(Player player) {
@@ -79,7 +79,7 @@ public class Game {
             if (d == Direction.East)
                 sb.append("D-East");
             if (d == Direction.West)
-                sb.append("A_West");
+                sb.append("A-West");
             sb.append(", ");
         }
         sb.deleteCharAt(sb.length()-2);
@@ -105,8 +105,65 @@ public class Game {
             sb.deleteCharAt(sb.length()-2);
         }
         sb.append("\n");
-        sb.append("I-Inventory, E-Equipment, P-Parameters, M-Map, U-Use object");
+        sb.append("T-Transit, I-Inventory, E-Equipment, P-Parameters, M-Map, U-Use object");
         return sb.toString();
+    }
+
+    public void mainLoop() {
+        presenter.show(player);
+        presenter.show(player.getPosition());
+        presenter.show(invitation(player));
+        action(presenter.getAction());
+    }
+
+    public void action(String action) {
+        System.out.println(action);
+        if (action.equals("W"))
+            player.move(Direction.North);
+        else if (action.equals("S"))
+            player.move(Direction.South);
+        else if (action.equals("D"))
+            player.move(Direction.East);
+        else if (action.equals("A"))
+            player.move(Direction.West);
+        else if (action.equals("T"))
+            extraMove();
+        else if (action.equals("U"))
+            useObject();
+        mainLoop();
+    }
+    private void extraMove() {
+        String[] extraMoves = player.getPosition().getExtraLinksInfos();
+        if (extraMoves.length >0) {
+            String action = presenter.getChoise(extraMoves);
+            int index = 0;
+            for (int i = 0; i < extraMoves.length; i++) {
+                if (extraMoves[i].equals(action))
+                    index = i;
+            }
+            player.setPosition(player.getPosition().getExtraLink(index));
+        }
+        mainLoop();
+    }
+    private void useObject() {
+        String[] objects = player.getPosition().getObjectsNames();
+        String[] objInfos = player.getPosition().getObjectsInfos();
+        String[] invitation = new String[objects.length];
+        for (int i = 0; i < objects.length; i++) {
+            invitation[i] = objects[i] + ", " + objInfos[i];
+        }
+        if (objects.length >0) {
+            String action = presenter.getChoise(invitation);
+            if (!action.equals("Cancel")) {
+                int index = 0;
+                for (int i = 0; i < objects.length; i++) {
+                    if (objects[i].equals(action))
+                        index = i;
+                }
+                player.getPosition().getObject(index).interact(player, this);
+            }
+        }
+        mainLoop();
     }
 
 }

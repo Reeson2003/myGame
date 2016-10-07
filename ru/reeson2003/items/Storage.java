@@ -1,7 +1,9 @@
 package ru.reeson2003.items;
 
 
+import ru.reeson2003.Game.Game;
 import ru.reeson2003.Game.Interactable;
+import ru.reeson2003.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,7 +100,7 @@ public class Storage extends Item{
     }
 
     @Override
-    public void interact(Interactable something) {
+    public void interact(Player player, Game game) {
 
     }
 }
