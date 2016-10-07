@@ -43,9 +43,9 @@ public class LocGen0_1 implements iLocationGenerator {
 
     private String makeName(int y, int x) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<");
+        sb.append("*");
         sb.append(name);
-        sb.append("> x = ");
+        sb.append("* x = ");
         sb.append(x);
         sb.append(", y = ");
         sb.append(y);

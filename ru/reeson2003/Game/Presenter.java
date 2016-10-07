@@ -17,11 +17,11 @@ public class Presenter {
     private static Presenter instance = null;
     private Game game;
     private iView view;
-    private String action;
+    volatile private String action;
     private Presenter(iView view){
         this.view = view;
         instance = this;
-        this.action = null;
+        this.action = "";
         view.addListener(this);
     }
     public static Presenter getInstance(iView view) {
@@ -36,35 +36,32 @@ public class Presenter {
 
     public void setAction(String action) {
         this.action = action;
+        System.out.println(this.action);
+
     }
     public String getChoise(String[] actions) {
         view.showDialog("Enter number:\n",actions);
-        /*
-        if(action == null)
-            wait();
-        */
+        while(action.equals(""));
+
         String result = action;
-        action = null;
+        action = "";
         return result;
     }
     public String getString(int length) {
         view.showLineDialog("Maximum " + length + " symbols", length);
-        /*
-        if(action == null)
-            wait();
-        */
+        while (this.action.equals(""));
+
         String result = action;
-        action = null;
+        this.action = "";
         return result;
     }
     public String getAction() {
         view.waitAction();
-        /*
-        if(action == null)
-            wait();
-        */
+
+        while (action.equals(""));
+
         String result = action;
-        action = null;
+        this.action = "";
         return result;
     }
 

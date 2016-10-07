@@ -1,6 +1,5 @@
 package ru.reeson2003.Game;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**

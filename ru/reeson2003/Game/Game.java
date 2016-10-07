@@ -70,7 +70,7 @@ public class Game {
         Position p = player.getPosition();
         List<Direction> dirs = p.getAvailableDirections();
         StringBuilder sb = new StringBuilder();
-        sb.append("Enter to move:\n");
+        sb.append("Enter to move:<br>");
         for (Direction d: dirs) {
             if (d == Direction.South)
                 sb.append("S-South");
@@ -85,7 +85,7 @@ public class Game {
         sb.deleteCharAt(sb.length()-2);
         String[] extras = p.getExtraLinksInfos();
         if(extras.length !=0) {
-            sb.append("\n");
+            sb.append("<br>");
             for (int i = 0; i < extras.length; i++) {
                 sb.append(i + 1);
                 sb.append("-");
@@ -96,7 +96,7 @@ public class Game {
         }
         String[] objects = p.getObjectsNames();
         if (objects.length !=0) {
-            sb.append("\n");
+            sb.append("<br>");
             sb.append("Use: ");
             for (String s:objects) {
                 sb.append(s);
@@ -104,20 +104,18 @@ public class Game {
             }
             sb.deleteCharAt(sb.length()-2);
         }
-        sb.append("\n");
+        sb.append("<br>");
         sb.append("T-Transit, I-Inventory, E-Equipment, P-Parameters, M-Map, U-Use object");
         return sb.toString();
     }
 
     public void mainLoop() {
-        presenter.show(player);
-        presenter.show(player.getPosition());
-        presenter.show(invitation(player));
+        presenter.show(mainDisplayText(player));
         action(presenter.getAction());
     }
 
     public void action(String action) {
-        System.out.println(action);
+        //System.out.println(action + "bnf");
         if (action.equals("W"))
             player.move(Direction.North);
         else if (action.equals("S"))
@@ -131,6 +129,17 @@ public class Game {
         else if (action.equals("U"))
             useObject();
         mainLoop();
+    }
+    private String mainDisplayText(Player player) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<html>");
+        stringBuilder.append(player.getName());
+        stringBuilder.append("<br>HP: 50% ##########----------<br>MP: 80% ################----<br>");
+        stringBuilder.append(player.getPosition().getInfo());
+        stringBuilder.append("<br>");
+        stringBuilder.append(invitation(player));
+        stringBuilder.append("</html>");
+        return stringBuilder.toString();
     }
     private void extraMove() {
         String[] extraMoves = player.getPosition().getExtraLinksInfos();

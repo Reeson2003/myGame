@@ -11,7 +11,8 @@ import ru.reeson2003.Game.Presenter;
 public class MainProgramm {
     public static void main(String[] args) {
         ConsoleView view = new ConsoleView();
-        Presenter presenter = Presenter.getInstance(view);
+        SwingView swingView = new SwingView();
+        Presenter presenter = Presenter.getInstance(swingView);
         Game game = Game.getInstance(presenter);
         game.PLAY();
     }
