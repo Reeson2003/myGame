@@ -25,6 +25,7 @@ public class Player extends Creature {
     @Override
     public void interact(Player player, Game game) {
         if (player == this) {
+            this.name = game.getString("Enter name");
             game.show(this.info);
         } else {
             game.show(player.getInfo());

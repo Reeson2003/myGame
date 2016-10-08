@@ -8,5 +8,6 @@ public interface iView{
     void show(String s);
     void showDialog(String invitation, String[] strings);
     void showLineDialog(String invitation, int length);
+    void showLineDialog(String invitation);
     void waitAction();
 }

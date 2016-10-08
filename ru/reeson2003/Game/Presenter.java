@@ -8,8 +8,6 @@ import ru.reeson2003.player.Player;
 import ru.reeson2003.items.Item;
 import ru.reeson2003.map.Map;
 
-import java.util.Scanner;
-
 /**
  * Created by Тоня on 04.10.2016.
  */
@@ -17,11 +15,13 @@ public class Presenter {
     private static Presenter instance = null;
     private Game game;
     private iView view;
-    volatile private String action;
+    volatile private String keyAction;
+    volatile private String chooseAction;
     private Presenter(iView view){
         this.view = view;
         instance = this;
-        this.action = "";
+        this.keyAction = "";
+        this.chooseAction = "";
         view.addListener(this);
     }
     public static Presenter getInstance(iView view) {
@@ -34,34 +34,46 @@ public class Presenter {
         this.game = game;
     }
 
-    public void setAction(String action) {
-        this.action = action;
-        System.out.println(this.action);
+    public void setChooseAction(String chooseAction) {
+        this.chooseAction = chooseAction;
+    }
+    public void setKeyAction(String keyAction) {
+        this.keyAction = keyAction;
+        //System.out.println(this.keyAction);
 
     }
     public String getChoise(String[] actions) {
         view.showDialog("Enter number:\n",actions);
-        while(action.equals(""));
+        while (this.chooseAction.equals(""));
 
-        String result = action;
-        action = "";
+        String result = this.chooseAction;
+        this.chooseAction = "";
         return result;
     }
-    public String getString(int length) {
-        view.showLineDialog("Maximum " + length + " symbols", length);
-        while (this.action.equals(""));
+    public String getString(String invitation, int length) {
+        view.showLineDialog(invitation);
+        while (this.keyAction.equals(""));
 
-        String result = action;
-        this.action = "";
+        String result = keyAction;
+        this.keyAction = "";
         return result;
     }
-    public String getAction() {
+    public String getString(String invitation) {
+        view.showLineDialog(invitation);
+        while (this.keyAction.equals(""));
+
+
+        String result = keyAction;
+        this.keyAction = "";
+        return result;
+    }
+    public String getKeyAction() {
         view.waitAction();
 
-        while (action.equals(""));
+        while (keyAction.equals(""));
 
-        String result = action;
-        this.action = "";
+        String result = this.keyAction;
+        this.keyAction = "";
         return result;
     }
 

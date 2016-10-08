@@ -38,9 +38,9 @@ public class ConsoleView implements iView {
             }
         }
         if (result == 0) {
-            presenter.setAction("Cancel");
+            presenter.setKeyAction("Cancel");
         } else
-            presenter.setAction(strings[result - 1]);
+            presenter.setKeyAction(strings[result - 1]);
     }
     @Override
     public void showLineDialog(String invitation, int length) {
@@ -49,8 +49,14 @@ public class ConsoleView implements iView {
         do {
             result = scanner.nextLine();
         } while (result.length() > length);
-        presenter.setAction(result);
+        presenter.setKeyAction(result);
     }
+
+    @Override
+    public void showLineDialog(String invitation) {
+
+    }
+
     @Override
     public void waitAction() {
         String result;
@@ -67,6 +73,6 @@ public class ConsoleView implements iView {
                 !result.equals("D") &&
                 !result.equals("A") &&
                 !result.equals("T"));
-        presenter.setAction(result);
+        presenter.setKeyAction(result);
     }
 }

@@ -28,6 +28,7 @@ public class Game {
     private Map map;
     private String action;
     private String choise;
+    private iTimeActivator timeActivator;
 
     public void show(String msg) {
         presenter.show(msg);
@@ -55,16 +56,19 @@ public class Game {
     public String getChoise(String[] variants) {
         return presenter.getChoise(variants);
     }
+    public String getString(String invitation) {
+        return presenter.getString(invitation);
+    }
 
     public void PLAY() {
-        iMapGenerator mapGenerator = new Map_gen_0_1();
-        Map map = Map.getInstance(mapGenerator);
+        this.timeActivator = new TimeActivator();
+        iMapGenerator mapGenerator = new Map_gen_0_1(timeActivator);
+        this.map = Map.getInstance(mapGenerator);
         presenter.show("Enter player name");
-        String name = presenter.getString(15);
+        String name = presenter.getString("Enter player name");
         this.player = new Player(name, "@Player", map.getStart());
-        //while (true) {
+
         mainLoop();
-        //}
     }
     private String invitation(Player player) {
         Position p = player.getPosition();
@@ -110,25 +114,39 @@ public class Game {
     }
 
     public void mainLoop() {
-        presenter.show(mainDisplayText(player));
-        action(presenter.getAction());
+        while(true) {
+            presenter.show(mainDisplayText(player));
+            action(presenter.getKeyAction());
+            timeActivator.timeActivate();
+        }
     }
 
     public void action(String action) {
         //System.out.println(action + "bnf");
-        if (action.equals("W"))
+        if (action.equals("W")) {
+            presenter.setKeyAction("");
             player.move(Direction.North);
-        else if (action.equals("S"))
+        }
+        else if (action.equals("S")) {
+            presenter.setKeyAction("");
             player.move(Direction.South);
-        else if (action.equals("D"))
+        }
+        else if (action.equals("D")) {
+            presenter.setKeyAction("");
             player.move(Direction.East);
-        else if (action.equals("A"))
+        }
+        else if (action.equals("A")) {
+            presenter.setKeyAction("");
             player.move(Direction.West);
-        else if (action.equals("T"))
+        }
+        else if (action.equals("T")) {
+            presenter.setKeyAction("");
             extraMove();
-        else if (action.equals("U"))
+        }
+        else if (action.equals("U")) {
+            presenter.setKeyAction("");
             useObject();
-        mainLoop();
+        }
     }
     private String mainDisplayText(Player player) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -145,14 +163,16 @@ public class Game {
         String[] extraMoves = player.getPosition().getExtraLinksInfos();
         if (extraMoves.length >0) {
             String action = presenter.getChoise(extraMoves);
-            int index = 0;
-            for (int i = 0; i < extraMoves.length; i++) {
-                if (extraMoves[i].equals(action))
-                    index = i;
+            if(!action.equals("Cancel")) {
+                int index = 0;
+                //тут не работает
+                for (int i = 0; i < extraMoves.length; i++) {
+                    if (extraMoves[i].equals(action))
+                        index = i;
+                }
+                player.setPosition(player.getPosition().getExtraLink(index));
             }
-            player.setPosition(player.getPosition().getExtraLink(index));
         }
-        mainLoop();
     }
     private void useObject() {
         String[] objects = player.getPosition().getObjectsNames();
@@ -163,6 +183,7 @@ public class Game {
         }
         if (objects.length >0) {
             String action = presenter.getChoise(invitation);
+            System.out.println(action);
             if (!action.equals("Cancel")) {
                 int index = 0;
                 for (int i = 0; i < objects.length; i++) {
@@ -172,7 +193,6 @@ public class Game {
                 player.getPosition().getObject(index).interact(player, this);
             }
         }
-        mainLoop();
     }
 
 }

@@ -1,5 +1,6 @@
 package ru.reeson2003.map;
 
+import ru.reeson2003.Game.iTimeActivator;
 import ru.reeson2003.npcs.Rabbit;
 
 import java.util.LinkedList;
@@ -12,8 +13,10 @@ import java.util.Random;
 public class Map_gen_0_1 implements iMapGenerator{
     Position start;
     List<Location> locations;
+    iTimeActivator timeActivator;
 
-    public Map_gen_0_1() {
+    public Map_gen_0_1(iTimeActivator timeActivator) {
+        this.timeActivator = timeActivator;
         this.locations = new LinkedList<>();
         makeMap();
     }
@@ -28,6 +31,7 @@ public class Map_gen_0_1 implements iMapGenerator{
         forest.getPosition(3, 0).setExtraLinkTwoSide(dungeon.getPosition(2, 1));
 
         Rabbit roger = new Rabbit("Роджер", field.getPosition(2,1));
+        timeActivator.addTimeListener(roger);
     }
 
     @Override
