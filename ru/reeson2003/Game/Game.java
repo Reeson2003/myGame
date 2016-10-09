@@ -68,6 +68,9 @@ public class Game {
         String name = presenter.getString("Enter player name");
         this.player = new Player(name, "@Player", map.getStart());
 
+        Thread timeActivate = new Thread(timeActivator);
+        timeActivate.start();
+        //timeActivator.run();
         mainLoop();
     }
     private String invitation(Player player) {
@@ -117,7 +120,7 @@ public class Game {
         while(true) {
             presenter.show(mainDisplayText(player));
             action(presenter.getKeyAction());
-            timeActivator.timeActivate();
+            //timeActivator.timeActivate();
         }
     }
 
@@ -165,7 +168,6 @@ public class Game {
             String action = presenter.getChoise(extraMoves);
             if(!action.equals("Cancel")) {
                 int index = 0;
-                //тут не работает
                 for (int i = 0; i < extraMoves.length; i++) {
                     if (extraMoves[i].equals(action))
                         index = i;
@@ -183,7 +185,6 @@ public class Game {
         }
         if (objects.length >0) {
             String action = presenter.getChoise(invitation);
-            System.out.println(action);
             if (!action.equals("Cancel")) {
                 int index = 0;
                 for (int i = 0; i < objects.length; i++) {

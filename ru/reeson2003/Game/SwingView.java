@@ -99,29 +99,15 @@ public class SwingView implements iView {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     presenter.setChooseAction(result);
-                    //System.out.println(result);
                     choiseFrame.setVisible(false);
                     choiseFrameInit();
                 }
             });
             choiseFrame.add(buttons[i]);
-            //System.out.println(buttons[i].getText());
         }
         choiseFrame.pack();
         choiseFrame.setVisible(true);
-        /*
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("<html>");
-        stringBuilder.append(invitation);
-        stringBuilder.append("<br>0.Cancel");
-        for (int i = 0; i < strings.length; i++) {
-            stringBuilder.append("<br>");
-            stringBuilder.append(i+1);
-            stringBuilder.append(".");
-            stringBuilder.append(strings[i]);
-        }
-        show(stringBuilder.toString());
-        */
+
     }
 
     @Override

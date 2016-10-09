@@ -27,4 +27,11 @@ public class TimeActivator implements iTimeActivator {
             items.timeActivate(time);
         }
     }
+
+    @Override
+    public void run() {
+        while(true) {
+            timeActivate();
+        }
+    }
 }

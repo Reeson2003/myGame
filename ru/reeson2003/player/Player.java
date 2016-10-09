@@ -2,14 +2,8 @@ package ru.reeson2003.player;
 
 import ru.reeson2003.Game.Game;
 import ru.reeson2003.npcs.Creature;
-import ru.reeson2003.items.Gold;
-import ru.reeson2003.items.Item;
-import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.map.Position;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import ru.reeson2003.npcs.Parameters;
 
 /**
  * Created by Тоня on 01.10.2016.

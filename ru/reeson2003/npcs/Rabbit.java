@@ -22,7 +22,7 @@ public class Rabbit extends Creature implements iTimeActing {
 
     @Override
     public void interact(Player player, Game game) {
-        System.out.println("Hello, im " + name);
+        //System.out.println("Hello, im " + name);
         randomMove();
     }
     private void randomMove() {
@@ -43,7 +43,7 @@ public class Rabbit extends Creature implements iTimeActing {
     @Override
     public void timeActivate(long time) {
         if ((time-this.time) > 5000) {
-            System.out.println("Rabbit move");
+            //System.out.println("Rabbit move");
             this.time = time;
             randomMove();
         }

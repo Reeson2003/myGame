@@ -3,7 +3,7 @@ package ru.reeson2003.Game;
 import ru.reeson2003.map.Location;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.player.Equip;
-import ru.reeson2003.player.Parameters;
+import ru.reeson2003.npcs.Parameters;
 import ru.reeson2003.player.Player;
 import ru.reeson2003.items.Item;
 import ru.reeson2003.map.Map;
