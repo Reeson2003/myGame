@@ -34,10 +34,10 @@ public class Presenter {
         this.game = game;
     }
 
-    public void setChooseAction(String chooseAction) {
+    synchronized public void setChooseAction(String chooseAction) {
         this.chooseAction = chooseAction;
     }
-    public void setKeyAction(String keyAction) {
+    synchronized public void setKeyAction(String keyAction) {
         this.keyAction = keyAction;
         //System.out.println(this.keyAction);
 
@@ -70,7 +70,7 @@ public class Presenter {
     public String getKeyAction() {
         view.waitAction();
 
-        while (keyAction.equals(""));
+        //while (keyAction.equals(""));
 
         String result = this.keyAction;
         this.keyAction = "";
