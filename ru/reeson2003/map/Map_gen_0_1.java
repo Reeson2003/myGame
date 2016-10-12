@@ -31,6 +31,7 @@ public class Map_gen_0_1 implements iMapGenerator{
         forest.getPosition(3, 0).setExtraLinkTwoSide(dungeon.getPosition(2, 1));
 
         Rabbit roger = new Rabbit("Роджер", field.getPosition(2,1));
+
         timeActivator.addTimeListener(roger);
     }
 

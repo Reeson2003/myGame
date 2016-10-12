@@ -42,8 +42,8 @@ public class Rabbit extends Creature implements iTimeActing {
 
     @Override
     public void timeActivate(long time) {
-        if ((time-this.time) > 5000) {
-            //System.out.println("Rabbit move");
+        if ((time-this.time) > new Random().nextInt(5000)+2500) {
+            System.out.println("Rabbit " + name + " move");
             this.time = time;
             randomMove();
         }

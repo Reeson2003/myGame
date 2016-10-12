@@ -9,6 +9,7 @@ public class Parameters {
     private int level;
     private int experience;
     private int expToNextLevel;
+    private int expCoeff;
     private int skillPoints;
 
     private int strength;
@@ -116,7 +117,8 @@ public class Parameters {
                       int constitution, int agility,
                       int wisdom, int intellect) {
         this.level = 0;
-        this.expToNextLevel = 15;
+        this.expCoeff = 15;
+        this.expToNextLevel = this.expCoeff;
         this.skillPoints = 0;
         this.strength = strength;
         this.constitution = constitution;
@@ -140,7 +142,8 @@ public class Parameters {
             skillPoints++;
             if(level%5 == 0)
                 skillPoints++;
-            expToNextLevel = expToNextLevel * 11 / 10;
+            this.expCoeff = this.expCoeff * 11 / 10;
+            this.expToNextLevel += this.expCoeff;
             addExperience(experience);
         }
     }
@@ -161,6 +164,7 @@ public class Parameters {
 
     private void levelUp() {
         level++;
+        calcParameters();
         //System.out.println("Level UP!");
     }
 }

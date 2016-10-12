@@ -2,6 +2,10 @@ package ru.reeson2003.map;
 
 import ru.reeson2003.Game.Interactable;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,6 +23,7 @@ public class Position implements Serializable{
     private Position west;
     private List<Position> extraLinks;
     private List<Interactable> objects;
+    private Icon icon;
 
     public Position(int X, int Y, String info) {
         this.coordinate = new Coordinate(X, Y);
@@ -130,6 +135,58 @@ public class Position implements Serializable{
         return this.coordinate;
     }
 
+    public void setIcon() {
+        if (north == null && south == null && east == null && west == null)
+            loadIcon("icons/nowere.bmp");
+        else if (north != null && south == null && east == null && west == null)
+            loadIcon("icons/n.bmp");
+        else if (north == null && south != null && east == null && west == null)
+            loadIcon("icons/s.bmp");
+        else if (north == null && south == null && east != null && west == null)
+            loadIcon("icons/e.bmp");
+        else if (north == null && south == null && east == null && west != null)
+            loadIcon("icons/w.bmp");
+
+        else if (north != null && south != null && east == null && west == null)
+            loadIcon("icons/ns.bmp");
+        else if (north != null && south == null && east != null && west == null)
+            loadIcon("icons/ne.bmp");
+        else if (north != null && south == null && east == null && west != null)
+            loadIcon("icons/nw.bmp");
+        else if (north != null && south != null && east != null && west == null)
+            loadIcon("icons/nse.bmp");
+        else if (north != null && south != null && east == null && west != null)
+            loadIcon("icons/nws.bmp");
+        else if (north != null && south == null && east != null && west != null)
+            loadIcon("icons/wne.bmp");
+        else if (north != null && south != null && east != null && west != null)
+            loadIcon("icons/nwse.bmp");
+
+        else if (north == null && south != null && east != null && west == null)
+            loadIcon("icons/se.bmp");
+        else if (north == null && south != null && east == null && west != null)
+            loadIcon("icons/sw.bmp");
+        else if (north == null && south != null && east != null && west != null)
+            loadIcon("icons/swe.bmp");
+        else if (north == null && south == null && east != null && west != null)
+            loadIcon("icons/we.bmp");
+
+    }
+
+    private Icon loadIcon(String file) {
+        Image image = null;
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream(file));
+        } catch (IOException e) {
+            System.err.println("Can not load icon");
+            e.printStackTrace();
+        }
+        return new ImageIcon(image);
+    }
+    public Icon getIcon() {
+        return icon;
+    }
+
     public void addObject(Interactable object) {
         this.objects.add(object);
     }
@@ -155,6 +212,7 @@ public class Position implements Serializable{
         this.objects.remove(object);
     }
     public String[] getObjectsNames() {
+
         String[] result =new String[objects.size()];
         for (int i = 0; i < objects.size(); i++) {
             result[i] = objects.get(i).getName();
@@ -182,7 +240,6 @@ public class Position implements Serializable{
             return this;
 
     }
-
     public Position getExtraLink(int number) {
         if(extraLinks.size()==0)
             throw new IllegalArgumentException("There is no extra links");
@@ -217,13 +274,11 @@ public class Position implements Serializable{
         }
         return sb.toString();
     }
-
     @Deprecated
     public void moveObject(Interactable object, Position position) {
             objects.remove(object);
         position.addObject(object);
     }
-
     @Deprecated
     public List<Interactable> getObjects() {
         return objects;

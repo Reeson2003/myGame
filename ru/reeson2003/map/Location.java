@@ -44,4 +44,10 @@ public class Location implements Serializable{
         return info;
     }
 
+    public int getWidth() {
+        return width;
+    }
+    public int getLength() {
+        return length;
+    }
 }

@@ -17,7 +17,7 @@ public class Fight implements Runnable {
     public Fight(Parameters opponent1, Parameters opponent2) {
         this.opponent1 = opponent1;
         this.opponent2 = opponent2;
-        random = new Random(new Date().getTime());
+        random = new Random();
         Thread thread = new Thread(this);
         thread.start();
     }
@@ -27,6 +27,7 @@ public class Fight implements Runnable {
         long op1hit = date.getTime();
         long op2hit = date.getTime();
         long healthRegen = date.getTime();
+        System.out.println(opponent1.name + " and " + opponent2.name + " fight!");
         while (opponent1.getHealth() >0 && opponent2.getHealth() >0) {
             date = new Date();
             if (date.getTime() - op1hit > opponent1.getAttackSpeed()) {
@@ -40,12 +41,20 @@ public class Fight implements Runnable {
                 System.out.println(opponent1.name + " " + opponent1.getHealth());
             }
             if (date.getTime() - healthRegen > 2000) {
-                opponent1.addHealth(opponent1.getHealthRegen());
-                opponent2.addHealth(opponent2.getHealthRegen());
+                //opponent1.addHealth(opponent1.getHealthRegen());
+                //opponent2.addHealth(opponent2.getHealthRegen());
                 healthRegen = date.getTime();
             }
 
         }
+        if(opponent1.getHealth()>0)
+            System.out.println(opponent1.name + " won " + opponent2.name);
+        else if(opponent2.getHealth() >0)
+            System.out.println(opponent2.name + " won " + opponent1.name);
+        else
+            System.out.println(opponent1.name + " draw " + opponent2.name);
+        //System.out.println(opponent1.getHealth());
+        //System.out.println(opponent2.getHealth());
     }
 
     private void hit(Parameters giveDamage, Parameters getDamage) {
@@ -60,7 +69,7 @@ public class Fight implements Runnable {
             damage = 0;
         damage = damage*(100 - dispersion/2 + random.nextInt(dispersion))/100;
         getDamage.addHealth(-damage);
-        System.out.println(giveDamage.name + " hits " +damage);
+        //System.out.println(giveDamage.name + " hits " +damage);
     }
 
     @Override
