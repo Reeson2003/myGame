@@ -90,17 +90,17 @@ public class Game {
             sb.append(", ");
         }
         sb.deleteCharAt(sb.length()-2);
-        String[] extras = p.getExtraLinksInfos();
-        if(extras.length !=0) {
-            sb.append("<br>");
-            for (int i = 0; i < extras.length; i++) {
-                sb.append(i + 1);
-                sb.append("-");
-                sb.append(extras[i]);
-                sb.append(", ");
-            }
-            sb.deleteCharAt(sb.length()-2);
-        }
+//        String[] extras = p.getExtraLinksInfos();
+//        if(extras.length !=0) {
+//            sb.append("<br>");
+//            for (int i = 0; i < extras.length; i++) {
+//                sb.append(i + 1);
+//                sb.append("-");
+//                sb.append(extras[i]);
+//                sb.append(", ");
+//            }
+//            sb.deleteCharAt(sb.length()-2);
+//        }
         String[] objects = p.getObjectsNames();
         if (objects.length !=0) {
             sb.append("<br>");
@@ -142,10 +142,10 @@ public class Game {
             presenter.setKeyAction("");
             player.move(Direction.West);
         }
-        else if (action.equals("T")) {
-            presenter.setKeyAction("");
-            extraMove();
-        }
+//        else if (action.equals("T")) {
+//            presenter.setKeyAction("");
+//            extraMove();
+//        }
         else if (action.equals("U")) {
             presenter.setKeyAction("");
             useObject();
@@ -162,20 +162,20 @@ public class Game {
         stringBuilder.append("</html>");
         return stringBuilder.toString();
     }
-    private void extraMove() {
-        String[] extraMoves = player.getPosition().getExtraLinksInfos();
-        if (extraMoves.length >0) {
-            String action = presenter.getChoise(extraMoves);
-            if(!action.equals("Cancel")) {
-                int index = 0;
-                for (int i = 0; i < extraMoves.length; i++) {
-                    if (extraMoves[i].equals(action))
-                        index = i;
-                }
-                player.setPosition(player.getPosition().getExtraLink(index));
-            }
-        }
-    }
+//    private void extraMove() {
+//        String[] extraMoves = player.getPosition().getExtraLinksInfos();
+//        if (extraMoves.length >0) {
+//            String action = presenter.getChoise(extraMoves);
+//            if(!action.equals("Cancel")) {
+//                int index = 0;
+//                for (int i = 0; i < extraMoves.length; i++) {
+//                    if (extraMoves[i].equals(action))
+//                        index = i;
+//                }
+//                player.setPosition(player.getPosition().getExtraLink(index));
+//            }
+//        }
+//    }
     private void useObject() {
         String[] objects = player.getPosition().getObjectsNames();
         String[] objInfos = player.getPosition().getObjectsInfos();

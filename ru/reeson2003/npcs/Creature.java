@@ -24,7 +24,7 @@ public abstract class Creature implements Interactable{
         return position;
     }
     public void move(Direction direction) {
-        setPosition(position.getByDirection(direction));
+        setPosition(position.moveByDirection(direction));
     }
     @Override
     public void setPosition(Position position) {

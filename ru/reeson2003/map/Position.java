@@ -24,6 +24,7 @@ public class Position implements Serializable{
     private List<Position> extraLinks;
     private List<Interactable> objects;
     private Icon icon;
+    private Location location;
 
     public Position(int X, int Y, String info) {
         this.coordinate = new Coordinate(X, Y);
@@ -39,17 +40,28 @@ public class Position implements Serializable{
         objects = new LinkedList<>();
     }
 
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+    public Location getLocation() {
+        return location;
+    }
+
     public void setNorth(Position north) {
         this.north = north;
+        setIcon();
     }
     public void setSouth(Position south) {
         this.south = south;
+        setIcon();
     }
     public void setEast(Position east) {
         this.east = east;
+        setIcon();
     }
     public void setWest(Position west) {
         this.west = west;
+        setIcon();
     }
     public void deleteDirectionFromThis(Direction direction) {
         switch (direction) {
@@ -61,28 +73,30 @@ public class Position implements Serializable{
                 break;
             case West: this.west = null;
         }
+        setIcon();
     }
     public void deleteDirectionFromAnother(Direction direction) {
         switch (direction) {
-            case South: this.south.north = null;
+            case South: {this.south.north = null; this.south.setIcon();}
                 break;
-            case North: this.north.south = null;
+            case North: {this.north.south = null; this.north.setIcon();}
                 break;
-            case East: this.east.west = null;
+            case East: {this.east.west = null; this.east.setIcon();}
                 break;
-            case West: this.west.east = null;
+            case West: {this.west.east = null; this.west.setIcon();}
         }
     }
     public void deleteDirectionTwoSide(Direction direction) {
         switch (direction) {
-            case South: {this.south = null; this.south.north = null;}
+            case South: {this.south.north = null;this.south.setIcon(); this.south = null;}
                 break;
-            case North: {this.north = null; this.north.south = null;}
+            case North: {this.north.south = null; this.north.setIcon(); this.north = null;}
                 break;
-            case East: {this.east = null; this.east.west = null;}
+            case East: {this.east.west = null; this.east.setIcon(); this.east = null;}
                 break;
-            case West: {this.west = null; this.west.east = null;}
+            case West: {this.west.east = null; this.west.setIcon(); this.west = null;}
         }
+        setIcon();
     }
     public List<Direction> getAvailableDirections() {
         List<Direction> directions = new ArrayList<>(8);
@@ -97,33 +111,34 @@ public class Position implements Serializable{
         return directions;
     }
 
-    public void setExtraLinkToThis(Position another) {
-        this.extraLinks.add(another);
-    }
-    public void setExtraLinkToAnother(Position another) {
-        another.extraLinks.add(this);
-    }
-    public void setExtraLinkTwoSide(Position another) {
-        this.extraLinks.add(another);
-        another.extraLinks.add(this);
-    }
-    public void deleteExtraLinkFromThis(Position another) {
-        this.extraLinks.remove(another);
-    }
-    public void deleteExtraLinkFromAnother(Position another) {
-        another.extraLinks.remove(this);
-    }
-    public void deleteExtraLinkTwoSide(Position another) {
-        another.extraLinks.remove(this);
-        this.extraLinks.remove(another);
-    }
-    public String[] getExtraLinksInfos() {
-        String[] result = new String[extraLinks.size()];
-        for (int i = 0; i< extraLinks.size(); i++) {
-            result[i] = extraLinks.get(i).getInfo();
-        }
-        return result;
-    }
+
+//    public void setExtraLinkToThis(Position another) {
+//        this.extraLinks.add(another);
+//    }
+//    public void setExtraLinkToAnother(Position another) {
+//        another.extraLinks.add(this);
+//    }
+//    public void setExtraLinkTwoSide(Position another) {
+//        this.extraLinks.add(another);
+//        another.extraLinks.add(this);
+//    }
+//    public void deleteExtraLinkFromThis(Position another) {
+//        this.extraLinks.remove(another);
+//    }
+//    public void deleteExtraLinkFromAnother(Position another) {
+//        another.extraLinks.remove(this);
+//    }
+//    public void deleteExtraLinkTwoSide(Position another) {
+//        another.extraLinks.remove(this);
+//        this.extraLinks.remove(another);
+//    }
+//    public String[] getExtraLinksInfos() {
+//        String[] result = new String[extraLinks.size()];
+//        for (int i = 0; i< extraLinks.size(); i++) {
+//            result[i] = extraLinks.get(i).getInfo();
+//        }
+//        return result;
+//    }
 
     public void setInfo(String info) {
         this.info = info;
@@ -137,43 +152,40 @@ public class Position implements Serializable{
 
     public void setIcon() {
         if (north == null && south == null && east == null && west == null)
-            loadIcon("icons/nowere.bmp");
+            icon = loadIcon("nowere.jpg");
         else if (north != null && south == null && east == null && west == null)
-            loadIcon("icons/n.bmp");
+            icon = loadIcon("n.jpg");
         else if (north == null && south != null && east == null && west == null)
-            loadIcon("icons/s.bmp");
+            icon = loadIcon("s.jpg");
         else if (north == null && south == null && east != null && west == null)
-            loadIcon("icons/e.bmp");
+            icon = loadIcon("e.jpg");
         else if (north == null && south == null && east == null && west != null)
-            loadIcon("icons/w.bmp");
-
+            icon = loadIcon("w.jpg");
         else if (north != null && south != null && east == null && west == null)
-            loadIcon("icons/ns.bmp");
+            icon = loadIcon("ns.jpg");
         else if (north != null && south == null && east != null && west == null)
-            loadIcon("icons/ne.bmp");
+            icon = loadIcon("ne.jpg");
         else if (north != null && south == null && east == null && west != null)
-            loadIcon("icons/nw.bmp");
+            icon = loadIcon("nw.jpg");
         else if (north != null && south != null && east != null && west == null)
-            loadIcon("icons/nse.bmp");
+            icon = loadIcon("nse.jpg");
         else if (north != null && south != null && east == null && west != null)
-            loadIcon("icons/nws.bmp");
+            icon = loadIcon("nws.jpg");
         else if (north != null && south == null && east != null && west != null)
-            loadIcon("icons/wne.bmp");
+            icon = loadIcon("wne.jpg");
         else if (north != null && south != null && east != null && west != null)
-            loadIcon("icons/nwse.bmp");
-
+            icon = loadIcon("nwse.jpg");
         else if (north == null && south != null && east != null && west == null)
-            loadIcon("icons/se.bmp");
+            icon = loadIcon("se.jpg");
         else if (north == null && south != null && east == null && west != null)
-            loadIcon("icons/sw.bmp");
+            icon = loadIcon("sw.jpg");
         else if (north == null && south != null && east != null && west != null)
-            loadIcon("icons/swe.bmp");
+            icon = loadIcon("swe.jpg");
         else if (north == null && south == null && east != null && west != null)
-            loadIcon("icons/we.bmp");
-
+            icon = loadIcon("we.jpg");
     }
-
     private Icon loadIcon(String file) {
+        /*
         Image image = null;
         try {
             image = ImageIO.read(getClass().getResourceAsStream(file));
@@ -181,7 +193,8 @@ public class Position implements Serializable{
             System.err.println("Can not load icon");
             e.printStackTrace();
         }
-        return new ImageIcon(image);
+        */
+        return new ImageIcon(file);
     }
     public Icon getIcon() {
         return icon;
@@ -227,7 +240,7 @@ public class Position implements Serializable{
         return result;
     }
 
-    public Position getByDirection(Direction dir) {
+    public Position moveByDirection(Direction dir) {
         if(dir == Direction.South && south != null)
             return south;
         else if(dir == Direction.North && north != null)
@@ -238,17 +251,28 @@ public class Position implements Serializable{
             return west;
         else
             return this;
+    }
 
-    }
-    public Position getExtraLink(int number) {
-        if(extraLinks.size()==0)
-            throw new IllegalArgumentException("There is no extra links");
-        else if (number <0 || number >= extraLinks.size())
-            throw new IllegalArgumentException("Number of extra link must be between: " + 1
-                                                + " and " + extraLinks.size());
+    public Position getByDirection(Direction dir) {
+        if(dir == Direction.South)
+            return south;
+        else if(dir == Direction.North)
+            return north;
+        else if(dir == Direction.East)
+            return east;
         else
-            return extraLinks.get(number);
+            return west;
     }
+
+//    public Position getExtraLink(int number) {
+//        if(extraLinks.size()==0)
+//            throw new IllegalArgumentException("There is no extra links");
+//        else if (number <0 || number >= extraLinks.size())
+//            throw new IllegalArgumentException("Number of extra link must be between: " + 1
+//                                                + " and " + extraLinks.size());
+//        else
+//            return extraLinks.get(number);
+//    }
 
     @Override
     public String toString() {
@@ -256,7 +280,7 @@ public class Position implements Serializable{
         sb.append("You are at: ");
         sb.append(info);
         sb.append("\n- - - - - - - - - - - - - - - - - - - - - - - - -\n");
-        sb.append("You can getByDirection to: |");
+        sb.append("You can moveByDirection to: |");
         if(south != null)
             sb.append("South|");
         if(north != null)

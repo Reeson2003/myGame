@@ -1,5 +1,7 @@
 package ru.reeson2003.Game.view;
 
+import ru.reeson2003.map.Position;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -9,11 +11,11 @@ import java.awt.*;
  */
 public class RightPanel extends JPanel {
 
-    public RightPanel() {
-        initialize();
+    public RightPanel(Position position) {
+        initialize(position);
     }
 
-    private void initialize() {
+    private void initialize(Position position) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         this.setAlignmentY(JComponent.BOTTOM_ALIGNMENT);
@@ -24,6 +26,9 @@ public class RightPanel extends JPanel {
         ArrowsPanel arrowsPanel = new ArrowsPanel();
         this.add(arrowsPanel);
         arrowsPanel.setAlignmentY(JComponent.BOTTOM_ALIGNMENT);
+        MapPanel mapPanel = new MapPanel(position);
+        this.add(mapPanel);
+        mapPanel.setAlignmentY(JComponent.BOTTOM_ALIGNMENT);
         this.setVisible(true);
     }
 }

@@ -15,6 +15,7 @@ import java.util.Random;
  */
 public class Rabbit extends Creature implements iTimeActing {
     long time = 0;
+    private static Random random = new Random();
     public Rabbit(String name, Position position) {
         super(name, "Кролик", position);
     }
@@ -26,7 +27,6 @@ public class Rabbit extends Creature implements iTimeActing {
         randomMove();
     }
     private void randomMove() {
-        Random random = new Random();
         int rnd = random.nextInt(4);
         switch (rnd) {
             case 0: this.move(Direction.South);
@@ -42,8 +42,8 @@ public class Rabbit extends Creature implements iTimeActing {
 
     @Override
     public void timeActivate(long time) {
-        if ((time-this.time) > new Random().nextInt(5000)+2500) {
-            System.out.println("Rabbit " + name + " move");
+        if ((time-this.time) > random.nextInt(5000)+2500) {
+            System.out.println(name + " at" + position.getInfo());
             this.time = time;
             randomMove();
         }

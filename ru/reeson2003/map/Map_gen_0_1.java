@@ -22,17 +22,20 @@ public class Map_gen_0_1 implements iMapGenerator{
     }
 
     private void makeMap() {
-        Location forest = new Location(new LocGen0_1("Лес", 4, 4));
-        Location field  = new Location(new LocGen0_1("Поле", 5, 5));
-        Location dungeon = new Location(new LocGen0_1("Подземелье", 3, 2));
+        Location forest = new LocGen0_1("Forest","Лес", 4, 4).getLocation();
+        Location field  = new LocGen0_1("Field","Поле", 5, 5).getLocation();
+        Location dungeon = new LocGen0_1("Dungeon","Подземелье", 3, 2).getLocation();
         start = field.getPosition(2, 0);
-        forest.getPosition(0, 3).setExtraLinkTwoSide(field.getPosition(4,3));
-        field.getPosition(4, 0).setExtraLinkToAnother(forest.getPosition(0, 0));
-        forest.getPosition(3, 0).setExtraLinkTwoSide(dungeon.getPosition(2, 1));
+        field.getPosition(0,1).setWest(forest.getPosition(3,3));
+        forest.getPosition(3,3).setEast(field.getPosition(0,1));
+        field.getPosition(4,3).setEast(dungeon.getPosition(0,1));
+        dungeon.getPosition(0,1).setWest(field.getPosition(4,3));
 
-        Rabbit roger = new Rabbit("Роджер", field.getPosition(2,1));
+        Rabbit roger = new Rabbit("Кролик", field.getPosition(2,1));
+        Rabbit Bear = new Rabbit("Медведь", forest.getPosition(2,1));
 
         timeActivator.addTimeListener(roger);
+        timeActivator.addTimeListener(Bear);
     }
 
     @Override

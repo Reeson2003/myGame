@@ -3,6 +3,9 @@ package ru.reeson2003.Game.view;
 
 import ru.reeson2003.Game.Game;
 import ru.reeson2003.Game.Interactable;
+import ru.reeson2003.map.Direction;
+import ru.reeson2003.map.LocGen0_1;
+import ru.reeson2003.map.Location;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.player.Player;
 
@@ -124,7 +127,14 @@ public class Main3 {
         });
 
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame main = new MainWindow("TEST",objects);
+
+        Location testLoc = new LocGen0_1("Test", "test", 7,7).getLocation();
+        testLoc.getPosition(0,1).deleteDirectionTwoSide(Direction.East);
+        testLoc.getPosition(0,0).deleteDirectionTwoSide(Direction.East);
+        testLoc.getPosition(0,2).deleteDirectionTwoSide(Direction.East);
+        JFrame mainWindow = new MainWindow("TEST",objects,testLoc.getPosition(1,2));
+        mainWindow.setLocationRelativeTo(null);
+
 
     }
 }

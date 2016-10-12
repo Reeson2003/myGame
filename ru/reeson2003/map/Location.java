@@ -12,17 +12,10 @@ public class Location implements Serializable{
     int width;
     int length;
 
-    public Location(iLocationGenerator locGen) {
-        this.positions = locGen.getPositions();
-        setSize();
+    public Location() {
+
     }
 
-    private void setSize() {
-        if (positions != null) {
-            width = positions[0].length;
-            length = positions.length;
-        }
-    }
 
     public Position getPosition(int x, int y) {
         if (x<0 || x>=width || y<0 || y >=length)
@@ -30,7 +23,6 @@ public class Location implements Serializable{
         else
             return positions[y][x];
     }
-
     public Position[][] getPositions() {
         return positions;
     }
@@ -39,7 +31,6 @@ public class Location implements Serializable{
         if(info != null)
             this.info  = info;
     }
-
     public String getInfo() {
         return info;
     }
@@ -49,5 +40,21 @@ public class Location implements Serializable{
     }
     public int getLength() {
         return length;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPositions(Position[][] positions) {
+        this.positions = positions;
+    }
+    public void setWidth(int width) {
+        this.width = width;
+    }
+    public void setLength(int length) {
+        this.length = length;
     }
 }
