@@ -9,7 +9,9 @@ import ru.reeson2003.map.Location;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.player.Player;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,6 +39,11 @@ public class Main3 {
             }
 
             @Override
+            public Icon getIcon() {
+                return new ImageIcon("rabbit.jpg");
+            }
+
+            @Override
             public void interact(Player player, Game game) {
                 System.out.println(getName());
             }
@@ -55,6 +62,11 @@ public class Main3 {
             @Override
             public String getName() {
                 return "Bear";
+            }
+
+            @Override
+            public Icon getIcon() {
+                return new ImageIcon("rabbit.jpg");
             }
 
             @Override
@@ -79,6 +91,11 @@ public class Main3 {
             }
 
             @Override
+            public Icon getIcon() {
+                return new ImageIcon("rabbit.jpg");
+            }
+
+            @Override
             public void interact(Player player, Game game) {
                 System.out.println(getName());
             }
@@ -97,6 +114,11 @@ public class Main3 {
             @Override
             public String getName() {
                 return "Goblin";
+            }
+
+            @Override
+            public Icon getIcon() {
+                return new ImageIcon("rabbit.jpg");
             }
 
             @Override
@@ -121,20 +143,32 @@ public class Main3 {
             }
 
             @Override
+            public Icon getIcon() {
+                return new ImageIcon("rabbit.jpg");
+            }
+
+            @Override
             public void interact(Player player, Game game) {
                 System.out.println(getName());
             }
         });
 
-        JFrame.setDefaultLookAndFeelDecorated(true);
-
-        Location testLoc = new LocGen0_1("Test", "test", 7,7).getLocation();
+        String info = "Location: Dungeon of silence<br>Size of location: 7x7<br>Level of location: 14";
+        Location testLoc = new LocGen0_1("Fantasy dungeon", info, 7,7).getLocation();
+        testLoc.setIcon(new ImageIcon("fantasy_dungeon.jpg"));
         testLoc.getPosition(0,1).deleteDirectionTwoSide(Direction.East);
         testLoc.getPosition(0,0).deleteDirectionTwoSide(Direction.East);
         testLoc.getPosition(0,2).deleteDirectionTwoSide(Direction.East);
-        JFrame mainWindow = new MainWindow("TEST",objects,testLoc.getPosition(1,2));
-        mainWindow.setLocationRelativeTo(null);
 
+
+        MainWindow mainWindow = new MainWindow("WOW - 2");
+        mainWindow.setVisible(true);
+
+        mainWindow.setObjects(objects);
+        mainWindow.setPosition(testLoc.getPosition(1,1));
+        mainWindow.setIcon(testLoc.getIcon());
+        mainWindow.setText(testLoc.getInfo());
+        mainWindow.setLocationRelativeTo(null);
 
     }
 }

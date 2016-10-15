@@ -100,8 +100,7 @@ public class Presenter {
 
     }
     public void show(Position position) {
-        String result = position.getInfo();
-        view.show(result);
+        view.show(position);
     }
 
 

@@ -5,6 +5,7 @@ import ru.reeson2003.Game.Game;
 import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.player.Player;
 
+import javax.swing.*;
 import java.util.List;
 
 /**
@@ -57,6 +58,11 @@ public class ItemPacket extends Item{
     }
     public int getAmount() {
         return amount;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return null;
     }
 
     @Override

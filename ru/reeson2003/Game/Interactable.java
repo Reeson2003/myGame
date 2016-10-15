@@ -9,6 +9,6 @@ public interface Interactable {
     void setPosition(Position position);
     String getInfo();
     String getName();
-    //Icon getIcon();
+    Icon getIcon();
     void interact(Player player, Game game);
 }

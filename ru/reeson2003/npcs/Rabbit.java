@@ -8,6 +8,7 @@ import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.player.Player;
 
+import javax.swing.*;
 import java.util.Random;
 
 /**
@@ -20,6 +21,11 @@ public class Rabbit extends Creature implements iTimeActing {
         super(name, "Кролик", position);
     }
 
+
+    @Override
+    public Icon getIcon() {
+        return null;
+    }
 
     @Override
     public void interact(Player player, Game game) {

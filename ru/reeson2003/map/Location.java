@@ -1,5 +1,6 @@
 package ru.reeson2003.map;
 
+import javax.swing.*;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,7 @@ public class Location implements Serializable{
     private Position[][] positions;
     int width;
     int length;
+    private Icon icon;
 
     public Location() {
 
@@ -56,5 +58,11 @@ public class Location implements Serializable{
     }
     public void setLength(int length) {
         this.length = length;
+    }
+    public void setIcon(Icon icon) {
+        this.icon = icon;
+    }
+    public Icon getIcon() {
+        return icon;
     }
 }

@@ -5,6 +5,8 @@ import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.npcs.Parameters;
 
+import javax.swing.*;
+
 /**
  * Created by Тоня on 01.10.2016.
  */
@@ -14,6 +16,11 @@ public class Player extends Creature {
 
     public Player(String name, String info, Position position) {
         super(name,info,position);
+    }
+
+    @Override
+    public Icon getIcon() {
+        return null;
     }
 
     @Override

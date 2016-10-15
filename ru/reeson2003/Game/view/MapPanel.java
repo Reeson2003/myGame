@@ -22,18 +22,24 @@ public class MapPanel extends JPanel {
     private JButton square8;
     private JButton square9;
 
-    public MapPanel(Position position) {
-        initialize(position);
+    private Position position;
+
+    public MapPanel() {
+        initialize();
     }
 
-    private void initialize(Position position) {
+    private void initialize() {
         this.setLayout(new GridLayout(3, 3));
-        int x = position.getCoordinate().getX();
-        int y = position.getCoordinate().getY();
-        int width = position.getLocation().getWidth();
-        int length = position.getLocation().getLength();
+        this.square1= new JButton();
+        this.square2= new JButton();
+        this.square3= new JButton();
+        this.square4= new JButton();
+        this.square5= new JButton();
+        this.square6= new JButton();
+        this.square7= new JButton();
+        this.square8= new JButton();
+        this.square9= new JButton();
 
-        initializeButtons(position);
         this.add(square1);
         this.add(square2);
         this.add(square3);
@@ -48,62 +54,67 @@ public class MapPanel extends JPanel {
         Border out = BorderFactory.createLineBorder(Color.BLACK, 2, false);
         Border in = BorderFactory.createLineBorder(Color.ORANGE, 2, false);
         this.setBorder(BorderFactory.createCompoundBorder(out, in));
-        this.setMaximumSize(new Dimension(90, 90));
+        int sizeX = emptyIcon().getIconWidth()*3;
+        int sizeY = emptyIcon().getIconHeight()*3;
+        this.setMaximumSize(new Dimension(sizeX, sizeY));
         this.setVisible(true);
     }
-
-    private void initializeButtons(Position position) {
-        square5 = new JButton(position.getIcon());
+    public void buttonsSetIcons(Position position) {
+        square5.setIcon(position.getIcon());
         if (position.getByDirection(Direction.North) != null) {
-            square2 = new JButton(position.getByDirection(Direction.North).getIcon());
+            square2.setIcon(position.getByDirection(Direction.North).getIcon());
             if (position.getByDirection(Direction.North).getByDirection(Direction.West) != null)
-                square1 = new JButton(position.getByDirection(Direction.North).getByDirection(Direction.West).getIcon());
+                square1.setIcon(position.getByDirection(Direction.North).getByDirection(Direction.West).getIcon());
             else
-                square1 = new JButton(emptyIcon());
+                square1.setIcon(emptyIcon());
             if (position.getByDirection(Direction.North).getByDirection(Direction.East) != null)
-                square3 = new JButton(position.getByDirection(Direction.North).getByDirection(Direction.East).getIcon());
+                square3.setIcon(position.getByDirection(Direction.North).getByDirection(Direction.East).getIcon());
             else
-                square3 = new JButton(emptyIcon());
+                square3.setIcon(emptyIcon());
         } else {
-            square1 = new JButton(emptyIcon());
-            square2 = new JButton(emptyIcon());
-            square3 = new JButton(emptyIcon());
+            square1.setIcon(emptyIcon());
+            square2.setIcon(emptyIcon());
+            square3.setIcon(emptyIcon());
         }
         if (position.getByDirection(Direction.South) != null) {
-            square8 = new JButton(position.getByDirection(Direction.South).getIcon());
+            square8.setIcon(position.getByDirection(Direction.South).getIcon());
             if (position.getByDirection(Direction.South).getByDirection(Direction.West) != null)
-                square7 = new JButton(position.getByDirection(Direction.South).getByDirection(Direction.West).getIcon());
+                square7.setIcon(position.getByDirection(Direction.South).getByDirection(Direction.West).getIcon());
             else
-                square7 = new JButton(emptyIcon());
+                square7.setIcon(emptyIcon());
             if (position.getByDirection(Direction.South).getByDirection(Direction.East) != null)
-                square9 = new JButton(position.getByDirection(Direction.South).getByDirection(Direction.East).getIcon());
+                square9.setIcon(position.getByDirection(Direction.South).getByDirection(Direction.East).getIcon());
             else
-                square9 = new JButton(emptyIcon());
+                square9.setIcon(emptyIcon());
         } else {
-            square7 = new JButton(emptyIcon());
-            square8 = new JButton(emptyIcon());
-            square9 = new JButton(emptyIcon());
+            square7.setIcon(emptyIcon());
+            square8.setIcon(emptyIcon());
+            square9.setIcon(emptyIcon());
         }
         if (position.getByDirection(Direction.West) != null) {
-            square4 = new JButton(position.getByDirection(Direction.West).getIcon());
+            square4.setIcon(position.getByDirection(Direction.West).getIcon());
             if (position.getByDirection(Direction.West).getByDirection(Direction.North) != null)
                 square1.setIcon(position.getByDirection(Direction.West).getByDirection(Direction.North).getIcon());
             if (position.getByDirection(Direction.West).getByDirection(Direction.South) != null)
                 square7.setIcon(position.getByDirection(Direction.West).getByDirection(Direction.South).getIcon());
         } else
-            square4 = new JButton(emptyIcon());
+            square4.setIcon(emptyIcon());
         if (position.getByDirection(Direction.East) != null) {
-            square6 = new JButton(position.getByDirection(Direction.East).getIcon());
+            square6.setIcon(position.getByDirection(Direction.East).getIcon());
             if (position.getByDirection(Direction.East).getByDirection(Direction.North) != null)
                 square3.setIcon(position.getByDirection(Direction.East).getByDirection(Direction.North).getIcon());
             if (position.getByDirection(Direction.East).getByDirection(Direction.South) != null)
                 square9.setIcon(position.getByDirection(Direction.East).getByDirection(Direction.South).getIcon());
         }else
-            square6 = new JButton(emptyIcon());
+            square6.setIcon(emptyIcon());
     }
-
     private Icon emptyIcon() {
         Icon result = new ImageIcon("black.jpg");
         return result;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+        buttonsSetIcons(position);
     }
 }

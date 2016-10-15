@@ -1,5 +1,8 @@
 package ru.reeson2003.Game;
 
+import ru.reeson2003.Game.view.MapPanel;
+import ru.reeson2003.map.Position;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -13,6 +16,8 @@ public class SwingView implements iView {
     private JFrame mainFrame;
     private JLabel mainFrameLabel;
     private KeyListener mainFrameKeyListener;
+
+    private MapPanel mapPanel;
 
     private JFrame stringFrame;
     private JLabel stringLabel;
@@ -36,12 +41,14 @@ public class SwingView implements iView {
         };
         mainFrame.setSize(500,300);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        mainFrame.setLayout(new FlowLayout());
+        mainFrame.setLayout(new BorderLayout());
         mainFrame.setLocation(100,100);
         mainFrameLabel = new JLabel();
         mainFrame.addKeyListener(mainFrameKeyListener);
-        mainFrame.add(mainFrameLabel);
+        mainFrame.add(mainFrameLabel, BorderLayout.CENTER);
+        mapPanel = null;
         //mainFrame.setAlwaysOnTop(true);
+        mainFrame.pack();
         mainFrame.setVisible(true);
     }
 
@@ -85,6 +92,15 @@ public class SwingView implements iView {
         mainFrameLabel.setText(s);
     }
 
+    public void show(Position position) {
+        if (mapPanel == null) {
+            this.mapPanel = new MapPanel();
+            mainFrame.add(mapPanel, BorderLayout.EAST);
+        }
+        else
+            mapPanel.buttonsSetIcons(position);
+    }
+
     @Override
     public void showDialog(String invitation, String[] strings) {
         choiseFrame.setLocation(mainFrame.getX() + 50, mainFrame.getY() + 50);
@@ -113,7 +129,7 @@ public class SwingView implements iView {
     @Override
     public void showLineDialog(String invitation) {
         stringLabel.setText(invitation);
-        stringFrame.setLocation(mainFrame.getX()+50,mainFrame.getY()+50);
+        stringFrame.setLocationRelativeTo(mainFrame);
         stringFrame.setVisible(true);
     }
     @Override

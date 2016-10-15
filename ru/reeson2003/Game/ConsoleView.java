@@ -1,5 +1,7 @@
 package ru.reeson2003.Game;
 
+import ru.reeson2003.map.Position;
+
 import java.util.Scanner;
 
 /**
@@ -21,6 +23,12 @@ public class ConsoleView implements iView {
     public void show(String s) {
         System.out.println(s);
     }
+
+    @Override
+    public void show(Position position) {
+
+    }
+
     @Override
     public void showDialog(String invitation, String[] strings) {
         System.out.print(invitation);

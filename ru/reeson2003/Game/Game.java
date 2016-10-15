@@ -119,6 +119,7 @@ public class Game {
     public void mainLoop() {
         while(true) {
             presenter.show(mainDisplayText(player));
+            presenter.show(player.getPosition());
             action(presenter.getKeyAction());
             //timeActivator.timeActivate();
         }

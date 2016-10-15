@@ -17,12 +17,13 @@ import java.util.List;
  * Created by Тоня on 12.10.2016.
  */
 public class LeftPanel extends JPanel {
+    final static int LEFT_PANEL_WIDTH = 110;
 
-    public LeftPanel(List<Interactable> objects) {
-        initialize(objects);
+    public LeftPanel() {
+        initialize();
     }
 
-    private void initialize(List<Interactable> objects) {
+    private void initialize() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.setAlignmentX(JComponent.LEFT_ALIGNMENT);
         this.setAlignmentY(JComponent.TOP_ALIGNMENT);
@@ -30,29 +31,26 @@ public class LeftPanel extends JPanel {
         Border out = BorderFactory.createLineBorder(Color.BLACK,2,false);
         Border in = BorderFactory.createLineBorder(Color.ORANGE,2,false);
         this.setBorder(BorderFactory.createCompoundBorder(out,in));
-        addObjects(objects);
+        this.setPreferredSize(new Dimension(LEFT_PANEL_WIDTH, MainWindow.MAIN_FRAME_HEIGHT));
         this.setVisible(true);
     }
 
-    private void addObjects(List<Interactable> objects) {
+    public void setObjects(List<Interactable> objects) {
         for (Interactable i :
                 objects) {
             String buttonName = i.getName();
-            JButton button = new JButton(buttonName);
-            button.setBackground(new Color(160,160,160));
-            button.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
-
-
-            //Icon buttonIcon = i.getIcon();
-            //JButton button = new JButton(buttonIcon);
-
+            Icon icon = i.getIcon();
+            JButton button = new JButton(icon);
+            button.setBackground(Color.DARK_GRAY);
+            //button.setBorder(BorderFactory.createLineBorder(Color.black));
+            button.setMaximumSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+            button.setAlignmentX(CENTER_ALIGNMENT);
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     i.interact(null, null);
                 }
             });
-
             this.add(button);
         }
     }

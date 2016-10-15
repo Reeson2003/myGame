@@ -5,6 +5,7 @@ import ru.reeson2003.Game.Game;
 import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.player.Player;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +98,11 @@ public class Storage extends Item{
             result[i] = items.get(i).getWeight();
         }
         return result;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return null;
     }
 
     @Override
