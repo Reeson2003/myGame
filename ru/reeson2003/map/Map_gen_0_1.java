@@ -1,7 +1,9 @@
 package ru.reeson2003.map;
 
-import ru.reeson2003.tools.iTimeActivator;
+import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.npcs.Rabbit;
+import ru.reeson2003.tools.Interactable;
+import ru.reeson2003.tools.TimeActivator;
 
 import javax.swing.*;
 import java.util.LinkedList;
@@ -13,10 +15,8 @@ import java.util.List;
 public class Map_gen_0_1 implements iMapGenerator{
     Position start;
     List<Location> locations;
-    iTimeActivator timeActivator;
 
-    public Map_gen_0_1(iTimeActivator timeActivator) {
-        this.timeActivator = timeActivator;
+    public Map_gen_0_1() {
         this.locations = new LinkedList<>();
         makeMap();
     }
@@ -33,10 +33,20 @@ public class Map_gen_0_1 implements iMapGenerator{
         forest.getPosition(3,3).setEast(field.getPosition(0,1));
         field.getPosition(4,3).setEast(dungeon.getPosition(0,1));
         dungeon.getPosition(0,1).setWest(field.getPosition(4,3));
+        dungeon.getPosition(1,0).deleteDirectionTwoSide(Direction.South);
 
-        Rabbit roger = new Rabbit("Кролик", field.getPosition(2,1));
+        Rabbit roger = new Rabbit("Заец", field.getPosition(2,1));
+        Interactable medved = new Creature("Медведь", "Medved", field.getPosition(2,0)) {
+            @Override
+            public int getID() {
+                return 3;
+            }
 
-        timeActivator.addTimeListener(roger);
+            @Override
+            public void interact() {
+                System.out.println("Йа Медвед");
+            }
+        };
     }
 
     @Override

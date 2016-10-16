@@ -6,6 +6,7 @@ import ru.reeson2003.tools.Interactable;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -32,19 +33,23 @@ public class LeftPanel extends JPanel {
 
     public void setObjects(List<Interactable> objects) {
         this.removeAll();
-        for (Interactable i :
-                objects) {
-            String buttonName = i.getName();
-            int id = i.getID();
-            Icon icon = IconManager.getInstance().getIcon(id);
-            JButton button = new JButton(icon);
-            button.setBackground(Color.DARK_GRAY);
-            //button.setBorder(BorderFactory.createLineBorder(Color.black));
-            button.setMaximumSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
-            button.setAlignmentX(CENTER_ALIGNMENT);
-            button.addActionListener(new ObjectButtonListener(i));
-            this.add(button);
+        synchronized (objects) {
+            for (Interactable i :
+                    objects) {
+//            String buttonName = i.getName();
+                int id = i.getID();
+                Icon icon = IconManager.getInstance().getIcon(id);
+                JButton button = new JButton(icon);
+                this.add(button);
+//            JButton button = new JButton(buttonName);
+                button.setBackground(Color.DARK_GRAY);
+//            button.setBorder(BorderFactory.createLineBorder(Color.black));
+                button.setMaximumSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+                button.setAlignmentX(CENTER_ALIGNMENT);
+                button.addActionListener(new ObjectButtonListener(i));
+            }
         }
         this.repaint();
+        this.validate();
     }
 }

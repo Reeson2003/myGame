@@ -18,11 +18,11 @@ public class Position implements Serializable{
     private Position south;
     private Position east;
     private Position west;
-    private List<Position> extraLinks;
     private List<Interactable> objects;
     private Icon icon;
     private Location location;
-
+// TODO: 16.10.2016 syncronized(objects)
+// TODO: 16.10.2016  убрать иконы в вид
     public Position(int X, int Y, String info) {
         this.coordinate = new Coordinate(X, Y);
         if (info != null)
@@ -33,7 +33,6 @@ public class Position implements Serializable{
         south = null;
         east = null;
         west = null;
-        extraLinks = new LinkedList<>();
         objects = new LinkedList<>();
     }
 
@@ -108,34 +107,6 @@ public class Position implements Serializable{
         return directions;
     }
 
-
-//    public void setExtraLinkToThis(Position another) {
-//        this.extraLinks.add(another);
-//    }
-//    public void setExtraLinkToAnother(Position another) {
-//        another.extraLinks.add(this);
-//    }
-//    public void setExtraLinkTwoSide(Position another) {
-//        this.extraLinks.add(another);
-//        another.extraLinks.add(this);
-//    }
-//    public void deleteExtraLinkFromThis(Position another) {
-//        this.extraLinks.remove(another);
-//    }
-//    public void deleteExtraLinkFromAnother(Position another) {
-//        another.extraLinks.remove(this);
-//    }
-//    public void deleteExtraLinkTwoSide(Position another) {
-//        another.extraLinks.remove(this);
-//        this.extraLinks.remove(another);
-//    }
-//    public String[] getExtraLinksInfos() {
-//        String[] result = new String[extraLinks.size()];
-//        for (int i = 0; i< extraLinks.size(); i++) {
-//            result[i] = extraLinks.get(i).getInfo();
-//        }
-//        return result;
-//    }
 
     public void setInfo(String info) {
         this.info = info;
@@ -221,21 +192,6 @@ public class Position implements Serializable{
     public void removeObject(Interactable object) {
         this.objects.remove(object);
     }
-    public String[] getObjectsNames() {
-
-        String[] result =new String[objects.size()];
-        for (int i = 0; i < objects.size(); i++) {
-            result[i] = objects.get(i).getName();
-        }
-        return result;
-    }
-    public String[] getObjectsInfos() {
-        String[] result =new String[objects.size()];
-        for (int i = 0; i < objects.size(); i++) {
-            result[i] = objects.get(i).getInfo();
-        }
-        return result;
-    }
 
     public Position moveByDirection(Direction dir) {
         if(dir == Direction.South && south != null)
@@ -261,16 +217,6 @@ public class Position implements Serializable{
             return west;
     }
 
-//    public Position getExtraLink(int number) {
-//        if(extraLinks.size()==0)
-//            throw new IllegalArgumentException("There is no extra links");
-//        else if (number <0 || number >= extraLinks.size())
-//            throw new IllegalArgumentException("Number of extra link must be between: " + 1
-//                                                + " and " + extraLinks.size());
-//        else
-//            return extraLinks.get(number);
-//    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -287,12 +233,6 @@ public class Position implements Serializable{
         if(west != null)
             sb.append("West|");
         sb.append("\nExtra links: |");
-        for(int i = 0;i<extraLinks.size();i++) {
-            sb.append(i+1);
-            sb.append("-");
-            sb.append(extraLinks.get(i).info);
-            sb.append("|");
-        }
         return sb.toString();
     }
     @Deprecated

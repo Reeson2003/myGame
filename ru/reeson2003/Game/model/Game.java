@@ -1,12 +1,10 @@
 package ru.reeson2003.Game.model;
 
-import ru.reeson2003.tools.iTimeActivator;
-import ru.reeson2003.Game.view.SwingView0_2;
+import ru.reeson2003.Game.view.SwingView;
 import ru.reeson2003.map.Direction;
 import ru.reeson2003.map.Map;
 import ru.reeson2003.map.Map_gen_0_1;
 import ru.reeson2003.player.Player;
-import ru.reeson2003.tools.TimeActivator;
 
 
 /**
@@ -14,7 +12,6 @@ import ru.reeson2003.tools.TimeActivator;
  */
 public class Game {
     private static Game game = null;
-    private iTimeActivator timeActivator;
     private Player player;
     private Map map;
 
@@ -30,31 +27,16 @@ public class Game {
     }
 
     private void initialize() {
-        timeActivator = new TimeActivator();
-        map = Map.getInstance(new Map_gen_0_1(timeActivator));
+        map = Map.getInstance(new Map_gen_0_1());
         player = new Player("Reeson", "player", map.getStart());
-        Thread timeAct = new Thread(timeActivator);
-        timeAct.start();
         mainLoop();
     }
 
     public synchronized void mainLoop() {
-        //while(true) {
-            SwingView0_2.getInstance().show(player.getPosition().getLocation().getIcon());
-            SwingView0_2.getInstance().show(player.getPosition());
-            SwingView0_2.getInstance().show(player.getInfo());
-            SwingView0_2.getInstance().show(player.getPosition().getObjects());
-//            if(direction != null) {
-//                System.out.println(direction);
-//                player.move(direction);
-//                direction = null;
-//            }
-//            try {
-//                Thread.sleep(50);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        showIcon();
+        showPosition();
+        showInfo();
+        showObjects();
     }
 
     public void setDirection(Direction direction) {
@@ -64,6 +46,19 @@ public class Game {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void showObjects() {
+        SwingView.getInstance().show(player.getPosition().getObjects());
+    }
+    public void showPosition() {
+        SwingView.getInstance().show(player.getPosition());
+    }
+    public void showIcon() {
+        SwingView.getInstance().show(player.getPosition().getLocation().getIcon());
+    }
+    public void showInfo() {
+        SwingView.getInstance().show(player.getInfo());
     }
 
 }

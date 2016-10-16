@@ -9,18 +9,21 @@ import java.util.Map;
  */
 final class ConcreteIconManager extends IconManager {
     final static IconManager iconManager = new ConcreteIconManager();
-    private Map<Integer, String> iconMap = new HashMap<>();
+    private Map<Integer, String> iconUrlMap = new HashMap<>();
+    private Map<Integer, Icon> iconMap = new HashMap<>();
     private ConcreteIconManager() {
         iconsUrlInit();
     }
 
     private void iconsUrlInit() {
-        iconMap.put(1,"rabbit.jpg");
-        iconMap.put(2,"rabbit2.jpg");
+        iconUrlMap.put(0,"player.jpg");
+        iconUrlMap.put(1,"rabbit.jpg");
+        iconUrlMap.put(2,"rabbit2.jpg");
+        iconUrlMap.put(3,"medved.jpg");
     }
 
     @Override
     public Icon getIcon(int id) {
-        return new ImageIcon(iconMap.get(id));
+        return new ImageIcon(iconUrlMap.get(id));
     }
 }

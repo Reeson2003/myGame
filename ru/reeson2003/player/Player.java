@@ -1,5 +1,6 @@
 package ru.reeson2003.player;
 
+import ru.reeson2003.Game.model.Game;
 import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.npcs.Parameters;
@@ -22,10 +23,7 @@ public class Player extends Creature {
 
     @Override
     public void interact() {
-        Player player = ru.reeson2003.Game.model.Game.getInstance().getPlayer();
-        ru.reeson2003.Game.model.Game game = ru.reeson2003.Game.model.Game.getInstance();
-
-        game.mainLoop();
+        Game.getInstance().mainLoop();
     }
 
     @Override
