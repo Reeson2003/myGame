@@ -1,6 +1,6 @@
 package ru.reeson2003.Game.view;
 
-import ru.reeson2003.Game.Interactable;
+import ru.reeson2003.tools.Interactable;
 import ru.reeson2003.map.Position;
 
 import javax.swing.*;
@@ -50,4 +50,5 @@ public class MainWindow extends JFrame {
     public void setText(String text) {
         centerPanel.setText(text);
     }
+
 }

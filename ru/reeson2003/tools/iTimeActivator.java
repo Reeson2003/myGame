@@ -1,4 +1,4 @@
-package ru.reeson2003.Game;
+package ru.reeson2003.tools;
 
 /**
  * Created by Тоня on 08.10.2016.

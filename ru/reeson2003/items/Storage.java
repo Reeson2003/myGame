@@ -1,11 +1,6 @@
 package ru.reeson2003.items;
 
 
-import ru.reeson2003.Game.Game;
-import ru.reeson2003.Game.Interactable;
-import ru.reeson2003.player.Player;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,12 +96,12 @@ public class Storage extends Item{
     }
 
     @Override
-    public Icon getIcon() {
-        return null;
+    public int getID() {
+        return 0;
     }
 
     @Override
-    public void interact(Player player, Game game) {
+    public void interact() {
 
     }
 }

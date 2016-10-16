@@ -1,11 +1,8 @@
 package ru.reeson2003.player;
 
-import ru.reeson2003.Game.Game;
 import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.npcs.Parameters;
-
-import javax.swing.*;
 
 /**
  * Created by Тоня on 01.10.2016.
@@ -19,20 +16,22 @@ public class Player extends Creature {
     }
 
     @Override
-    public Icon getIcon() {
-        return null;
+    public int getID() {
+        return 0;
     }
 
     @Override
-    public void interact(Player player, Game game) {
-        if (player == this) {
-            this.name = game.getString("Enter name");
-            game.show(this.info);
-        } else {
-            game.show(player.getInfo());
-        }
-        position.addObject(this);
+    public void interact() {
+        Player player = ru.reeson2003.Game.model.Game.getInstance().getPlayer();
+        ru.reeson2003.Game.model.Game game = ru.reeson2003.Game.model.Game.getInstance();
+
         game.mainLoop();
+    }
+
+    @Override
+    public String getInfo() {
+        String result = name + "<br>" + position.getInfo();
+        return result;
     }
 
 

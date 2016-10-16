@@ -1,6 +1,6 @@
 package ru.reeson2003.items;
 
-import ru.reeson2003.Game.Interactable;
+import ru.reeson2003.tools.Interactable;
 import ru.reeson2003.map.Position;
 
 /**

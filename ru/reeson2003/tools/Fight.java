@@ -1,4 +1,4 @@
-package ru.reeson2003.Game;
+package ru.reeson2003.tools;
 
 import ru.reeson2003.npcs.Parameters;
 
@@ -27,9 +27,14 @@ public class Fight implements Runnable {
         long op1hit = date.getTime();
         long op2hit = date.getTime();
         long healthRegen = date.getTime();
-        System.out.println(opponent1.name + " and " + opponent2.name + " fight!");
+        //System.out.println(opponent1.name + " and " + opponent2.name + " fight!");
         while (opponent1.getHealth() >0 && opponent2.getHealth() >0) {
             date = new Date();
+            if (date.getTime() - healthRegen > 2000) {
+                opponent1.addHealth(opponent1.getHealthRegen());
+                opponent2.addHealth(opponent2.getHealthRegen());
+                healthRegen = date.getTime();
+            }
             if (date.getTime() - op1hit > opponent1.getAttackSpeed()) {
                 hit(opponent1, opponent2);
                 op1hit = date.getTime();
@@ -39,11 +44,6 @@ public class Fight implements Runnable {
                 hit(opponent2, opponent1);
                 op2hit = date.getTime();
                 System.out.println(opponent1.name + " " + opponent1.getHealth());
-            }
-            if (date.getTime() - healthRegen > 2000) {
-                //opponent1.addHealth(opponent1.getHealthRegen());
-                //opponent2.addHealth(opponent2.getHealthRegen());
-                healthRegen = date.getTime();
             }
             try {
                 Thread.sleep(50);

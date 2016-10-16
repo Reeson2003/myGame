@@ -1,10 +1,11 @@
 package ru.reeson2003.Game.view;
 
+import ru.reeson2003.Game.controller.ArrowsButtonListener;
+import ru.reeson2003.map.Direction;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by Тоня on 12.10.2016.
@@ -21,35 +22,14 @@ public class ArrowsPanel extends JPanel {
 
     private void initialize() {
         this.setLayout(new GridLayout(3,3));
-        /*
-        JButton upButton = new JButton("  ^  ");
-        upButton.setSize(30,30);
-        upButton.setBackground(new Color(160,160,160));
-        upButton.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
-        JButton downButton = new JButton("  v  ");
-        downButton.setSize(30,30);
-        downButton.setBackground(new Color(160,160,160));
-        downButton.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
-        JButton leftButton = new JButton("   <   ");
-        leftButton.setSize(30,30);
-        leftButton.setBackground(new Color(160,160,160));
-        leftButton.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
-        JButton rightButton = new JButton("   >   ");
-        rightButton.setSize(30,30);
-        rightButton.setBackground(new Color(160,160,160));
-        rightButton.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
-
-        JButton centerButton = new JButton(" o ");
-        centerButton.setSize(30,30);
-        centerButton.setBackground(new Color(160,160,160));
-        centerButton.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
-        */
-        this.upButton = getButton("up.jpg");
-        this.downButton = getButton("down.jpg");
-        this.leftButton = getButton("left.jpg");
-        this.rightButton = getButton("right.jpg");
-
-
+        upButton = getButton("up.jpg");
+        upButton.addActionListener(new ArrowsButtonListener(Direction.North));
+        downButton = getButton("down.jpg");
+        downButton.addActionListener(new ArrowsButtonListener(Direction.South));
+        leftButton = getButton("left.jpg");
+        leftButton.addActionListener(new ArrowsButtonListener(Direction.West));
+        rightButton = getButton("right.jpg");
+        rightButton.addActionListener(new ArrowsButtonListener(Direction.East));
 
         this.add(new JLabel());
         this.add(upButton);
@@ -74,14 +54,8 @@ public class ArrowsPanel extends JPanel {
     private JButton getButton(String file) {
         ImageIcon icon  = new ImageIcon(file);
         JButton button = new JButton(icon);
-        //button.setSize(30,30);
-        //button.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(file);
-            }
-        });
+//        button.setSize(30,30);
+//        button.setBorder(BorderFactory.createLineBorder(new Color(0,100,120),1,false));
         return  button;
     }
 }

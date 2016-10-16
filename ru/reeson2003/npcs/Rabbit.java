@@ -1,14 +1,9 @@
 package ru.reeson2003.npcs;
 
-import ru.reeson2003.Game.Game;
-import ru.reeson2003.Game.TimeActivator;
-import ru.reeson2003.Game.iTimeActing;
+import ru.reeson2003.tools.iTimeActing;
 import ru.reeson2003.map.Direction;
-import ru.reeson2003.Game.Interactable;
 import ru.reeson2003.map.Position;
-import ru.reeson2003.player.Player;
 
-import javax.swing.*;
 import java.util.Random;
 
 /**
@@ -16,21 +11,24 @@ import java.util.Random;
  */
 public class Rabbit extends Creature implements iTimeActing {
     long time = 0;
-    private static Random random = new Random();
+    private Random random;
     public Rabbit(String name, Position position) {
         super(name, "Кролик", position);
-    }
-
-
-    @Override
-    public Icon getIcon() {
-        return null;
+        random = new Random();
     }
 
     @Override
-    public void interact(Player player, Game game) {
+    public int getID() {
+        return 1;
+    }
+
+    @Override
+    public void interact() {
         //System.out.println("Hello, im " + name);
+        ru.reeson2003.Game.model.Game game = ru.reeson2003.Game.model.Game.getInstance();
+        position.addObject(new Rabbit("Валера",position));
         randomMove();
+        game.mainLoop();
     }
     private void randomMove() {
         int rnd = random.nextInt(4);
@@ -52,6 +50,7 @@ public class Rabbit extends Creature implements iTimeActing {
             System.out.println(name + " at" + position.getInfo());
             this.time = time;
             randomMove();
+            ru.reeson2003.Game.model.Game.getInstance().mainLoop();
         }
     }
 }

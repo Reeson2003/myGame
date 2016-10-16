@@ -1,8 +1,7 @@
 package ru.reeson2003.npcs;
 
-import ru.reeson2003.Game.Fight;
+import ru.reeson2003.tools.Fight;
 
-import java.util.Date;
 import java.util.Random;
 
 /**

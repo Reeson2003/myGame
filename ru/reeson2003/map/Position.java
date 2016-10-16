@@ -1,11 +1,8 @@
 package ru.reeson2003.map;
 
-import ru.reeson2003.Game.Interactable;
+import ru.reeson2003.tools.Interactable;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;

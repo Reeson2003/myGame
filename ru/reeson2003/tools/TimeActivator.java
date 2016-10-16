@@ -1,4 +1,4 @@
-package ru.reeson2003.Game;
+package ru.reeson2003.tools;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -26,17 +26,17 @@ public class TimeActivator implements iTimeActivator {
                 actingList) {
             items.timeActivate(time);
         }
-        try {
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
     public void run() {
         while(true) {
             timeActivate();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

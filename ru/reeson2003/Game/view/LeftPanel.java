@@ -1,16 +1,11 @@
 package ru.reeson2003.Game.view;
 
-import ru.reeson2003.Game.Interactable;
+import ru.reeson2003.Game.controller.ObjectButtonListener;
+import ru.reeson2003.tools.Interactable;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ColorModel;
 import java.util.List;
 
 /**
@@ -36,22 +31,20 @@ public class LeftPanel extends JPanel {
     }
 
     public void setObjects(List<Interactable> objects) {
+        this.removeAll();
         for (Interactable i :
                 objects) {
             String buttonName = i.getName();
-            Icon icon = i.getIcon();
+            int id = i.getID();
+            Icon icon = IconManager.getInstance().getIcon(id);
             JButton button = new JButton(icon);
             button.setBackground(Color.DARK_GRAY);
             //button.setBorder(BorderFactory.createLineBorder(Color.black));
             button.setMaximumSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
             button.setAlignmentX(CENTER_ALIGNMENT);
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    i.interact(null, null);
-                }
-            });
+            button.addActionListener(new ObjectButtonListener(i));
             this.add(button);
         }
+        this.repaint();
     }
 }
