@@ -6,6 +6,7 @@ import ru.reeson2003.npcs.Rabbit;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by Тоня on 06.10.2016.

@@ -45,7 +45,11 @@ public class Fight implements Runnable {
                 //opponent2.addHealth(opponent2.getHealthRegen());
                 healthRegen = date.getTime();
             }
-
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         if(opponent1.getHealth()>0)
             System.out.println(opponent1.name + " won " + opponent2.name);

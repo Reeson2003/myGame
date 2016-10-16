@@ -122,6 +122,11 @@ public class Game {
             presenter.show(player.getPosition());
             action(presenter.getKeyAction());
             //timeActivator.timeActivate();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

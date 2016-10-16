@@ -26,6 +26,11 @@ public class TimeActivator implements iTimeActivator {
                 actingList) {
             items.timeActivate(time);
         }
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
