@@ -19,8 +19,6 @@ public class Position implements Serializable{
     private Position west;
     private List<Interactable> objects;
     private Location location;
-// TODO: 16.10.2016 syncronized(objects)
-// TODO: 16.10.2016  убрать иконы в вид
     public Position(int X, int Y, String info) {
         this.coordinate = new Coordinate(X, Y);
         if (info != null)

@@ -10,9 +10,13 @@ public class TimeActivator implements Runnable {
     private final long startTime;
     private List<iTimeActing> actingList;
     private static TimeActivator timeActivator;
+    private List<iTimeActing> toRemove;
+    private List<iTimeActing> toAdd;
 
     private TimeActivator() {
         this.actingList = new LinkedList<>();
+        toRemove = new LinkedList<>();
+        toAdd = new LinkedList<>();
         startTime = new Date().getTime();
         Thread thread = new Thread(this);
         thread.start();
@@ -26,23 +30,31 @@ public class TimeActivator implements Runnable {
     }
 
     public void addTimeListener(iTimeActing timeActing) {
-        synchronized (actingList) {
-            actingList.add(timeActing);
+        synchronized (toAdd) {
+            toAdd.add(timeActing);
         }
     }
 
     public void removeTimeListener(iTimeActing timeActing) {
-        synchronized (actingList) {
-            actingList.remove(timeActing);
+        synchronized (toRemove) {
+            toRemove.add(timeActing);
         }
     }
 
     public void timeActivate() {
         this.time = new Date().getTime() - startTime;
         synchronized (actingList) {
+            synchronized (toAdd) {
+                actingList.addAll(toAdd);
+                toAdd.clear();
+            }
             for (iTimeActing items :
                     actingList) {
                 items.timeActivate(time);
+            }
+            synchronized (toRemove){
+                actingList.removeAll(toRemove);
+                toRemove.clear();
             }
         }
     }

@@ -1,6 +1,6 @@
 package ru.reeson2003.Game.model;
 
-import ru.reeson2003.Game.view.SwingView;
+import ru.reeson2003.Game.view.View;
 import ru.reeson2003.map.Direction;
 import ru.reeson2003.map.Map;
 import ru.reeson2003.map.Map_gen_0_1;
@@ -15,7 +15,6 @@ public class Game {
     private Player player;
     private Map map;
 
-    private volatile Direction direction = null;
     private Game() {
         initialize();
     }
@@ -33,15 +32,16 @@ public class Game {
     }
 
     public synchronized void mainLoop() {
+        refreshObjects();
         refreshIcon();
         refreshPosition();
-        refreshInfo();
-        refreshObjects();
     }
 
     public void setDirection(Direction direction) {
         player.move(direction);
-        mainLoop();
+        refreshObjects();
+        refreshIcon();
+        refreshPosition();
     }
 
     public Player getPlayer() {
@@ -49,16 +49,13 @@ public class Game {
     }
 
     public void refreshObjects() {
-        SwingView.getInstance().show(player.getPosition().getObjects());
+        View.getInstance().show(player.getPosition().getObjects());
     }
     public void refreshPosition() {
-        SwingView.getInstance().show(player.getPosition());
+        View.getInstance().show(player.getPosition());
     }
     public void refreshIcon() {
-        SwingView.getInstance().show(player.getPosition().getLocation().getIcon());
-    }
-    public void refreshInfo() {
-        SwingView.getInstance().show(player.getInfo());
+        View.getInstance().show(player.getPosition().getLocation().getIcon());
     }
 
 }

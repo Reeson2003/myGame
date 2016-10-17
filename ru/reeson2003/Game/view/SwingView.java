@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Тоня on 12.10.2016.
  */
-public class SwingView {
+public class SwingView extends View {
     private static SwingView swingView = null;
     private MainWindow mainWindow;
     private SwingView() {

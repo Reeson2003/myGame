@@ -1,6 +1,7 @@
 package ru.reeson2003.npcs;
 
 import ru.reeson2003.Game.model.Game;
+import ru.reeson2003.Game.view.View;
 import ru.reeson2003.tools.TimeActivator;
 import ru.reeson2003.tools.iTimeActing;
 import ru.reeson2003.map.Direction;
@@ -35,6 +36,7 @@ public class Rabbit extends Creature implements iTimeActing {
         Position temp = this.position;
         randomMove();
         Rabbit rabbit = new Rabbit("Заец #" + rabbitsAmount,temp);
+        View.getInstance().show("Привет, я " + name);
         game.refreshObjects();
     }
     private void randomMove() {
@@ -62,16 +64,16 @@ public class Rabbit extends Creature implements iTimeActing {
             }
         }
         if ((time-this.time) > random.nextInt(5000)+2500) {
-            System.out.println(name + " at " + position.getInfo());
+            //System.out.println(name + " at " + position.getInfo());
             this.time = time;
             randomMove();
-            Game.getInstance().mainLoop();
+            Game.getInstance().refreshObjects();
         }
     }
 
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        System.out.println(name + " iz dead");
+        System.err.println(name + " iz dead");
     }
 }

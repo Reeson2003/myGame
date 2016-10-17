@@ -1,6 +1,6 @@
 package ru.reeson2003.player;
 
-import ru.reeson2003.Game.model.Game;
+import ru.reeson2003.Game.view.View;
 import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.npcs.Parameters;
@@ -23,7 +23,7 @@ public class Player extends Creature {
 
     @Override
     public void interact() {
-        Game.getInstance().mainLoop();
+        View.getInstance().show(getInfo());
     }
 
     @Override
@@ -31,6 +31,5 @@ public class Player extends Creature {
         String result = name + "<br>" + position.getInfo();
         return result;
     }
-
 
 }
