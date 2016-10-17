@@ -2,7 +2,6 @@ package ru.reeson2003.map;
 
 import ru.reeson2003.tools.Interactable;
 
-import javax.swing.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,7 +18,6 @@ public class Position implements Serializable{
     private Position east;
     private Position west;
     private List<Interactable> objects;
-    private Icon icon;
     private Location location;
 // TODO: 16.10.2016 syncronized(objects)
 // TODO: 16.10.2016  убрать иконы в вид
@@ -45,19 +43,15 @@ public class Position implements Serializable{
 
     public void setNorth(Position north) {
         this.north = north;
-        setIcon();
     }
     public void setSouth(Position south) {
         this.south = south;
-        setIcon();
     }
     public void setEast(Position east) {
         this.east = east;
-        setIcon();
     }
     public void setWest(Position west) {
         this.west = west;
-        setIcon();
     }
     public void deleteDirectionFromThis(Direction direction) {
         switch (direction) {
@@ -69,30 +63,28 @@ public class Position implements Serializable{
                 break;
             case West: this.west = null;
         }
-        setIcon();
     }
     public void deleteDirectionFromAnother(Direction direction) {
         switch (direction) {
-            case South: {this.south.north = null; this.south.setIcon();}
+            case South: {this.south.north = null;}
                 break;
-            case North: {this.north.south = null; this.north.setIcon();}
+            case North: {this.north.south = null;}
                 break;
-            case East: {this.east.west = null; this.east.setIcon();}
+            case East: {this.east.west = null;}
                 break;
-            case West: {this.west.east = null; this.west.setIcon();}
+            case West: {this.west.east = null;}
         }
     }
     public void deleteDirectionTwoSide(Direction direction) {
         switch (direction) {
-            case South: {this.south.north = null;this.south.setIcon(); this.south = null;}
+            case South: {this.south.north = null; this.south = null;}
                 break;
-            case North: {this.north.south = null; this.north.setIcon(); this.north = null;}
+            case North: {this.north.south = null; this.north = null;}
                 break;
-            case East: {this.east.west = null; this.east.setIcon(); this.east = null;}
+            case East: {this.east.west = null; this.east = null;}
                 break;
-            case West: {this.west.east = null; this.west.setIcon(); this.west = null;}
+            case West: {this.west.east = null; this.west = null;}
         }
-        setIcon();
     }
     public List<Direction> getAvailableDirections() {
         List<Direction> directions = new ArrayList<>(8);
@@ -118,79 +110,35 @@ public class Position implements Serializable{
         return this.coordinate;
     }
 
-    public void setIcon() {
-        if (north == null && south == null && east == null && west == null)
-            icon = loadIcon("nowere.jpg");
-        else if (north != null && south == null && east == null && west == null)
-            icon = loadIcon("n.jpg");
-        else if (north == null && south != null && east == null && west == null)
-            icon = loadIcon("s.jpg");
-        else if (north == null && south == null && east != null && west == null)
-            icon = loadIcon("e.jpg");
-        else if (north == null && south == null && east == null && west != null)
-            icon = loadIcon("w.jpg");
-        else if (north != null && south != null && east == null && west == null)
-            icon = loadIcon("ns.jpg");
-        else if (north != null && south == null && east != null && west == null)
-            icon = loadIcon("ne.jpg");
-        else if (north != null && south == null && east == null && west != null)
-            icon = loadIcon("nw.jpg");
-        else if (north != null && south != null && east != null && west == null)
-            icon = loadIcon("nse.jpg");
-        else if (north != null && south != null && east == null && west != null)
-            icon = loadIcon("nws.jpg");
-        else if (north != null && south == null && east != null && west != null)
-            icon = loadIcon("wne.jpg");
-        else if (north != null && south != null && east != null && west != null)
-            icon = loadIcon("nwse.jpg");
-        else if (north == null && south != null && east != null && west == null)
-            icon = loadIcon("se.jpg");
-        else if (north == null && south != null && east == null && west != null)
-            icon = loadIcon("sw.jpg");
-        else if (north == null && south != null && east != null && west != null)
-            icon = loadIcon("swe.jpg");
-        else if (north == null && south == null && east != null && west != null)
-            icon = loadIcon("we.jpg");
-    }
-    private Icon loadIcon(String file) {
-        /*
-        Image image = null;
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream(file));
-        } catch (IOException e) {
-            System.err.println("Can not load icon");
-            e.printStackTrace();
-        }
-        */
-        return new ImageIcon(file);
-    }
-    public Icon getIcon() {
-        return icon;
-    }
-
     public void addObject(Interactable object) {
-        this.objects.add(object);
+        synchronized (objects) {
+            this.objects.add(object);
+        }
     }
     public Interactable getObject(int n) {
-        if (n < 0 || (n+1) > objects.size()) {
-            throw new IllegalArgumentException("No item with this index");
-        }
-        else {
-            Interactable result = objects.get(n);
-            objects.remove(n);
-            return result;
+        synchronized (objects) {
+            if (n < 0 || (n + 1) > objects.size()) {
+                throw new IllegalArgumentException("No item with this index");
+            } else {
+                Interactable result = objects.get(n);
+                objects.remove(n);
+                return result;
+            }
         }
     }
     public void removeObject(int n) {
-        if (n < 0 || (n+1) > objects.size()) {
-            throw new IllegalArgumentException("No item with this index");
-        }
-        else {
-            objects.remove(n);
+        synchronized (objects) {
+            if (n < 0 || (n + 1) > objects.size()) {
+                throw new IllegalArgumentException("No item with this index");
+            } else {
+                objects.remove(n);
+            }
         }
     }
     public void removeObject(Interactable object) {
-        this.objects.remove(object);
+        synchronized (objects) {
+            this.objects.remove(object);
+        }
     }
 
     public Position moveByDirection(Direction dir) {
@@ -205,7 +153,6 @@ public class Position implements Serializable{
         else
             return this;
     }
-
     public Position getByDirection(Direction dir) {
         if(dir == Direction.South)
             return south;
@@ -237,8 +184,10 @@ public class Position implements Serializable{
     }
     @Deprecated
     public void moveObject(Interactable object, Position position) {
+        synchronized (objects) {
             objects.remove(object);
-        position.addObject(object);
+            position.addObject(object);
+        }
     }
     @Deprecated
     public List<Interactable> getObjects() {

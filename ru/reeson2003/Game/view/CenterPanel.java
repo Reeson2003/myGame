@@ -1,5 +1,7 @@
 package ru.reeson2003.Game.view;
 
+import ru.reeson2003.Game.controller.DirectionKeyListener;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -37,6 +39,8 @@ public class CenterPanel extends JPanel {
                 System.out.println("X: " + e.getX() + " Y: " + e.getY());
             }
         });
+        imageLabel.setFocusable(true);
+        imageLabel.addKeyListener(new DirectionKeyListener());
         this.textPanel = new TextPanel();
         this.textPanel.setAlignmentX(CENTER_ALIGNMENT);
         this.add(imageLabel, BorderLayout.CENTER);

@@ -1,6 +1,7 @@
 package ru.reeson2003.Game.view;
 
 
+import ru.reeson2003.Game.controller.DirectionKeyListener;
 import ru.reeson2003.map.Position;
 import ru.reeson2003.tools.Interactable;
 
@@ -27,6 +28,7 @@ public class SwingView {
     private void initialize() {
         mainWindow = new MainWindow();
         mainWindow.setLocationRelativeTo(null);
+        mainWindow.addKeyListener(new DirectionKeyListener());
         mainWindow.setVisible(true);
     }
 

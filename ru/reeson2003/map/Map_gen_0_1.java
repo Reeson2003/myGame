@@ -1,9 +1,10 @@
 package ru.reeson2003.map;
 
+import ru.reeson2003.Game.model.Game;
+import ru.reeson2003.Game.view.SwingView;
 import ru.reeson2003.npcs.Creature;
 import ru.reeson2003.npcs.Rabbit;
 import ru.reeson2003.tools.Interactable;
-import ru.reeson2003.tools.TimeActivator;
 
 import javax.swing.*;
 import java.util.LinkedList;
@@ -35,8 +36,8 @@ public class Map_gen_0_1 implements iMapGenerator{
         dungeon.getPosition(0,1).setWest(field.getPosition(4,3));
         dungeon.getPosition(1,0).deleteDirectionTwoSide(Direction.South);
 
-        Rabbit roger = new Rabbit("Заец", field.getPosition(2,1));
-        Interactable medved = new Creature("Медведь", "Medved", field.getPosition(2,0)) {
+        Rabbit rabbit = new Rabbit("Заец", field.getPosition(2,1));
+        Creature medved = new Creature("Медведь", "Medved", field.getPosition(2,0)) {
             @Override
             public int getID() {
                 return 3;
@@ -44,7 +45,12 @@ public class Map_gen_0_1 implements iMapGenerator{
 
             @Override
             public void interact() {
-                System.out.println("Йа Медвед");
+                Game game = Game.getInstance();
+                SwingView.getInstance().show("Йа медвед, пошол нахуй!!!!");
+                game.getPlayer().setPosition(forest.getPosition(0,0));
+                game.refreshObjects();
+                game.refreshIcon();
+                game.refreshPosition();
             }
         };
     }

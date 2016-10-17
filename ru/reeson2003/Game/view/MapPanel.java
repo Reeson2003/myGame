@@ -60,15 +60,15 @@ public class MapPanel extends JPanel {
         this.setVisible(true);
     }
     public void buttonsSetIcons(Position position) {
-        square5.setIcon(position.getIcon());
+        square5.setIcon(getIcon(position));
         if (position.getByDirection(Direction.North) != null) {
-            square2.setIcon(position.getByDirection(Direction.North).getIcon());
+            square2.setIcon(getIcon(position.getByDirection(Direction.North)));
             if (position.getByDirection(Direction.North).getByDirection(Direction.West) != null)
-                square1.setIcon(position.getByDirection(Direction.North).getByDirection(Direction.West).getIcon());
+                square1.setIcon(getIcon(position.getByDirection(Direction.North).getByDirection(Direction.West)));
             else
                 square1.setIcon(emptyIcon());
             if (position.getByDirection(Direction.North).getByDirection(Direction.East) != null)
-                square3.setIcon(position.getByDirection(Direction.North).getByDirection(Direction.East).getIcon());
+                square3.setIcon(getIcon(position.getByDirection(Direction.North).getByDirection(Direction.East)));
             else
                 square3.setIcon(emptyIcon());
         } else {
@@ -77,13 +77,13 @@ public class MapPanel extends JPanel {
             square3.setIcon(emptyIcon());
         }
         if (position.getByDirection(Direction.South) != null) {
-            square8.setIcon(position.getByDirection(Direction.South).getIcon());
+            square8.setIcon(getIcon(position.getByDirection(Direction.South)));
             if (position.getByDirection(Direction.South).getByDirection(Direction.West) != null)
-                square7.setIcon(position.getByDirection(Direction.South).getByDirection(Direction.West).getIcon());
+                square7.setIcon(getIcon(position.getByDirection(Direction.South).getByDirection(Direction.West)));
             else
                 square7.setIcon(emptyIcon());
             if (position.getByDirection(Direction.South).getByDirection(Direction.East) != null)
-                square9.setIcon(position.getByDirection(Direction.South).getByDirection(Direction.East).getIcon());
+                square9.setIcon(getIcon(position.getByDirection(Direction.South).getByDirection(Direction.East)));
             else
                 square9.setIcon(emptyIcon());
         } else {
@@ -92,19 +92,19 @@ public class MapPanel extends JPanel {
             square9.setIcon(emptyIcon());
         }
         if (position.getByDirection(Direction.West) != null) {
-            square4.setIcon(position.getByDirection(Direction.West).getIcon());
+            square4.setIcon(getIcon(position.getByDirection(Direction.West)));
             if (position.getByDirection(Direction.West).getByDirection(Direction.North) != null)
-                square1.setIcon(position.getByDirection(Direction.West).getByDirection(Direction.North).getIcon());
+                square1.setIcon(getIcon(position.getByDirection(Direction.West).getByDirection(Direction.North)));
             if (position.getByDirection(Direction.West).getByDirection(Direction.South) != null)
-                square7.setIcon(position.getByDirection(Direction.West).getByDirection(Direction.South).getIcon());
+                square7.setIcon(getIcon(position.getByDirection(Direction.West).getByDirection(Direction.South)));
         } else
             square4.setIcon(emptyIcon());
         if (position.getByDirection(Direction.East) != null) {
-            square6.setIcon(position.getByDirection(Direction.East).getIcon());
+            square6.setIcon(getIcon(position.getByDirection(Direction.East)));
             if (position.getByDirection(Direction.East).getByDirection(Direction.North) != null)
-                square3.setIcon(position.getByDirection(Direction.East).getByDirection(Direction.North).getIcon());
+                square3.setIcon(getIcon(position.getByDirection(Direction.East).getByDirection(Direction.North)));
             if (position.getByDirection(Direction.East).getByDirection(Direction.South) != null)
-                square9.setIcon(position.getByDirection(Direction.East).getByDirection(Direction.South).getIcon());
+                square9.setIcon(getIcon(position.getByDirection(Direction.East).getByDirection(Direction.South)));
         }else
             square6.setIcon(emptyIcon());
     }
@@ -116,5 +116,70 @@ public class MapPanel extends JPanel {
     public void setPosition(Position position) {
         this.position = position;
         buttonsSetIcons(position);
+    }
+
+    public Icon getIcon(Position p) {
+        Icon icon = emptyIcon();
+        if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("nowere.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("n.jpg");
+        else if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("s.jpg");
+        else if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("e.jpg");
+        else if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("w.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("ns.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("ne.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("nw.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("nse.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("nws.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("wne.jpg");
+        else if (p.getByDirection(Direction.North) != null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("nwse.jpg");
+        else if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) == null)
+            icon = loadIcon("se.jpg");
+        else if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) == null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("sw.jpg");
+        else if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) != null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("swe.jpg");
+        else if (p.getByDirection(Direction.North) == null && p.getByDirection(Direction.South) == null
+                && p.getByDirection(Direction.East) != null && p.getByDirection(Direction.West) != null)
+            icon = loadIcon("we.jpg");
+        return icon;
+    }
+    private Icon loadIcon(String file) {
+        /*
+        Image image = null;
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream(file));
+        } catch (IOException e) {
+            System.err.println("Can not load icon");
+            e.printStackTrace();
+        }
+        */
+        return new ImageIcon(file);
     }
 }

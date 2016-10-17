@@ -30,9 +30,16 @@ public class TimeActivator implements Runnable {
             actingList.add(timeActing);
         }
     }
-    public void timeActivate() {
+
+    public void removeTimeListener(iTimeActing timeActing) {
         synchronized (actingList) {
-            this.time = new Date().getTime() - startTime;
+            actingList.remove(timeActing);
+        }
+    }
+
+    public void timeActivate() {
+        this.time = new Date().getTime() - startTime;
+        synchronized (actingList) {
             for (iTimeActing items :
                     actingList) {
                 items.timeActivate(time);
@@ -41,7 +48,7 @@ public class TimeActivator implements Runnable {
     }
 
     public void run() {
-        while(true) {
+        while (true) {
             timeActivate();
             try {
                 Thread.sleep(50);

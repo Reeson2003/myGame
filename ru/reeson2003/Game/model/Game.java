@@ -33,10 +33,10 @@ public class Game {
     }
 
     public synchronized void mainLoop() {
-        showIcon();
-        showPosition();
-        showInfo();
-        showObjects();
+        refreshIcon();
+        refreshPosition();
+        refreshInfo();
+        refreshObjects();
     }
 
     public void setDirection(Direction direction) {
@@ -48,16 +48,16 @@ public class Game {
         return player;
     }
 
-    public void showObjects() {
+    public void refreshObjects() {
         SwingView.getInstance().show(player.getPosition().getObjects());
     }
-    public void showPosition() {
+    public void refreshPosition() {
         SwingView.getInstance().show(player.getPosition());
     }
-    public void showIcon() {
+    public void refreshIcon() {
         SwingView.getInstance().show(player.getPosition().getLocation().getIcon());
     }
-    public void showInfo() {
+    public void refreshInfo() {
         SwingView.getInstance().show(player.getInfo());
     }
 

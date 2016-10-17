@@ -12,12 +12,15 @@ import java.util.Random;
  * Created by Тоня on 01.10.2016.
  */
 public class Rabbit extends Creature implements iTimeActing {
+    private static int rabbitsAmount = 0;
     long time = 0;
+    long lifeTime = 0;
     private Random random;
     public Rabbit(String name, Position position) {
         super(name, "Кролик", position);
         random = new Random();
         TimeActivator.getInstance().addTimeListener(this);
+        rabbitsAmount++;
     }
 
     @Override
@@ -31,9 +34,8 @@ public class Rabbit extends Creature implements iTimeActing {
         Game game = Game.getInstance();
         Position temp = this.position;
         randomMove();
-        Rabbit valera = new Rabbit("Валера",temp);
-        game.showObjects();
-
+        Rabbit rabbit = new Rabbit("Заец #" + rabbitsAmount,temp);
+        game.refreshObjects();
     }
     private void randomMove() {
         int rnd = random.nextInt(4);
@@ -51,11 +53,25 @@ public class Rabbit extends Creature implements iTimeActing {
 
     @Override
     public void timeActivate(long time) {
+        if (lifeTime == 0) {
+            lifeTime = time;
+        } else {
+            if (time-lifeTime > 60000) {
+                position.removeObject(this);
+                TimeActivator.getInstance().removeTimeListener(this);
+            }
+        }
         if ((time-this.time) > random.nextInt(5000)+2500) {
             System.out.println(name + " at " + position.getInfo());
             this.time = time;
             randomMove();
             Game.getInstance().mainLoop();
         }
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        System.out.println(name + " iz dead");
     }
 }

@@ -1,6 +1,7 @@
 package ru.reeson2003.Game.view;
 
 import ru.reeson2003.Game.controller.ArrowsButtonListener;
+import ru.reeson2003.Game.controller.DirectionKeyListener;
 import ru.reeson2003.map.Direction;
 
 import javax.swing.*;
@@ -47,7 +48,7 @@ public class ArrowsPanel extends JPanel {
         Border in = BorderFactory.createLineBorder(Color.ORANGE,2,false);
         this.setBorder(BorderFactory.createCompoundBorder(out,in));
         this.setMaximumSize(new Dimension(90,90));
-
+        System.out.println(this.hasFocus());
         this.setVisible(true);
     }
 
