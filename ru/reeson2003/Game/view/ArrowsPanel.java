@@ -23,13 +23,13 @@ public class ArrowsPanel extends JPanel {
 
     private void initialize() {
         this.setLayout(new GridLayout(3,3));
-        upButton = getButton("up.jpg");
+        upButton = getButton("icons/arrows/up.jpg");
         upButton.addActionListener(new ArrowsButtonListener(Direction.North));
-        downButton = getButton("down.jpg");
+        downButton = getButton("icons/arrows/down.jpg");
         downButton.addActionListener(new ArrowsButtonListener(Direction.South));
-        leftButton = getButton("left.jpg");
+        leftButton = getButton("icons/arrows/left.jpg");
         leftButton.addActionListener(new ArrowsButtonListener(Direction.West));
-        rightButton = getButton("right.jpg");
+        rightButton = getButton("icons/arrows/right.jpg");
         rightButton.addActionListener(new ArrowsButtonListener(Direction.East));
 
         this.add(new JLabel());
@@ -48,7 +48,6 @@ public class ArrowsPanel extends JPanel {
         Border in = BorderFactory.createLineBorder(Color.ORANGE,2,false);
         this.setBorder(BorderFactory.createCompoundBorder(out,in));
         this.setMaximumSize(new Dimension(90,90));
-        System.out.println(this.hasFocus());
         this.setVisible(true);
     }
 

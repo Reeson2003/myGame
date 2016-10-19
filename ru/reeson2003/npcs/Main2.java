@@ -18,7 +18,7 @@ public class Main2 {
         print(m2);
         Fight fight1 = new Fight(p,m1);
         Fight fight2 = new Fight(p,m2);
-        //Fight fight3 = new Fight(p,m3);
+        //Fight fight3 = new Fight(parameters,m3);
         /*
         for (int i = 0; i < 50; i++) {
             Parameters p1 = getParameters("Player" + "." +i,30);
@@ -38,7 +38,7 @@ public class Main2 {
         points -= con;
         int agi = points;
         //System.out.println(str + " " + con + " " + agi);
-        Parameters p = new Parameters(100000, str, con, agi, 0, 0);
+        Parameters p = new Parameters(10, str, con, agi, 0, 0);
         p.name = name;
         return p;
     }

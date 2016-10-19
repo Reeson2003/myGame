@@ -28,7 +28,6 @@ public class Rabbit extends Creature implements iTimeActing {
     public int getID() {
         return 1;
     }
-
     @Override
     public void interact() {
         //System.out.println("Hello, im " + name);
@@ -52,7 +51,6 @@ public class Rabbit extends Creature implements iTimeActing {
                 break;
         }
     }
-
     @Override
     public void timeActivate(long time) {
         if (lifeTime == 0) {
@@ -70,7 +68,6 @@ public class Rabbit extends Creature implements iTimeActing {
             Game.getInstance().refreshObjects();
         }
     }
-
     @Override
     protected void finalize() throws Throwable {
         super.finalize();

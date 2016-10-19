@@ -16,10 +16,12 @@ final class ConcreteIconManager extends IconManager {
     }
 
     private void iconsUrlInit() {
-        iconUrlMap.put(0,"player.jpg");
-        iconUrlMap.put(1,"rabbit.jpg");
-        iconUrlMap.put(2,"rabbit2.jpg");
-        iconUrlMap.put(3,"medved.jpg");
+        iconUrlMap.put(0,"icons/npcs/player.jpg");
+        iconUrlMap.put(1,"icons/npcs/rabbit.jpg");
+        iconUrlMap.put(2,"icons/npcs/rabbit2.jpg");
+        iconUrlMap.put(3,"icons/npcs/medved.jpg");
+        iconUrlMap.put(4, "icons/npcs/door.jpg");
+        iconUrlMap.put(5,"icons/npcs/small_house.jpg");
     }
 
     @Override

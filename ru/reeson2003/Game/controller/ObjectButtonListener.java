@@ -1,6 +1,5 @@
 package ru.reeson2003.Game.controller;
 
-import ru.reeson2003.Game.model.Game;
 import ru.reeson2003.tools.Interactable;
 
 import java.awt.event.ActionEvent;
@@ -16,7 +15,6 @@ public class ObjectButtonListener implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(object.getName());
         object.interact();
     }
 }

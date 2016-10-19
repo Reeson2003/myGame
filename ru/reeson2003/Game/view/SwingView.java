@@ -3,6 +3,7 @@ package ru.reeson2003.Game.view;
 
 import ru.reeson2003.Game.controller.DirectionKeyListener;
 import ru.reeson2003.map.Position;
+import ru.reeson2003.npcs.Parameters;
 import ru.reeson2003.tools.Interactable;
 
 import javax.swing.*;
@@ -24,7 +25,6 @@ public class SwingView extends View {
         }
         return swingView;
     }
-
     private void initialize() {
         mainWindow = new MainWindow();
         mainWindow.setLocationRelativeTo(null);
@@ -32,17 +32,26 @@ public class SwingView extends View {
         mainWindow.setVisible(true);
     }
 
+    @Override
     public void show(List<Interactable> objects) {
-        mainWindow.setObjects(objects);
+        mainWindow.showObjects(objects);
     }
+    @Override
+    public void show(Parameters parameters) {
+        mainWindow.showParameters(parameters);
+    }
+    @Override
     public void show(Position position) {
-        mainWindow.setPosition(position);
+        mainWindow.showPosition(position);
     }
+    @Override
     public void show(Icon icon) {
-        mainWindow.setIcon(icon);
+        mainWindow.showIcon(icon);
     }
+    @Override
     public void show(String text) {
-        mainWindow.setText(text);
+        mainWindow.showText(text);
     }
+
 
 }

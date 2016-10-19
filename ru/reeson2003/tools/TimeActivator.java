@@ -14,9 +14,9 @@ public class TimeActivator implements Runnable {
     private List<iTimeActing> toAdd;
 
     private TimeActivator() {
-        this.actingList = new LinkedList<>();
-        toRemove = new LinkedList<>();
-        toAdd = new LinkedList<>();
+        this.actingList = new ArrayList<>();
+        toRemove = new ArrayList<>();
+        toAdd = new ArrayList<>();
         startTime = new Date().getTime();
         Thread thread = new Thread(this);
         thread.start();

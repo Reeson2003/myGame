@@ -1,6 +1,7 @@
 package ru.reeson2003.Game.view;
 
 import ru.reeson2003.Game.controller.DirectionKeyListener;
+import ru.reeson2003.npcs.Parameters;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -15,6 +16,7 @@ public class CenterPanel extends JPanel {
     final static int CENTER_PANEL_WIDTH = 400;
     final static int IMAGE_LABEL_HEIGHT = 290;
     private JLabel imageLabel;
+    private StatEnterWindow statEnterWindow;
     private TextPanel textPanel;
 
     public CenterPanel() {
@@ -28,30 +30,31 @@ public class CenterPanel extends JPanel {
         Border in = BorderFactory.createLineBorder(Color.ORANGE,2,false);
         this.setBackground(Color.DARK_GRAY);
         this.setBorder(BorderFactory.createCompoundBorder(out,in));
-        this.imageLabel = new JLabel();
-        this.imageLabel.setBorder(BorderFactory.createCompoundBorder(out,in));
-        this.imageLabel.setPreferredSize(new Dimension(CENTER_PANEL_WIDTH,IMAGE_LABEL_HEIGHT));
-        this.imageLabel.setAlignmentX(CENTER_ALIGNMENT);
-        imageLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                System.out.println("X: " + e.getX() + " Y: " + e.getY());
-            }
-        });
-        imageLabel.setFocusable(true);
-        imageLabel.addKeyListener(new DirectionKeyListener());
-        this.textPanel = new TextPanel();
-        this.textPanel.setAlignmentX(CENTER_ALIGNMENT);
+        imageLabel = new JLabel();
+        imageLabel.setBorder(BorderFactory.createCompoundBorder(out,in));
+        imageLabel.setPreferredSize(new Dimension(CENTER_PANEL_WIDTH,IMAGE_LABEL_HEIGHT));
+        imageLabel.setAlignmentX(CENTER_ALIGNMENT);
+//        imageLabel.setVisible(true);
+
+        textPanel = new TextPanel();
+        textPanel.setAlignmentX(CENTER_ALIGNMENT);
+        statEnterWindow = StatEnterWindow.getInstance();
         this.add(imageLabel, BorderLayout.CENTER);
         this.add(textPanel, BorderLayout.SOUTH);
 
     }
-    public void setIcon(Icon icon) {
+
+    public void showIcon(Icon icon) {
         this.imageLabel.setIcon(icon);
     }
-    public void setText(String text) {
+    public void showText(String text) {
         String result = new String("<html>" + text + "</text>");
         this.textPanel.setText(result);
+    }
+    public void showParameters(Parameters parameters) {
+        StatEnterWindow statEnterWindow = StatEnterWindow.getInstance();
+        this.remove(textPanel);
+        this.add(statEnterWindow, BorderLayout.CENTER);
+        StatEnterWindow.getInstance().showStats(parameters);
     }
 }

@@ -1,5 +1,7 @@
 package ru.reeson2003.npcs;
 
+import ru.reeson2003.Game.view.View;
+
 /**
  * Created by Тоня on 04.10.2016.
  */
@@ -31,6 +33,41 @@ public class Parameters {
     private int atackSpeed;
     private int evasion;
     private int accuracy;
+
+    public Parameters(double experience, int strength,
+                      int constitution, int agility,
+                      int wisdom, int intellect) {
+        this.level = 0;
+        this.expCoeff = 15;
+        this.expToNextLevel = this.expCoeff;
+        this.skillPoints = 0;
+        this.strength = strength;
+        this.constitution = constitution;
+        this.agility = agility;
+        this.wisdom = wisdom;
+        this.intellect = intellect;
+        addExperience((int)experience);
+        calcParameters();
+        this.health = getMaximumHealth();
+        this.mana = getMaximumMana();
+    }
+    public Parameters(int level, int strength,
+                      int constitution, int agility,
+                      int wisdom, int intellect) {
+        this.level = level;
+        calcExpToNextLevel(this.level);
+        this.skillPoints = 0;
+        this.strength = strength;
+        this.constitution = constitution;
+        this.agility = agility;
+        this.wisdom = wisdom;
+        this.intellect = intellect;
+        calcParameters();
+        this.health = getMaximumHealth();
+        this.mana = getMaximumMana();
+    }
+
+
 
     public int getLevel() {
         return level;
@@ -104,7 +141,7 @@ public class Parameters {
         else if(this.health+health <0)
             this.health = 0;
     }
-    public void addMana(int mana) {
+    synchronized public void addMana(int mana) {
         if(this.mana + mana <= this.maximumMana && this.mana+mana >=0)
             this.mana += mana;
         else if(this.mana + mana > this.maximumMana)
@@ -112,23 +149,52 @@ public class Parameters {
         else if(this.mana+mana <0)
             this.mana = 0;
     }
-
-    public Parameters(int experience, int strength,
-                      int constitution, int agility,
-                      int wisdom, int intellect) {
-        this.level = 0;
-        this.expCoeff = 15;
-        this.expToNextLevel = this.expCoeff;
-        this.skillPoints = 0;
-        this.strength = strength;
-        this.constitution = constitution;
-        this.agility = agility;
-        this.wisdom = wisdom;
-        this.intellect = intellect;
-        addExperience(experience);
+    public void addSkillPoints(int skillPoints) {
+        this.skillPoints += skillPoints;
+    }
+    public void addStrength(int strength) {
+        this.strength += strength;
         calcParameters();
-        this.health = getMaximumHealth();
-        this.mana = getMaximumMana();
+        View.getInstance().show(this);
+    }
+    public void addConstitution(int constitution) {
+        this.constitution += constitution;
+        calcParameters();
+        View.getInstance().show(this);
+    }
+    public void addAgility(int agility) {
+        this.agility += agility;
+        calcParameters();
+        View.getInstance().show(this);
+    }
+    public void addIntellect(int intellect) {
+        this.intellect += intellect;
+        calcParameters();
+        View.getInstance().show(this);
+    }
+    public void addWisdom(int wisdom) {
+        this.wisdom += wisdom;
+        calcParameters();
+        View.getInstance().show(this);
+    }
+
+    public void setSkillPoints(int skillPoints) {
+        this.skillPoints = skillPoints;
+    }
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
+    }
+    public void setAgility(int agility) {
+        this.agility = agility;
+    }
+    public void setWisdom(int wisdom) {
+        this.wisdom = wisdom;
+    }
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
     }
 
     public void addExperience (int experience) {
@@ -142,12 +208,11 @@ public class Parameters {
             skillPoints++;
             if(level%5 == 0)
                 skillPoints++;
-            this.expCoeff = this.expCoeff * 11 / 10;
-            this.expToNextLevel += this.expCoeff;
+            expCoeff = expCoeff * 11 / 10;
+            expToNextLevel += expCoeff;
             addExperience(experience);
         }
     }
-
     public void calcParameters() {
         this.maximumHealth = 100 + level*5 + constitution*5;
         this.maximumMana = 100 + level*5 + intellect*5;
@@ -161,10 +226,16 @@ public class Parameters {
         this.evasion = 5 + agility*8/10;
         this.accuracy = 5 + agility*8/10;
     }
-
     private void levelUp() {
         level++;
         calcParameters();
         //System.out.println("Level UP!");
     }
+    private void calcExpToNextLevel(int level) {
+        for (int i = 0; i< level; i++) {
+            expCoeff = expCoeff*11/10;
+            expToNextLevel += expCoeff;
+        }
+    }
+
 }

@@ -1,5 +1,8 @@
 package ru.reeson2003.Game.view;
 
+import ru.reeson2003.Game.controller.PlayerButtonListener;
+import ru.reeson2003.Game.controller.StatsButtonListener;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -26,15 +29,20 @@ public class IconsPanel extends JPanel {
 
     private void initialize() {
         this.setLayout(new GridLayout(3, 3));
-        this.button1 = new JButton();
-        this.button2 = new JButton();
-        this.button3 = new JButton();
-        this.button4 = new JButton();
-        this.button5 = new JButton();
-        this.button6 = new JButton();
-        this.button7 = new JButton();
-        this.button8 = new JButton();
-        this.button9 = new JButton();
+        button1 = new JButton();
+        button1.addActionListener(new StatsButtonListener());
+        button1.setIcon(new ImageIcon("icons/buttons/player.jpg"));
+        button2 = new JButton();
+        button2.setIcon(new ImageIcon("icons/buttons/armor.jpg"));
+        button3 = new JButton();
+        button3.setIcon(new ImageIcon("icons/buttons/bag.jpg"));
+        button4 = new JButton();
+        button4.setIcon(new ImageIcon("icons/buttons/scroll.jpg"));
+        button5 = new JButton();
+        button6 = new JButton();
+        button7 = new JButton();
+        button8 = new JButton();
+        button9 = new JButton();
 
         this.add(button1);
         this.add(button2);

@@ -4,6 +4,7 @@ import ru.reeson2003.Game.view.View;
 import ru.reeson2003.map.Direction;
 import ru.reeson2003.map.Map;
 import ru.reeson2003.map.Map_gen_0_1;
+import ru.reeson2003.npcs.Parameters;
 import ru.reeson2003.player.Player;
 
 
@@ -27,7 +28,7 @@ public class Game {
 
     private void initialize() {
         map = Map.getInstance(new Map_gen_0_1());
-        player = new Player("Reeson", "player", map.getStart());
+        player = new Player("Reeson", "player", map.getStart(), new Parameters(1000d,5,5,5,5,5));
         mainLoop();
     }
 
@@ -56,6 +57,10 @@ public class Game {
     }
     public void refreshIcon() {
         View.getInstance().show(player.getPosition().getLocation().getIcon());
+    }
+
+    public void showPlayerStats() {
+        View.getInstance().show(player.getParameters());
     }
 
 }

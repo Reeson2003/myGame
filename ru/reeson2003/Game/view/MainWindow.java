@@ -1,5 +1,6 @@
 package ru.reeson2003.Game.view;
 
+import ru.reeson2003.npcs.Parameters;
 import ru.reeson2003.tools.Interactable;
 import ru.reeson2003.map.Position;
 
@@ -27,9 +28,9 @@ public class MainWindow extends JFrame {
     private void initialize() {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        this.leftPanel = new LeftPanel();
-        this.rightPanel = new RightPanel();
-        this.centerPanel  =new CenterPanel();
+        leftPanel = new LeftPanel();
+        rightPanel = new RightPanel();
+        centerPanel  =new CenterPanel();
         this.add(leftPanel, BorderLayout.WEST);
         this.add(rightPanel, BorderLayout.EAST);
         this.add(centerPanel,BorderLayout.CENTER);
@@ -38,17 +39,20 @@ public class MainWindow extends JFrame {
         this.pack();
     }
 
-    public void setObjects(java.util.List<Interactable> objects) {
+    public void showObjects(java.util.List<Interactable> objects) {
         this.leftPanel.setObjects(objects);
     }
-    public void setPosition(Position position) {
+    public void showPosition(Position position) {
         rightPanel.setPosition(position);
     }
-    public void setIcon(Icon icon) {
-        centerPanel.setIcon(icon);
+    public void showIcon(Icon icon) {
+        centerPanel.showIcon(icon);
     }
-    public void setText(String text) {
-        centerPanel.setText(text);
+    public void showText(String text) {
+        centerPanel.showText(text);
+    }
+    public void showParameters(Parameters parameters) {
+        centerPanel.showParameters(parameters);
     }
 
 }

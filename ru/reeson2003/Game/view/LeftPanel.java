@@ -6,6 +6,8 @@ import ru.reeson2003.tools.Interactable;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import java.util.List;
  */
 public class LeftPanel extends JPanel {
     final static int LEFT_PANEL_WIDTH = 110;
+    private InteractableDialog interactableDialog;
 
     public LeftPanel() {
         initialize();
@@ -36,17 +39,19 @@ public class LeftPanel extends JPanel {
         synchronized (objects) {
             for (Interactable i :
                     objects) {
-//            String buttonName = i.getName();
                 int id = i.getID();
                 Icon icon = IconManager.getInstance().getIcon(id);
                 JButton button = new JButton(icon);
                 this.add(button);
-//            JButton button = new JButton(buttonName);
                 button.setBackground(Color.DARK_GRAY);
-//            button.setBorder(BorderFactory.createLineBorder(Color.black));
                 button.setMaximumSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
                 button.setAlignmentX(CENTER_ALIGNMENT);
-                button.addActionListener(new ObjectButtonListener(i));
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        InteractableDialog.getInstance().showDialog(i);
+                    }
+                });
             }
         }
         this.repaint();

@@ -4,7 +4,6 @@ import ru.reeson2003.tools.Interactable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -29,7 +28,7 @@ public class Position implements Serializable{
         south = null;
         east = null;
         west = null;
-        objects = new LinkedList<>();
+        objects = new ArrayList<>();
     }
 
     public void setLocation(Location location) {

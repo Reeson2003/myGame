@@ -11,6 +11,7 @@ public abstract class Creature implements Interactable{
     protected String name = "";
     protected String info = "";
     protected Position position;
+    protected Parameters parameters;
     protected Creature(String name, String info, Position position) {
         if (name != null)
             this.name = name;
@@ -26,6 +27,12 @@ public abstract class Creature implements Interactable{
     public void move(Direction direction) {
         setPosition(position.moveByDirection(direction));
     }
+    public void setParameters(Parameters parameters) {
+        this.parameters = parameters;
+    }
+    public Parameters getParameters() {
+        return parameters;
+    }
     @Override
     public void setPosition(Position position) {
         this.position.removeObject(this);
@@ -34,7 +41,21 @@ public abstract class Creature implements Interactable{
     }
     @Override
     public String getInfo() {
-        return this.info;
+        if(parameters != null)
+            return (name + " " +
+                "lvl: " + parameters.getLevel() +
+                " HP: " + parameters.getMaximumHealth() +
+                " MP: " + parameters.getMaximumMana() +
+                " P.Atk: " + parameters.getPhysicalAttack() +
+                " P.Def: " + parameters.getPhysicalDefence() +
+                " Crt: " + parameters.getCriticalChance() +
+                " Evs: " + parameters.getEvasion() +
+                " Acc: " + parameters.getAccuracy() +
+                " Asp: " + parameters.getAttackSpeed() +
+                " HPr: " + parameters.getHealthRegen() +
+                " MPr: " + parameters.getManaRegen());
+        else
+            return info;
     }
     @Override
     public String getName() {

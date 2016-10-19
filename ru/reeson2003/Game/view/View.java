@@ -1,6 +1,7 @@
 package ru.reeson2003.Game.view;
 
 import ru.reeson2003.map.Position;
+import ru.reeson2003.npcs.Parameters;
 import ru.reeson2003.tools.Interactable;
 
 import javax.swing.*;
@@ -20,4 +21,5 @@ public abstract class View {
     public abstract void show(Icon icon);
     public abstract void show(Position position);
     public abstract void show(List<Interactable> objects);
+    public abstract void show(Parameters parameters);
 }
