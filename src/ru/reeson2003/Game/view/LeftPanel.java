@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class LeftPanel extends JPanel {
     final public static int WIDTH = 110;
-    private InteractableDialog interactableDialog;
+//    private InteractableDialog interactableDialog;
 
     public LeftPanel() {
         initialize();
