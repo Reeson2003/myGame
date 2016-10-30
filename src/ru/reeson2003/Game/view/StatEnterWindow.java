@@ -57,7 +57,7 @@ public class StatEnterWindow extends JPanel {
         this.add(statConfirmPanel);
     }
 
-    public void showStats(Parameters parameters) {
+    public void showStats(final Parameters parameters) {
         if (strength < 0)
             strength = parameters.getStrength();
         if (constitution < 0)

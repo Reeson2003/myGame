@@ -23,7 +23,7 @@ public class Map_gen_0_1 implements iMapGenerator{
     }
 
     private void makeMap() {
-        Location forest = new LocGen0_1("Forest","Лес", 4, 4).getLocation();
+        final Location forest = new LocGen0_1("Forest","Лес", 4, 4).getLocation();
         forest.setIcon(new ImageIcon("icons/mainpics/fantasy_forest.jpg"));
         Location field  = new LocGen0_1("Field","Поле", 5, 5).getLocation();
         field.setIcon(new ImageIcon("icons/mainpics/fantasy_field.jpg"));
@@ -55,7 +55,7 @@ public class Map_gen_0_1 implements iMapGenerator{
             }
         };
 
-        Location smallHouse = new LocGen0_1("House", "Избушка", 2,2).getLocation();
+        final Location smallHouse = new LocGen0_1("House", "Избушка", 2,2).getLocation();
         smallHouse.setIcon(new ImageIcon("icons/mainpics/small_house.jpg"));
         smallHouse.getPosition(0,0).addObject(new Interactable() {
             @Override
