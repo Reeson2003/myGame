@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Тоня on 12.10.2016.
  */
 public class LeftPanel extends JPanel {
-    final static int WIDTH = 110;
+    final public static int WIDTH = 110;
     private InteractableDialog interactableDialog;
 
     public LeftPanel() {
@@ -35,7 +35,7 @@ public class LeftPanel extends JPanel {
     public void setObjects(List<Interactable> objects) {
         this.removeAll();
         synchronized (objects) {
-            for (Interactable i :
+            for (final Interactable i :
                     objects) {
                 int id = i.getID();
                 Icon icon = IconManager.getInstance().getIcon(id);
