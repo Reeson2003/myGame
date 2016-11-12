@@ -28,7 +28,7 @@ public class Player extends Creature {
 
     @Override
     public String getInfo() {
-        String result = name + "<br>" + position.getInfo();
+        String result = name + " " + position.getInfo();
         return result;
     }
 

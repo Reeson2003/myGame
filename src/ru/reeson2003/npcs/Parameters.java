@@ -214,17 +214,18 @@ public class Parameters {
         }
     }
     public void calcParameters() {
-        this.maximumHealth = 100 + level*5 + constitution*5;
-        this.maximumMana = 100 + level*5 + intellect*5;
-        this.healthRegen = 1 + constitution*8/10;
-        this.manaRegen = 1 + intellect*8/10;
+        ParametersStrategy strategy = SimpleParametersStrategy.getInstance();
+        this.maximumHealth = strategy.getMaximumHealth(level,strength,constitution,agility,intellect,wisdom);
+        this.maximumMana = strategy.getMaximumMana(level,strength,constitution,agility,intellect,wisdom);
+        this.healthRegen = strategy.getHealthRegen(level,strength,constitution,agility,intellect,wisdom);
+        this.manaRegen = strategy.getManaRegen(level,strength,constitution,agility,intellect,wisdom);
 
-        this.physicalAttack = 5 + strength*8/10;
-        this.physicalDefence = 5 + constitution*8/10;
-        this.criticalChance = 5 + agility*8/10;
-        this.atackSpeed = 10000/(5 + agility*8/10);
-        this.evasion = 5 + agility*8/10;
-        this.accuracy = 5 + agility*8/10;
+        this.physicalAttack = strategy.getPhysicalAttack(level,strength,constitution,agility,intellect,wisdom);
+        this.physicalDefence = strategy.getPhysicalDefence(level,strength,constitution,agility,intellect,wisdom);
+        this.criticalChance = strategy.getCriticalChance(level,strength,constitution,agility,intellect,wisdom);
+        this.atackSpeed = strategy.getAttackSpeed(level,strength,constitution,agility,intellect,wisdom);
+        this.evasion = strategy.getEvasion(level,strength,constitution,agility,intellect,wisdom);
+        this.accuracy = strategy.getAccuracy(level,strength,constitution,agility,intellect,wisdom);
     }
     private void levelUp() {
         level++;

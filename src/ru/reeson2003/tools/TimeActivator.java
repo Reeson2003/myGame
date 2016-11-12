@@ -13,7 +13,6 @@ public class TimeActivator implements Runnable {
     private List<iTimeActing> toRemove;
     private List<iTimeActing> toAdd;
 
-    // TODO: 23.10.2016  thread sleep поменять на thread wait
     private TimeActivator() {
         this.actingList = new ArrayList<>();
         toRemove = new ArrayList<>();
