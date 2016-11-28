@@ -1,8 +1,10 @@
 package ru.reeson2003.Game.view;
 
-import ru.reeson2003.map.Position;
-import ru.reeson2003.npcs.Parameters;
-import ru.reeson2003.tools.Interactable;
+import ru.reeson2003.Game.model.map.Position;
+import ru.reeson2003.Game.model.npcs.Parameters;
+import ru.reeson2003.Game.model.tools.Interactable;
+import ru.reeson2003.Game.view.ConsoleView.ConsoleView;
+import ru.reeson2003.Game.view.swingView.SwingView;
 
 import javax.swing.*;
 import java.util.List;
@@ -15,7 +17,7 @@ public abstract class View {
 
     }
     public static View getInstance() {
-        return SwingView.getInstance();
+        return ConsoleView.getInstance();
     }
     public abstract void show(String text);
     public abstract void show(Icon icon);

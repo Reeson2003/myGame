@@ -1,11 +1,11 @@
 package ru.reeson2003.Game.model;
 
 import ru.reeson2003.Game.view.View;
-import ru.reeson2003.map.Direction;
-import ru.reeson2003.map.Map;
-import ru.reeson2003.map.Map_gen_0_1;
-import ru.reeson2003.npcs.Parameters;
-import ru.reeson2003.player.Player;
+import ru.reeson2003.Game.model.map.Direction;
+import ru.reeson2003.Game.model.map.Map;
+import ru.reeson2003.Game.model.map.MapFactory;
+import ru.reeson2003.Game.model.npcs.Parameters;
+import ru.reeson2003.Game.model.player.Player;
 
 
 /**
@@ -27,7 +27,7 @@ public class Game {
     }
 
     private void initialize() {
-        map = Map.getInstance(new Map_gen_0_1());
+        map = MapFactory.getMap();
         player = new Player("Reeson", "player", map.getStart(), new Parameters(1000d,5,5,5,5,5));
         mainLoop();
     }

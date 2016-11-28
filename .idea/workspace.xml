@@ -1,19 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3c55a5f-c95e-47a2-a7d7-02b91b32b28b" name="Default" comment="some fixes">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/reeson2003/npcs/ParametersStrategy.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/reeson2003/npcs/SimpleParametersStrategy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/Colors.class" afterPath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/Colors.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/npcs/Parameters.class" afterPath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/npcs/Parameters.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/player/Player.class" afterPath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/player/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/tools/TimeActivator.class" afterPath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/tools/TimeActivator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="f3c55a5f-c95e-47a2-a7d7-02b91b32b28b" name="Default" comment="Map and Loc factories, end some refactor">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Main3.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/ConsoleView/ConsoleView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/NewView.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/controller/ArrowsButtonListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/controller/DirectionKeyListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/controller/ObjectButtonListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/controller/PlayerButtonListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/controller/StatsButtonListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/ArrowsPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/CenterPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/Colors.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/ConcreteIconManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/IconManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/IconsPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/InteractableDialog$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/InteractableDialog.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/LeftPanel$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/LeftPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/Main3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/MainWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/MapPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/RightPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatConfirmPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$10.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$11.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$12.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow$9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatEnterWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StatPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/StringGetWindow.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/SwingView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/TextPanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/black.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/e.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/e_test.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/n.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/ne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/nowere.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/ns.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/nse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/nw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/nws.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/nwse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/s.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/se.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/sw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/swe.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/test.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/w.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/we.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/icons/wne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/items/Gold.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/items/Item.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/items/ItemPacket.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/items/Storage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Coordinate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Direction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/LocGen0_1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Location.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Map.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Map_gen_0_1$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Map_gen_0_1$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Map_gen_0_1$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Map_gen_0_1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Position$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/Position.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/iLocationGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/iMapGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/black.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/e.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/n.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/ne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/nowere.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/ns.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/nse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/nw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/nws.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/nwse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/s.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/se.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/sw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/swe.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/test.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/w.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/we.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons/wne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/black.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/e.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/n.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/ne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/nowere.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/ns.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/nse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/nw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/nws.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/nwse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/s.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/se.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/sw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/swe.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/test.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/w.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/we.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons2/wne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/black.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/e.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/n.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/ne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/nowere.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/ns.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/nse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/nw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/nws.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/nwse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/s.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/se.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/sw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/swe.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/test.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/test2.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/w.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/we.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/map/icons3/wne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/npcs/Creature.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/npcs/Main2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/npcs/Monster.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/npcs/Parameters.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/npcs/Rabbit.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/player/Equip.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/player/Player.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/tools/Fight.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/tools/Interactable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/tools/TimeActivator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/tools/iTimeActing.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/ArrowsPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/CenterPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/Colors.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/ConcreteIconManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/IconManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/IconsPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/InteractableDialog.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/LeftPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/Main3.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/MainWindow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/MapPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/RightPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/StatConfirmPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/StatEnterWindow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/StatPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/StringGetWindow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/SwingView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/TextPanel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/black.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/e_test.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/iLocationGenerator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/iMapGenerator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/e.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/n.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/ne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/nowere.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/ns.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/nse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/nw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/nws.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/nwse.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/s.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/se.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/sw.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/swe.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/w.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/we.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/wne.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/test.bmp" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/ArrowsButtonListener.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/ArrowsButtonListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/DirectionKeyListener.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/DirectionKeyListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/ObjectButtonListener.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/ObjectButtonListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/PlayerButtonListener.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/PlayerButtonListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/StatsButtonListener.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/StatsButtonListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/e.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/e.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/n.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/n.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/ne.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/ne.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/nowere.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/nowere.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/ns.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/ns.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/nse.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/nse.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/nw.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/nw.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/nws.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/nws.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/nwse.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/nwse.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/s.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/s.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/se.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/se.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/sw.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/sw.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/swe.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/swe.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/test.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/test.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/w.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/w.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/we.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/we.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/icons/wne.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/wne.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/items/Gold.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/items/Gold.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/items/Item.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/items/Item.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/items/ItemPacket.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/items/ItemPacket.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/items/Storage.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/items/Storage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/Coordinate.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Coordinate.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/Direction.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Direction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/LocGen0_1.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/LocationFactory.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/Location.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Location.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/Map.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Map.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/Map_gen_0_1.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/MapFactory.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/Position.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Position.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/black.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/black.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons/test.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/test.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/black.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/black.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/e.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/e.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/n.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/n.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/ne.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/ne.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/nowere.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/nowere.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/ns.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/ns.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/nse.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/nse.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/nw.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/nw.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/nws.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/nws.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/nwse.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/nwse.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/s.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/s.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/se.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/se.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/sw.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/sw.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/swe.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/swe.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/test.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/test.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/w.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/w.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/we.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/we.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons2/wne.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/wne.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/black.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/black.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/e.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/e.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/n.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/n.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/ne.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/ne.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/nowere.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/nowere.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/ns.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/ns.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/nse.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/nse.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/nw.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/nw.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/nws.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/nws.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/nwse.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/nwse.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/s.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/s.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/se.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/se.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/sw.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/sw.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/swe.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/swe.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/test2.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/test2.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/w.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/w.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/we.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/we.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/map/icons3/wne.bmp" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/wne.bmp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/Creature.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Creature.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/Main2.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Main2.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/Monster.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Monster.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/Parameters.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Parameters.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/ParametersStrategy.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/ParametersStrategy.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/Rabbit.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Rabbit.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/SimpleParametersStrategy.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/SimpleParametersStrategy.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/player/Equip.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/player/Equip.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/player/Player.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/player/Player.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/tools/Fight.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/Fight.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/tools/Interactable.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/Interactable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/tools/TimeActivator.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/TimeActivator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/reeson2003/tools/iTimeActing.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/iTimeActing.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/model/Game.class" afterPath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/model/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/model/MainProgramm.class" afterPath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/model/MainProgramm.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/View.class" afterPath="$PROJECT_DIR$/out/production/map_rpg_0.1/ru/reeson2003/Game/view/View.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/reeson2003/npcs/Parameters.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/npcs/Parameters.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/reeson2003/player/Player.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/player/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/reeson2003/tools/TimeActivator.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/tools/TimeActivator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map_rpg_0.1.iml" afterPath="$PROJECT_DIR$/map_rpg_0.1.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Game.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/View.java" afterPath="$PROJECT_DIR$/src/ru/reeson2003/Game/view/View.java" />
     </list>
     <ignored path="map_rpg_0.1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,54 +294,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Colors.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/Colors.java">
+      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <folding>
+                <element signature="e#474#475#0" expanded="true" />
+                <element signature="e#522#523#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConsoleView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/ConsoleView/ConsoleView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getInstance#0;class#ConsoleView#0" expanded="false" />
+                <element signature="method#show#0;class#ConsoleView#0" expanded="false" />
+                <element signature="e#2178#2179#0" expanded="true" />
+                <element signature="e#2218#2219#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Location.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Location.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TimeActivator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/tools/TimeActivator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parameters.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/Parameters.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="227" column="99" selection-start-line="227" selection-start-column="99" selection-end-line="227" selection-end-column="99" />
+              <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
               <folding>
-                <element signature="method#addHealth#0;class#Parameters#0" expanded="false" />
-                <element signature="method#addMana#0;class#Parameters#0" expanded="false" />
-                <element signature="method#addStrength#0;class#Parameters#0" expanded="false" />
-                <element signature="method#addConstitution#0;class#Parameters#0" expanded="false" />
-                <element signature="method#addAgility#0;class#Parameters#0" expanded="false" />
-                <element signature="method#addIntellect#0;class#Parameters#0" expanded="false" />
-                <element signature="method#addWisdom#0;class#Parameters#0" expanded="false" />
-                <element signature="method#addExperience#0;class#Parameters#0" expanded="false" />
+                <element signature="method#getPosition#0;class#Location#0" expanded="false" />
+                <element signature="method#setInfo#0;class#Location#0" expanded="false" />
+                <element signature="e#1353#1354#0" expanded="true" />
+                <element signature="e#1424#1425#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleParametersStrategy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/SimpleParametersStrategy.java">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/player/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+            <state relative-caret-position="340">
+              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/MapFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding>
-                <element signature="method#getInstance#0;class#SimpleParametersStrategy#0" expanded="false" />
-                <element signature="method#SimpleParametersStrategy#0;class#SimpleParametersStrategy#0" expanded="false" />
+                <element signature="class#2584:3327" expanded="false" />
+                <element signature="method#setPosition#0;class#2584:3327" expanded="false" />
+                <element signature="class#3377:4132" expanded="false" />
+                <element signature="method#setPosition#0;class#3377:4132" expanded="false" />
+                <element signature="e#3860#3909#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main3.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/Main3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/LocationFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <element signature="method#LocationFactory#0;class#LocationFactory#0" expanded="false" />
+                <element signature="method#generatePositionsAndLinks#0;class#LocationFactory#0" expanded="false" />
+                <element signature="method#getLocation#0;class#LocationFactory#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TimeActivator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/TimeActivator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,6 +413,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -108,21 +427,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/tools/Fight.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/MainProgramm0.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/SwingView0_2.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/MainProgramm.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/ArrowsButtonListener.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/tools/Interactable.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/npcs/Monster.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/Game.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/items/ItemPacket.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/items/Storage.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/tools/iTimeActivator.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/tools/iTimeActing.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/DirectionKeyListener.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/ObjectButtonListener.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/npcs/Rabbit.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/npcs/Main2.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/PlayerButtonListener.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/ConcreteIconManager.java" />
@@ -134,11 +438,9 @@
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/leftPanel/InteractableDialog.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/centerPanel/StatEnterWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/map/Position.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/View.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/SwingView.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/StatsButtonListener.java" />
-        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Game.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/items/Gold.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/Main3.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/ArrowsPanel.java" />
@@ -159,6 +461,23 @@
         <option value="$PROJECT_DIR$/src/ru/reeson2003/npcs/ParametersStrategy.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/npcs/SimpleParametersStrategy.java" />
         <option value="$PROJECT_DIR$/src/ru/reeson2003/npcs/Parameters.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Parameters.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/icons/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/StatsButtonListener.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Main2.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Position.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/LocGen0_1.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/iLocationGenerator.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/LocationFactory.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Map_gen_0_1.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Map.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Game.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Location.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/NewView.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/View.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/view/ConsoleView/ConsoleView.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/MapFactory.java" />
+        <option value="$PROJECT_DIR$/src/ru/reeson2003/Game/model/Main3.java" />
       </list>
     </option>
   </component>
@@ -172,8 +491,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -182,7 +501,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -200,9 +519,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -235,7 +552,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="reeson2003" />
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -253,33 +574,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="reeson2003" />
+              <option name="myItemId" value="Game" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="player" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reeson2003" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="npcs" />
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -297,7 +596,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="reeson2003" />
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -307,6 +654,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -323,8 +672,11 @@
       <recent name="ru.reeson2003.player" />
       <recent name="ru.reeson2003" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\myGame\src\ru\reeson2003\Game\view\swingView\icons\icons" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.MainProgramm">
+  <component name="RunManager" selected="Application.Main3 ">
     <configuration default="false" name="MainProgramm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -348,11 +700,11 @@
     <configuration default="false" name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="ru.reeson2003.npcs.*" />
+          <option name="PATTERN" value="ru.reeson2003.Game.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="ru.reeson2003.npcs.Main2" />
+      <option name="MAIN_CLASS_NAME" value="ru.reeson2003.Game.model.Main2" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -365,37 +717,17 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Main3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Main3 " type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="ru.reeson2003.Game.view.TestPrefSizeDlg" />
+          <option name="PATTERN" value="ru.reeson2003.Game.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="ru.reeson2003.Game.view.Main3" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="map_rpg_0.1" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="TEST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="ru.reeson2003.Game.view.rightPanel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="ru.reeson2003.Game.view.TEST" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="ru.reeson2003.Game.model.Main3" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -433,7 +765,10 @@
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
-      <method />
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
@@ -456,7 +791,10 @@
       <Profilers>
         <option name="GAPID_DISABLE_PCS" value="false" />
       </Profilers>
-      <method />
+      <method>
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -649,19 +987,17 @@
       <listeners />
       <method />
     </configuration>
-    <list size="4">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.MainProgramm" />
       <item index="1" class="java.lang.String" itemvalue="Application.Main2" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Main3" />
-      <item index="3" class="java.lang.String" itemvalue="Application.TEST" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Main3 " />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.MainProgramm" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Main3" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.Main3 " />
+        <item index="1" class="java.lang.String" itemvalue="Application.MainProgramm" />
         <item index="2" class="java.lang.String" itemvalue="Application.Main2" />
         <item index="3" class="java.lang.String" itemvalue="Application.MainProgramm" />
-        <item index="4" class="java.lang.String" itemvalue="Application.TEST" />
       </list>
     </recent_temporary>
   </component>
@@ -682,22 +1018,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32906976" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31569967" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29475984" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40536278" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32906976" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17569546" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -725,7 +1061,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="some fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fixes" />
+    <MESSAGE value="Map and Loc factories, end some refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Map and Loc factories, end some refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -741,247 +1078,36 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/tools/iTimeActing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/tools/iTimeActivator.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/map/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/MainProgramm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/map/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/AbstractList.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/LinkedList.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/items/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/DirectionKeyListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="13" column="37" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/awt/Container.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/ObjectButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/Rabbit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/IconManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/awt/Dialog.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/map/Position.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/Main2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/PlayerButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/StatsButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="45" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/chars/Creature.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/items/Gold.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/Main3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="64" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/ArrowsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/CenterPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/ConcreteIconManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/IconsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="62" column="55" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/InteractableDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/MapPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="179" column="22" selection-start-line="179" selection-start-column="22" selection-end-line="179" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/RightPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/StatConfirmPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/StatPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/StatPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
           <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/StringGetWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/StringGetWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/SwingView.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/SwingView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/TextPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/TextPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/ArrowsButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/awt/Color.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/Colors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/map/Map_gen_0_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/StatEnterWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/StatEnterWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
@@ -989,49 +1115,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/LeftPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradle.run.settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/tools/TimeActivator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/player/Equip.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/player/Equip.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/player/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding>
-            <element signature="e#490#491#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/Creature.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Creature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
@@ -1042,15 +1140,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/Monster.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Monster.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/ParametersStrategy.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/ParametersStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="72" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
@@ -1058,9 +1155,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/SimpleParametersStrategy.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/SimpleParametersStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
+        <state relative-caret-position="493">
           <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
           <folding>
             <element signature="method#getInstance#0;class#SimpleParametersStrategy#0" expanded="false" />
@@ -1069,10 +1166,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/npcs/Parameters.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/npcs/Parameters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="227" column="99" selection-start-line="227" selection-start-column="99" selection-end-line="227" selection-end-column="99" />
+        <state relative-caret-position="17">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding>
             <element signature="method#addHealth#0;class#Parameters#0" expanded="false" />
             <element signature="method#addMana#0;class#Parameters#0" expanded="false" />
@@ -1083,6 +1180,352 @@
             <element signature="method#addWisdom#0;class#Parameters#0" expanded="false" />
             <element signature="method#addExperience#0;class#Parameters#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/ArrowsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/CenterPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/Colors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/ConcreteIconManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/IconManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/InteractableDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/LeftPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/Main3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/MainProgramm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#148#149#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/StatsButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/PlayerButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/ObjectButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/DirectionKeyListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/iTimeActing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons/e.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons2/ne.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/icons3/nse.bmp">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/swingView/IconsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/izba.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <folding>
+            <element signature="method#getParameters#0;class#Main2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/iMapGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7561">
+          <caret line="260" column="12" selection-start-line="260" selection-start-column="12" selection-end-line="260" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/iLocationGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <element signature="e#191#192#0" expanded="true" />
+            <element signature="e#225#226#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+            <element signature="e#325#326#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Position.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="189" column="67" selection-start-line="189" selection-start-column="67" selection-end-line="189" selection-end-column="67" />
+          <folding>
+            <element signature="method#Position#0;class#Position#0" expanded="false" />
+            <element signature="e#1444#1445#0" expanded="false" />
+            <element signature="e#1471#1472#0" expanded="false" />
+            <element signature="method#deleteDirectionFromThis#0;class#Position#0" expanded="false" />
+            <element signature="method#deleteDirectionFromAnother#0;class#Position#0" expanded="false" />
+            <element signature="method#deleteDirectionTwoSide#0;class#Position#0" expanded="false" />
+            <element signature="method#getAvailableDirections#0;class#Position#0" expanded="false" />
+            <element signature="method#addObject#0;class#Position#0" expanded="false" />
+            <element signature="method#getObject#0;class#Position#0" expanded="false" />
+            <element signature="method#removeObject#0;class#Position#0" expanded="false" />
+            <element signature="method#removeObject#1;class#Position#0" expanded="false" />
+            <element signature="method#moveByDirection#0;class#Position#0" expanded="false" />
+            <element signature="method#getByDirection#0;class#Position#0" expanded="false" />
+            <element signature="method#moveObject#0;class#Position#0" expanded="false" />
+            <element signature="method#getObjects#0;class#Position#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/controller/swingControler/ArrowsButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="e#510#511#0" expanded="false" />
+            <element signature="e#568#569#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/Interactable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding>
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/NewView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/view/ConsoleView/ConsoleView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getInstance#0;class#ConsoleView#0" expanded="false" />
+            <element signature="method#show#0;class#ConsoleView#0" expanded="false" />
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#2218#2219#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/MapFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="class#2584:3327" expanded="false" />
+            <element signature="method#setPosition#0;class#2584:3327" expanded="false" />
+            <element signature="class#3377:4132" expanded="false" />
+            <element signature="method#setPosition#0;class#3377:4132" expanded="false" />
+            <element signature="e#3860#3909#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
+          <folding>
+            <element signature="method#getPosition#0;class#Location#0" expanded="false" />
+            <element signature="method#setInfo#0;class#Location#0" expanded="false" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/Main3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/map/LocationFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="method#LocationFactory#0;class#LocationFactory#0" expanded="false" />
+            <element signature="method#generatePositionsAndLinks#0;class#LocationFactory#0" expanded="false" />
+            <element signature="method#getLocation#0;class#LocationFactory#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/reeson2003/Game/model/tools/TimeActivator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
