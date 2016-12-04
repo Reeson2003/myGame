@@ -17,7 +17,8 @@ public class Main2 {
         print(p);
         print(m1);
         print(m2);
-        Fight fight1 = new Fight(p,m1);
+        System.out.println(p.getExpToNextLevel());
+//        Fight fight1 = new Fight(p,m1);
 //        Fight fight2 = new Fight(p,m2);
         //Fight fight3 = new Fight(parameters,m3);
         /*
@@ -39,7 +40,7 @@ public class Main2 {
         points -= con;
         int agi = points;
         //System.out.println(str + " " + con + " " + agi);
-        Parameters p = new Parameters(10, str, con, agi, 0, 0);
+        Parameters p = new Parameters(1, str, con, agi, 0, 0);
         p.name = name;
         return p;
     }
