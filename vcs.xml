@@ -22,6 +22,10 @@
           <option name="url" value="https://github.com/Reeson2003/MyGameClient.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/Reeson2003/my3d.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\User\" />
